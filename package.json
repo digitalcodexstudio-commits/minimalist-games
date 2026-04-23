@@ -5,7 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "npx --yes serve . -l 3000",
+    "dev": "firebase emulators:start --only hosting",
+    "serve": "firebase emulators:start --only hosting",
+    "deploy": "firebase deploy --only hosting",
     "format": "npx --yes prettier --write ."
   }
 }

@@ -17,8 +17,21 @@ Minimalist games platform — Sudoku, Minesweeper, 2048. Built with vanilla HTML
 
 ```bash
 npm run dev
-# open http://localhost:3000/src/index.html
+# Firebase emulator serves on http://localhost:5000
 ```
+
+## Deploy
+
+```bash
+firebase login            # once
+npm run deploy            # requires .firebaserc with real project ID
+```
+
+## Setup checklist (one-time)
+
+1. Create project at https://console.firebase.google.com → name `minimalist-games`.
+2. Replace `REPLACE_WITH_FIREBASE_PROJECT_ID` in `.firebaserc` with the real project ID.
+3. Project Settings → Your apps → Web → register app → copy config into `src/js/firebase-config.js`.
 
 ## Structure
 
