@@ -5,7 +5,7 @@ Minimalist games platform — Sudoku, Minesweeper, 2048. Built with vanilla HTML
 ## Stack
 
 - HTML5, CSS3, vanilla JavaScript
-- Hosting: Vercel
+- Hosting: Firebase Hosting
 - Analytics: Google Analytics 4 (added in week 3)
 - Monetization: Google AdSense (added in week 3)
 
