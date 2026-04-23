@@ -19,8 +19,9 @@
     ],
     "rewrites": [
       { "source": "/", "destination": "/src/index.html" },
-      { "source": "/games/:game", "destination": "/src/games/:game/index.html" },
-      { "source": "/games/:game/", "destination": "/src/games/:game/index.html" }
+      { "source": "/games/sudoku", "destination": "/src/games/sudoku/index.html" },
+      { "source": "/games/minesweeper", "destination": "/src/games/minesweeper/index.html" },
+      { "source": "/games/2048", "destination": "/src/games/2048/index.html" }
     ],
     "headers": [
       {
