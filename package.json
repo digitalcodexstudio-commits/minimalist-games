@@ -1,0 +1,11 @@
+{
+  "name": "minimalist-games",
+  "version": "0.1.0",
+  "description": "Minimalist games platform — Sudoku, Minesweeper, 2048. Vanilla HTML/CSS/JS.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "format": "npx --yes prettier --write ."
+  }
+}
