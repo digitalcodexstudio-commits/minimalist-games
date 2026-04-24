@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play free online Minesweeper — classic 3 difficulties, first-click safe, flag mode.">
   <title>Minesweeper — Minimalist Games</title>
   <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
   <link rel="stylesheet" href="/src/css/global.css">
@@ -10,7 +11,84 @@
   <link rel="stylesheet" href="/src/games/minesweeper/minesweeper.css">
 </head>
 <body>
-  <!-- Minesweeper page implemented in task 1.5 -->
+  <main class="ms-page" data-minesweeper>
+    <header class="page-header">
+      <a href="/" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>Minesweeper</h1>
+    </header>
+
+    <aside class="side-ad side-ad-left" aria-label="Advertisement" role="complementary">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-300x600">Ad space · 300×600</div>
+    </aside>
+    <aside class="side-ad side-ad-right" aria-label="Advertisement" role="complementary">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-300x600">Ad space · 300×600</div>
+    </aside>
+
+    <div class="ms-layout">
+      <section class="board-column">
+        <nav class="difficulty-bar" role="tablist" aria-label="Difficulty">
+          <span class="difficulty-label">Difficulty:</span>
+          <button class="difficulty-btn is-active" data-difficulty="beginner">Beginner</button>
+          <button class="difficulty-btn" data-difficulty="intermediate">Intermediate</button>
+          <button class="difficulty-btn" data-difficulty="expert">Expert</button>
+        </nav>
+
+        <div class="board-frame">
+          <div class="ms-grid" data-grid role="grid" aria-label="Minesweeper board"></div>
+          <div class="pause-overlay" data-pause-overlay hidden>
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <p>Paused</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel-column">
+        <div class="panel-head">
+          <div class="stat">
+            <span class="stat-label">Mines left</span>
+            <span class="stat-value" data-mines-left>10</span>
+          </div>
+          <div class="stat stat-right">
+            <span class="stat-label">Time</span>
+            <span class="stat-value" data-timer>00:00</span>
+          </div>
+          <button class="icon-btn small" data-action="pause" aria-label="Pause">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          </button>
+        </div>
+
+        <div class="action-row action-row-two">
+          <button class="icon-btn" data-action="flag" aria-label="Toggle flag mode">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h10l-2-4 2-4H7V3H5z"/></svg>
+          </button>
+          <div class="action-hint">Tap to toggle flag mode.<br>Long-press on mobile also flags.</div>
+        </div>
+
+        <p class="status" data-status aria-live="polite"></p>
+
+        <button class="new-game-btn" data-action="new">New Game</button>
+      </aside>
+    </div>
+
+    <div class="ad-slot" role="complementary" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
+    </div>
+
+    <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <h2 id="modal-title" data-modal-title>Cleared!</h2>
+        <p data-modal-msg>All safe cells revealed.</p>
+        <div class="time" data-modal-time>00:00</div>
+        <button class="new-game-btn" data-modal-close>New Game</button>
+      </div>
+    </div>
+  </main>
+
   <script src="/src/games/minesweeper/minesweeper.js"></script>
 </body>
 </html>
