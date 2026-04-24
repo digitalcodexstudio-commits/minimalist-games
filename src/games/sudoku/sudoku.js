@@ -392,8 +392,17 @@
 
     updateCounter() {
       let remaining = 0;
-      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) if (this.engine.board[r][c] === 0) remaining++;
+      const counts = Array(10).fill(0);
+      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
+        const v = this.engine.board[r][c];
+        if (v === 0) remaining++;
+        else counts[v]++;
+      }
       if (this.counterEl) this.counterEl.textContent = String(remaining);
+      this.root.querySelectorAll('[data-num]').forEach(btn => {
+        const n = Number(btn.dataset.num);
+        btn.hidden = counts[n] >= 9;
+      });
     }
 
     newGame() {
