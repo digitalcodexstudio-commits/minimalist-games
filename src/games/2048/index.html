@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play free online 2048 — swipe or use arrow keys, undo, best score saved.">
   <title>2048 — Minimalist Games</title>
   <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
   <link rel="stylesheet" href="/src/css/global.css">
@@ -10,7 +11,87 @@
   <link rel="stylesheet" href="/src/games/2048/2048.css">
 </head>
 <body>
-  <!-- 2048 page implemented in task 1.6 -->
+  <main class="g48-page" data-2048>
+    <header class="page-header">
+      <a href="/" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>2048</h1>
+    </header>
+
+    <aside class="side-ad side-ad-left" aria-label="Advertisement" role="complementary">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-300x600">Ad space · 300×600</div>
+    </aside>
+    <aside class="side-ad side-ad-right" aria-label="Advertisement" role="complementary">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-300x600">Ad space · 300×600</div>
+    </aside>
+
+    <div class="g48-layout">
+      <section class="board-column">
+        <div class="board-frame">
+          <div class="g48-board-bg" data-board-bg></div>
+          <div class="g48-board" data-board role="grid" aria-label="2048 board"></div>
+        </div>
+        <p class="hint">Swipe or use arrow keys / WASD.</p>
+      </section>
+
+      <aside class="panel-column">
+        <div class="score-row">
+          <div class="score-card">
+            <span class="score-label">Score</span>
+            <span class="score-value" data-score>0</span>
+          </div>
+          <div class="score-card">
+            <span class="score-label">Best</span>
+            <span class="score-value" data-best>0</span>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="icon-btn" data-action="undo" aria-label="Undo">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+        </div>
+
+        <div class="dpad" aria-label="Direction pad">
+          <button class="dpad-btn up" data-dir="up" aria-label="Up">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <button class="dpad-btn left" data-dir="left" aria-label="Left">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="dpad-btn right" data-dir="right" aria-label="Right">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="dpad-btn down" data-dir="down" aria-label="Down">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <button class="new-game-btn" data-action="new">New Game</button>
+      </aside>
+    </div>
+
+    <div class="ad-slot" role="complementary" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
+    </div>
+
+    <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <h2 id="modal-title" data-modal-title>Game over</h2>
+        <p data-modal-msg>No moves left.</p>
+        <div class="time" data-modal-score>0</div>
+        <div class="modal-actions">
+          <button class="new-game-btn ghost" data-modal-continue hidden>Keep going</button>
+          <button class="new-game-btn" data-modal-close>New Game</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
   <script src="/src/games/2048/2048.js"></script>
 </body>
 </html>
