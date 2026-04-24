@@ -1,1 +1,139 @@
-/* Game-specific shared styles — populated in task 1.3 (homepage grid) and 1.4+ (game pages) */
+/* Homepage layout. Aligned with the Sudoku blue palette. */
+
+:root {
+  --home-blue: #4a5fc1;
+  --home-blue-dark: #3b4ca0;
+  --home-blue-tint: #edf0fb;
+  --home-blue-hover: #dde3f5;
+  --home-text: #1b2545;
+  --home-muted: #8891aa;
+  --home-border: #e4e8f0;
+}
+
+body.home {
+  background: #ffffff;
+  color: var(--home-text);
+}
+
+.home-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) var(--space-md);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+.hero h1 {
+  margin: 0 0 var(--space-xs);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--home-text);
+}
+.hero .tagline {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  color: var(--home-muted);
+  font-weight: 400;
+}
+
+/* Games grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+@media (min-width: 640px) {
+  .games-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .games-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: #ffffff;
+  border: 1px solid var(--home-border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--home-blue);
+  box-shadow: 0 8px 24px rgba(74, 95, 193, 0.12);
+}
+.game-card:focus-visible {
+  outline: 2px solid var(--home-blue);
+  outline-offset: 3px;
+}
+
+.game-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--home-blue-tint);
+  color: var(--home-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-xs);
+}
+
+.game-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--home-text);
+}
+
+.game-desc {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--home-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.game-cta {
+  margin-top: var(--space-xs);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--home-blue);
+}
+.game-card:hover .game-cta { color: var(--home-blue-dark); }
+
+/* Ad placeholder (matches game pages for visual consistency) */
+.ad-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--home-muted);
+  margin-bottom: var(--space-xs);
+  text-align: center;
+}
+.ad-unit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--home-blue-tint);
+  color: var(--home-blue);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px dashed var(--home-border);
+}
+.ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
+.ad-slot {
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  padding: 0;
+  max-width: 728px;
+}
