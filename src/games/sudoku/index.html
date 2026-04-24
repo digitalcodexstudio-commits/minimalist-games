@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Play free online Sudoku Zen — minimalist, three difficulties, hint system.">
+  <meta name="description" content="Play free online Sudoku Zen — six difficulties, notes, undo, mistake limit.">
   <title>Sudoku Zen — Minimalist Games</title>
   <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
   <link rel="stylesheet" href="/src/css/global.css">
@@ -11,68 +11,94 @@
   <link rel="stylesheet" href="/src/games/sudoku/sudoku.css">
 </head>
 <body>
-  <main class="game-wrap" data-sudoku>
-    <header class="game-header">
-      <a href="/" class="back" aria-label="Back to home">←</a>
+  <main class="sudoku-page" data-sudoku>
+    <header class="page-header">
+      <a href="/" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
       <h1>Sudoku Zen</h1>
     </header>
 
-    <div class="ad-container ad-top">[AD 320×60]</div>
+    <div class="sudoku-layout">
+      <section class="board-column">
+        <nav class="difficulty-bar" role="tablist" aria-label="Difficulty">
+          <span class="difficulty-label">Difficulty:</span>
+          <button class="difficulty-btn is-active" data-difficulty="easy">Easy</button>
+          <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+          <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+          <button class="difficulty-btn" data-difficulty="expert">Expert</button>
+          <button class="difficulty-btn" data-difficulty="master">Master</button>
+          <button class="difficulty-btn" data-difficulty="extreme">Extreme</button>
+        </nav>
 
-    <div class="difficulty" role="group" aria-label="Difficulty">
-      <button class="btn" data-difficulty="easy" aria-pressed="false">Easy</button>
-      <button class="btn" data-difficulty="medium" aria-pressed="true">Medium</button>
-      <button class="btn" data-difficulty="hard" aria-pressed="false">Hard</button>
+        <div class="board-frame">
+          <div class="grid" data-grid role="grid" aria-label="Sudoku board"></div>
+          <div class="pause-overlay" data-pause-overlay hidden>
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <p>Paused</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel-column">
+        <div class="panel-head">
+          <div class="stat">
+            <span class="stat-label">Mistakes</span>
+            <span class="stat-value" data-mistakes>0/3</span>
+          </div>
+          <div class="stat stat-counter">
+            <span class="stat-value big" data-counter>0</span>
+          </div>
+          <div class="stat stat-right">
+            <span class="stat-label">Time</span>
+            <span class="stat-value" data-timer>00:00</span>
+          </div>
+          <button class="icon-btn small" data-action="pause" aria-label="Pause timer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          </button>
+        </div>
+
+        <div class="action-row">
+          <button class="icon-btn" data-action="undo" aria-label="Undo">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+          <button class="icon-btn" data-action="erase" aria-label="Erase">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20H7l-4-4 8-8 11 11-2 1z"/><line x1="18" y1="14" x2="10" y2="6"/></svg>
+          </button>
+          <button class="icon-btn has-indicator" data-action="notes" aria-label="Toggle notes">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+            <span class="indicator" data-notes-state>OFF</span>
+          </button>
+          <button class="icon-btn has-badge" data-action="hint" aria-label="Hint">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.7.6 1 1.4 1 2.3v1h6v-1c0-.9.3-1.7 1-2.3A7 7 0 0 0 12 2z"/></svg>
+            <span class="badge" data-hints-left>3</span>
+          </button>
+        </div>
+
+        <div class="number-pad" aria-label="Number pad">
+          <button class="pad-btn" data-num="1">1</button>
+          <button class="pad-btn" data-num="2">2</button>
+          <button class="pad-btn" data-num="3">3</button>
+          <button class="pad-btn" data-num="4">4</button>
+          <button class="pad-btn" data-num="5">5</button>
+          <button class="pad-btn" data-num="6">6</button>
+          <button class="pad-btn" data-num="7">7</button>
+          <button class="pad-btn" data-num="8">8</button>
+          <button class="pad-btn" data-num="9">9</button>
+        </div>
+
+        <button class="new-game-btn" data-action="new">New Game</button>
+      </aside>
     </div>
 
-    <div class="stats" role="group" aria-label="Game stats">
-      <div>
-        <span class="label">Time</span>
-        <span class="value" data-timer>00:00</span>
-      </div>
-      <div>
-        <span class="label">Errors</span>
-        <span class="value" data-errors>0</span>
-      </div>
-      <div>
-        <span class="label">Hints</span>
-        <span class="value" data-hints>3</span>
-      </div>
-    </div>
+    <div class="ad-slot" aria-hidden="true">Ad space</div>
 
-    <div class="grid-wrap">
-      <div class="grid" data-grid role="grid" aria-label="Sudoku board"></div>
-    </div>
-
-    <div class="pad" aria-label="Number pad">
-      <button class="btn" data-num="1">1</button>
-      <button class="btn" data-num="2">2</button>
-      <button class="btn" data-num="3">3</button>
-      <button class="btn" data-num="4">4</button>
-      <button class="btn" data-num="5">5</button>
-      <button class="btn" data-num="6">6</button>
-      <button class="btn" data-num="7">7</button>
-      <button class="btn" data-num="8">8</button>
-      <button class="btn" data-num="9">9</button>
-      <button class="btn clear" data-num="clear" aria-label="Clear cell">Clear</button>
-    </div>
-
-    <div class="actions">
-      <button class="btn btn-primary" data-action="new">New Game</button>
-      <button class="btn btn-secondary" data-action="check">Check</button>
-      <button class="btn" data-action="hint">Hint</button>
-    </div>
-
-    <div class="status" data-status aria-live="polite"></div>
-
-    <div class="ad-container ad-bottom">[AD 320×60]</div>
-
-    <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="win-title">
+    <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card">
-        <h2 id="win-title">Solved!</h2>
-        <p>Nice work. Here's your time:</p>
+        <h2 id="modal-title" data-modal-title>Solved!</h2>
+        <p data-modal-msg>Nice work.</p>
         <div class="time" data-modal-time>00:00</div>
-        <button class="btn btn-primary" data-modal-close>New Game</button>
+        <button class="new-game-btn" data-modal-close>New Game</button>
       </div>
     </div>
   </main>
