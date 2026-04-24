@@ -160,7 +160,11 @@
       this.root.querySelector('[data-action="hint"]').addEventListener('click', () => this.useHint());
       this.root.querySelector('[data-action="pause"]').addEventListener('click', () => this.togglePause());
       this.root.querySelectorAll('[data-num]').forEach(btn => {
-        btn.addEventListener('click', () => this.inputNumber(Number(btn.dataset.num)));
+        btn.addEventListener('click', () => {
+          const n = Number(btn.dataset.num);
+          if (this.selected) this.inputNumber(n);
+          else this.highlightValue(n);
+        });
       });
       this.root.querySelector('[data-modal-close]').addEventListener('click', () => {
         this.modalEl.hidden = true;
@@ -236,6 +240,17 @@
         el.classList.toggle('peer', peer && !same);
         const v = this.engine.board[er][ec];
         el.classList.toggle('same-value', selVal !== 0 && v === selVal && !same);
+      });
+    }
+
+    highlightValue(n) {
+      if (this.paused || this.gameOver) return;
+      this.gridEl.querySelectorAll('.cell').forEach(el => {
+        const er = Number(el.dataset.row);
+        const ec = Number(el.dataset.col);
+        const v = this.engine.board[er][ec];
+        el.classList.remove('selected', 'peer');
+        el.classList.toggle('same-value', v === n && n !== 0);
       });
     }
 

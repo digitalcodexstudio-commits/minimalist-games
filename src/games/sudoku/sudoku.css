@@ -121,11 +121,19 @@ body { background: #ffffff; color: var(--sudoku-text); }
 .cell.clue { font-weight: 500; color: var(--sudoku-text); }
 .cell.peer { background: var(--sudoku-blue-tint); }
 .cell.box-alt.peer { background: #e4ebf9; }
-.cell.same-value { background: var(--sudoku-blue-hover); }
+.cell.same-value { background: #c8d2ef; }
+.cell.same-value .cell-value { font-weight: 700; color: var(--sudoku-blue-dark); }
 .cell.selected { background: #c8d2ef !important; }
 .cell.wrong .cell-value { color: var(--sudoku-wrong); }
 
-.cell-value { line-height: 1; }
+.cell-value {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 .cell-notes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -137,6 +145,7 @@ body { background: #ffffff; color: var(--sudoku-text); }
   line-height: 1;
   gap: 0;
 }
+.cell-notes[hidden] { display: none; }
 .cell-note {
   display: flex;
   align-items: center;
