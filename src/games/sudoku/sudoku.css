@@ -16,6 +16,7 @@
 body { background: #ffffff; color: var(--sudoku-text); }
 
 .sudoku-page {
+  position: relative;
   max-width: 1100px;
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
@@ -302,18 +303,51 @@ body { background: #ffffff; color: var(--sudoku-text); }
 .new-game-btn:active { transform: translateY(1px); }
 .new-game-btn:focus-visible { outline: 2px solid var(--sudoku-blue-dark); outline-offset: 2px; }
 
-/* Discrete ad slot */
-.ad-slot {
-  max-width: 728px;
-  margin: var(--space-2xl) auto 0;
-  padding: var(--space-md);
-  text-align: center;
-  border: 1px solid var(--sudoku-border-thin);
-  border-radius: 6px;
-  color: var(--sudoku-muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+/* Ad placeholders — replace with AdSense units in week 3 */
+.ad-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--sudoku-muted);
+  margin-bottom: var(--space-xs);
+  text-align: center;
+}
+.ad-unit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sudoku-blue-tint);
+  color: var(--sudoku-blue);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px dashed var(--sudoku-border);
+}
+.ad-300x600 { width: 300px; height: 600px; }
+.ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
+
+/* Bottom ad slot (leaderboard) */
+.ad-slot {
+  margin: var(--space-2xl) auto 0;
+  padding: 0;
+  max-width: 728px;
+}
+
+/* Side rails — desktop ≥1500px only.
+   Target layout: 300 ad + 40 gap + 1100 main + 40 gap + 300 ad = 1780. At 1500, gaps shrink but nothing overlaps the main column. */
+.side-ad { display: none; }
+
+@media (min-width: 1500px) {
+  .side-ad {
+    display: block;
+    width: 300px;
+    z-index: 5;
+    top: 120px;
+    position: fixed;
+  }
+  .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
+  .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
 }
 
 /* Modal */
