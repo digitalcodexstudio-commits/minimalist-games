@@ -25,12 +25,6 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(html)",
-        "headers": [
-          { "key": "Cache-Control", "value": "no-cache" }
-        ]
-      },
-      {
         "source": "**/*.@(css|js)",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
@@ -41,6 +35,18 @@
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=86400" }
         ]
+      },
+      {
+        "source": "/",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      },
+      {
+        "source": "/games/**",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ]
   }
