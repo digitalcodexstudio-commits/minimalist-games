@@ -401,7 +401,7 @@
       if (this.counterEl) this.counterEl.textContent = String(remaining);
       this.root.querySelectorAll('[data-num]').forEach(btn => {
         const n = Number(btn.dataset.num);
-        btn.hidden = counts[n] >= 9;
+        btn.classList.toggle('is-hidden', counts[n] >= 9);
       });
     }
 

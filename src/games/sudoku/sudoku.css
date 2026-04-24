@@ -48,8 +48,9 @@ body { background: #ffffff; color: var(--sudoku-text); }
 
 @media (min-width: 900px) {
   .sudoku-layout {
-    grid-template-columns: minmax(0, 1fr) 360px;
+    grid-template-columns: max-content 360px;
     gap: var(--space-2xl);
+    justify-content: center;
   }
 }
 
@@ -92,7 +93,7 @@ body { background: #ffffff; color: var(--sudoku-text); }
   background: #ffffff;
   border: 2px solid var(--sudoku-border);
   border-radius: 4px;
-  margin: 0 0 0 auto;
+  margin: 0;
   user-select: none;
   touch-action: manipulation;
 }
@@ -281,7 +282,7 @@ body { background: #ffffff; color: var(--sudoku-text); }
 .pad-btn:hover { background: var(--sudoku-blue-hover); }
 .pad-btn:active { transform: scale(0.97); }
 .pad-btn:focus-visible { outline: 2px solid var(--sudoku-blue); outline-offset: 2px; }
-.pad-btn[hidden] { display: none; }
+.pad-btn.is-hidden { visibility: hidden; pointer-events: none; }
 
 /* New Game CTA */
 .new-game-btn {
