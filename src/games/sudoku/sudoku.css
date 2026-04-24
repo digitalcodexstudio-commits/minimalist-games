@@ -1,1 +1,170 @@
-/* Sudoku-specific styles — implemented in task 1.4 */
+.game-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.game-header .back {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.game-header .back:hover { background: var(--color-light); }
+.game-header h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.difficulty {
+  display: flex;
+  gap: var(--space-xs);
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+.difficulty .btn { flex: 1; max-width: 120px; font-size: 0.875rem; min-height: 36px; padding: 0 var(--space-md); }
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.stats > div { text-align: center; min-width: 0; }
+.stats .label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray);
+  display: block;
+}
+.stats .value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+.grid {
+  --cell: 34px;
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell));
+  grid-template-rows: repeat(9, var(--cell));
+  background: var(--color-white);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  user-select: none;
+  touch-action: manipulation;
+}
+.cell {
+  border: 1px solid var(--color-light);
+  background: var(--color-white);
+  padding: 0;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 80ms;
+}
+.cell.border-left { border-left: 2px solid var(--color-primary); }
+.cell.border-top { border-top: 2px solid var(--color-primary); }
+.cell.border-right { border-right: none; }
+.cell.border-bottom { border-bottom: none; }
+.cell.clue { color: var(--color-dark); font-weight: 700; background: #fafbfc; }
+.cell.peer { background: #f2f6fa; }
+.cell.selected { background: #cfe6ff; outline: 2px solid var(--color-secondary); outline-offset: -2px; z-index: 1; }
+.cell.wrong { color: var(--color-accent); }
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+.pad .btn {
+  font-size: 1.125rem;
+  padding: 0;
+  min-height: 44px;
+}
+.pad .btn.clear { grid-column: span 5; background: var(--color-light); color: var(--color-dark); }
+
+.actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+.actions .btn { flex: 1; min-width: 90px; }
+
+.status {
+  min-height: 1.25rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  margin-bottom: var(--space-md);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: var(--space-md);
+}
+.modal[hidden] { display: none; }
+.modal-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.modal-card h2 { margin: 0 0 var(--space-sm); font-size: 1.5rem; }
+.modal-card p { margin: 0 0 var(--space-lg); color: var(--color-gray); }
+.modal-card .time { font-size: 2rem; font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; margin-bottom: var(--space-lg); }
+
+@media (min-width: 480px) {
+  .grid { --cell: 38px; }
+  .cell { font-size: 1.125rem; }
+}
+
+@media (min-width: 768px) {
+  .grid { --cell: 42px; }
+  .cell { font-size: 1.25rem; }
+  .pad { max-width: 420px; margin-left: auto; margin-right: auto; }
+  .actions { max-width: 420px; margin-left: auto; margin-right: auto; }
+}
+
+@media (min-width: 1024px) {
+  .grid { --cell: 50px; }
+  .cell { font-size: 1.5rem; }
+  .game-wrap { padding: var(--space-lg); }
+}

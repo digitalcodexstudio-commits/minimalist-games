@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play free online Sudoku Zen — minimalist, three difficulties, hint system.">
   <title>Sudoku Zen — Minimalist Games</title>
   <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
   <link rel="stylesheet" href="/src/css/global.css">
@@ -10,7 +11,72 @@
   <link rel="stylesheet" href="/src/games/sudoku/sudoku.css">
 </head>
 <body>
-  <!-- Sudoku page implemented in task 1.4 -->
+  <main class="game-wrap" data-sudoku>
+    <header class="game-header">
+      <a href="/" class="back" aria-label="Back to home">←</a>
+      <h1>Sudoku Zen</h1>
+    </header>
+
+    <div class="ad-container ad-top">[AD 320×60]</div>
+
+    <div class="difficulty" role="group" aria-label="Difficulty">
+      <button class="btn" data-difficulty="easy" aria-pressed="false">Easy</button>
+      <button class="btn" data-difficulty="medium" aria-pressed="true">Medium</button>
+      <button class="btn" data-difficulty="hard" aria-pressed="false">Hard</button>
+    </div>
+
+    <div class="stats" role="group" aria-label="Game stats">
+      <div>
+        <span class="label">Time</span>
+        <span class="value" data-timer>00:00</span>
+      </div>
+      <div>
+        <span class="label">Errors</span>
+        <span class="value" data-errors>0</span>
+      </div>
+      <div>
+        <span class="label">Hints</span>
+        <span class="value" data-hints>3</span>
+      </div>
+    </div>
+
+    <div class="grid-wrap">
+      <div class="grid" data-grid role="grid" aria-label="Sudoku board"></div>
+    </div>
+
+    <div class="pad" aria-label="Number pad">
+      <button class="btn" data-num="1">1</button>
+      <button class="btn" data-num="2">2</button>
+      <button class="btn" data-num="3">3</button>
+      <button class="btn" data-num="4">4</button>
+      <button class="btn" data-num="5">5</button>
+      <button class="btn" data-num="6">6</button>
+      <button class="btn" data-num="7">7</button>
+      <button class="btn" data-num="8">8</button>
+      <button class="btn" data-num="9">9</button>
+      <button class="btn clear" data-num="clear" aria-label="Clear cell">Clear</button>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" data-action="new">New Game</button>
+      <button class="btn btn-secondary" data-action="check">Check</button>
+      <button class="btn" data-action="hint">Hint</button>
+    </div>
+
+    <div class="status" data-status aria-live="polite"></div>
+
+    <div class="ad-container ad-bottom">[AD 320×60]</div>
+
+    <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <div class="modal-card">
+        <h2 id="win-title">Solved!</h2>
+        <p>Nice work. Here's your time:</p>
+        <div class="time" data-modal-time>00:00</div>
+        <button class="btn btn-primary" data-modal-close>New Game</button>
+      </div>
+    </div>
+  </main>
+
   <script src="/src/games/sudoku/sudoku.js"></script>
 </body>
 </html>
