@@ -312,6 +312,23 @@ body { background: var(--g48-bg); color: var(--g48-text-dark); }
 .ad-300x600 { width: 300px; height: 600px; }
 .ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
 .ad-slot { margin: var(--space-2xl) auto 0; padding: 0; max-width: 728px; }
+
+.game-footer {
+  margin: var(--space-lg) auto 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--g48-border);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--g48-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  max-width: 728px;
+}
+.game-footer a { color: var(--g48-muted); text-decoration: none; }
+.game-footer a:hover { color: var(--g48-text-dark); text-decoration: underline; }
 .side-ad { display: none; }
 
 @media (min-width: 1500px) {

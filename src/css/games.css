@@ -137,3 +137,26 @@ body.home {
   padding: 0;
   max-width: 728px;
 }
+
+.site-footer {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--home-border);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--home-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+.site-footer a {
+  color: var(--home-muted);
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: var(--home-text);
+  text-decoration: underline;
+}
+.site-footer .copyright { color: var(--home-muted); }

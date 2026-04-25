@@ -310,6 +310,23 @@ body { background: #ffffff; color: var(--ms-text); }
   max-width: 728px;
 }
 
+.game-footer {
+  margin: var(--space-lg) auto 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--ms-border-thin);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--ms-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  max-width: 728px;
+}
+.game-footer a { color: var(--ms-muted); text-decoration: none; }
+.game-footer a:hover { color: var(--ms-text); text-decoration: underline; }
+
 .side-ad { display: none; }
 
 @media (min-width: 1500px) {

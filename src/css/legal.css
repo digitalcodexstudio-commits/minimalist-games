@@ -1,0 +1,104 @@
+/* Privacy / Terms pages */
+
+:root {
+  --legal-text: #1b2545;
+  --legal-muted: #8891aa;
+  --legal-blue: #4a5fc1;
+  --legal-blue-tint: #edf0fb;
+  --legal-border: #e4e8f0;
+}
+
+body.legal {
+  background: #ffffff;
+  color: var(--legal-text);
+  line-height: 1.6;
+}
+
+.legal-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.legal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.legal-header .back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  color: var(--legal-text);
+  transition: background 120ms;
+}
+.legal-header .back-btn:hover { background: var(--legal-blue-tint); }
+.legal-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.legal-content {
+  font-size: 1rem;
+}
+.legal-content .last-updated {
+  color: var(--legal-muted);
+  font-size: 0.875rem;
+  margin: 0 0 var(--space-lg);
+}
+.legal-content h2 {
+  margin: var(--space-xl) 0 var(--space-sm);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.legal-content h3 {
+  margin: var(--space-lg) 0 var(--space-xs);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+.legal-content p {
+  margin: 0 0 var(--space-md);
+}
+.legal-content ul {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.25rem;
+}
+.legal-content li { margin-bottom: var(--space-xs); }
+.legal-content a {
+  color: var(--legal-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-content a:hover { color: #3b4ca0; }
+.legal-content code {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  background: var(--legal-blue-tint);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.875em;
+}
+
+.legal-footer {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--legal-border);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--legal-muted);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.legal-footer a {
+  color: var(--legal-muted);
+  text-decoration: none;
+}
+.legal-footer a:hover {
+  color: var(--legal-text);
+  text-decoration: underline;
+}

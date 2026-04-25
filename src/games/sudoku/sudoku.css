@@ -346,6 +346,24 @@ body { background: #ffffff; color: var(--sudoku-text); }
   max-width: 728px;
 }
 
+/* Footer */
+.game-footer {
+  margin: var(--space-lg) auto 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--sudoku-border-thin);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--sudoku-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  max-width: 728px;
+}
+.game-footer a { color: var(--sudoku-muted); text-decoration: none; }
+.game-footer a:hover { color: var(--sudoku-text); text-decoration: underline; }
+
 /* Side rails — only on viewports ≥1500px where 300×600 ads can sit outside the 1100px content column without overlap. */
 .side-ad { display: none; }
 
