@@ -55,7 +55,7 @@ body { background: #ffffff; color: var(--sudoku-text); }
   }
 }
 
-/* Difficulty bar */
+/* Difficulty bar — desktop is single line; mobile wraps with label on its own row */
 .difficulty-bar {
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +64,14 @@ body { background: #ffffff; color: var(--sudoku-text); }
   margin-bottom: var(--space-md);
   font-size: 0.95rem;
 }
-.difficulty-label { color: var(--sudoku-muted); font-weight: 500; }
+.difficulty-label {
+  color: var(--sudoku-muted);
+  font-weight: 500;
+  flex-basis: 100%;
+}
+@media (min-width: 600px) {
+  .difficulty-label { flex-basis: auto; }
+}
 .difficulty-btn {
   background: transparent;
   border: none;
@@ -78,6 +85,11 @@ body { background: #ffffff; color: var(--sudoku-text); }
 .difficulty-btn:hover { color: var(--sudoku-text); }
 .difficulty-btn.is-active { color: var(--sudoku-blue); font-weight: 700; }
 .difficulty-btn:focus-visible { outline: 2px solid var(--sudoku-blue); outline-offset: 4px; border-radius: 3px; }
+
+@media (max-width: 599px) {
+  .difficulty-bar { gap: var(--space-xs) var(--space-sm); }
+  .difficulty-btn { font-size: 0.875rem; }
+}
 
 /* Board */
 .board-column { min-width: 0; }
@@ -329,23 +341,30 @@ body { background: #ffffff; color: var(--sudoku-text); }
 
 /* Bottom ad slot (leaderboard) */
 .ad-slot {
-  margin: var(--space-2xl) auto 0;
+  margin: var(--space-lg) auto var(--space-md);
   padding: 0;
   max-width: 728px;
 }
 
-/* Side rails — desktop ≥1500px only.
-   Target layout: 300 ad + 40 gap + 1100 main + 40 gap + 300 ad = 1780. At 1500, gaps shrink but nothing overlaps the main column. */
+/* Side rails — appear from 1280px (MacBook Air 15") with a narrower 240px placeholder, upgrade to 300px from 1500px. */
 .side-ad { display: none; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1280px) {
   .side-ad {
     display: block;
-    width: 300px;
+    width: 240px;
     z-index: 5;
-    top: 120px;
+    top: 96px;
     position: fixed;
   }
+  .side-ad .ad-300x600 { width: 240px; height: 480px; }
+  .side-ad-left { left: var(--space-md); }
+  .side-ad-right { right: var(--space-md); }
+}
+
+@media (min-width: 1500px) {
+  .side-ad { width: 300px; top: 120px; }
+  .side-ad .ad-300x600 { width: 300px; height: 600px; }
   .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
   .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
 }
@@ -383,11 +402,17 @@ body { background: #ffffff; color: var(--sudoku-text); }
 
 /* Mobile tweaks */
 @media (max-width: 899px) {
+  .sudoku-page { padding: var(--space-md) var(--space-md); }
+  .page-header { margin-bottom: var(--space-md); }
+  .sudoku-layout { gap: var(--space-md); }
+  .panel-column { gap: var(--space-md); }
   .grid { --cell: min(calc((100vw - 2rem) / 9), 50px); }
-  .action-row { grid-template-columns: repeat(4, 52px); justify-content: center; }
+  .action-row { grid-template-columns: repeat(4, 52px); justify-content: center; gap: var(--space-sm); }
   .panel-head { grid-template-columns: 1fr auto 1fr auto; }
-  .number-pad { max-width: 380px; margin: 0 auto; }
-  .new-game-btn { max-width: 380px; margin: 0 auto; display: block; }
+  .number-pad { max-width: 380px; margin: 0 auto; gap: var(--space-xs); }
+  .pad-btn { font-size: 1.5rem; }
+  .new-game-btn { max-width: 380px; margin: 0 auto; display: block; padding: var(--space-sm) var(--space-md); }
+  .ad-slot { margin-top: var(--space-md); }
 }
 
 @media (min-width: 900px) {

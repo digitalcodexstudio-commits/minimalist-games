@@ -9,9 +9,9 @@
   --ms-border-thin: #e4e8f0;
   --ms-text: #1b2545;
   --ms-muted: #8891aa;
-  --ms-cell-hidden: #dde3f5;
-  --ms-cell-hidden-hover: #c8d2ef;
-  --ms-cell-revealed: #f5f7fb;
+  --ms-cell-hidden: #c8d2ef;
+  --ms-cell-hidden-hover: #b3c0e8;
+  --ms-cell-revealed: #ffffff;
   --ms-mine: #d94e4e;
   --ms-flag: #d94e4e;
 
@@ -91,25 +91,26 @@ body { background: #ffffff; color: var(--ms-text); }
 .difficulty-btn:focus-visible { outline: 2px solid var(--ms-blue); outline-offset: 4px; border-radius: 3px; }
 
 /* Board */
-.board-column { min-width: 0; }
-.board-frame { position: relative; display: inline-block; }
+.board-column { min-width: 0; display: flex; flex-direction: column; align-items: center; }
+.board-frame { position: relative; display: inline-block; max-width: 100%; }
 
 .ms-grid {
   --cell: clamp(22px, 4.8vw, 36px);
   display: grid;
   grid-template-columns: repeat(var(--cols, 9), var(--cell));
   grid-template-rows: repeat(var(--rows, 9), var(--cell));
-  background: #ffffff;
+  background: var(--ms-border);
   border: 2px solid var(--ms-border);
   border-radius: 4px;
   overflow: hidden;
   user-select: none;
   touch-action: manipulation;
+  gap: 1px;
 }
 
 .ms-cell {
   position: relative;
-  border: 1px solid var(--ms-border-thin);
+  border: none;
   background: var(--ms-cell-hidden);
   padding: 0;
   font: inherit;
@@ -145,6 +146,14 @@ body { background: #ffffff; color: var(--ms-text); }
 /* Bigger cells on desktop when the board is smaller */
 @media (min-width: 900px) {
   .ms-grid { --cell: clamp(24px, 2.8vw, 40px); }
+}
+
+@media (max-width: 899px) {
+  .ms-page { padding: var(--space-md); }
+  .page-header { margin-bottom: var(--space-md); }
+  .ms-layout { gap: var(--space-md); }
+  .panel-column { gap: var(--space-md); }
+  .ad-slot { margin-top: var(--space-md); }
 }
 
 .pause-overlay {
@@ -303,14 +312,22 @@ body { background: #ffffff; color: var(--ms-text); }
 
 .side-ad { display: none; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1280px) {
   .side-ad {
     display: block;
-    width: 300px;
+    width: 240px;
     z-index: 5;
-    top: 120px;
+    top: 96px;
     position: fixed;
   }
+  .side-ad .ad-300x600 { width: 240px; height: 480px; }
+  .side-ad-left { left: var(--space-md); }
+  .side-ad-right { right: var(--space-md); }
+}
+
+@media (min-width: 1500px) {
+  .side-ad { width: 300px; top: 120px; }
+  .side-ad .ad-300x600 { width: 300px; height: 600px; }
   .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
   .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
 }
