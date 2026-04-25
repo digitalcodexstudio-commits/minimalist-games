@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+
+  <!-- Sudoku icon -->
+  <g transform="translate(180, 215) scale(2.5)" stroke="#4a5fc1" stroke-width="3" stroke-linecap="round" fill="none">
+    <rect x="0" y="0" width="80" height="80" rx="6"/>
+    <line x1="27" y1="0" x2="27" y2="80"/>
+    <line x1="53" y1="0" x2="53" y2="80"/>
+    <line x1="0" y1="27" x2="80" y2="27"/>
+    <line x1="0" y1="53" x2="80" y2="53"/>
+  </g>
+
+  <!-- Mine icon -->
+  <g transform="translate(540, 250)">
+    <circle cx="50" cy="50" r="40" fill="#4a5fc1"/>
+    <g stroke="#4a5fc1" stroke-width="6" stroke-linecap="round" fill="none">
+      <line x1="50" y1="0" x2="50" y2="14"/>
+      <line x1="50" y1="86" x2="50" y2="100"/>
+      <line x1="0" y1="50" x2="14" y2="50"/>
+      <line x1="86" y1="50" x2="100" y2="50"/>
+      <line x1="14" y1="14" x2="24" y2="24"/>
+      <line x1="76" y1="76" x2="86" y2="86"/>
+      <line x1="14" y1="86" x2="24" y2="76"/>
+      <line x1="76" y1="24" x2="86" y2="14"/>
+    </g>
+  </g>
+
+  <!-- 2048 tiles -->
+  <g transform="translate(870, 215)">
+    <rect x="0" y="0" width="90" height="90" rx="6" fill="#dde3f5"/>
+    <text x="45" y="63" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="700" fill="#1b2545">2</text>
+
+    <rect x="100" y="0" width="90" height="90" rx="6" fill="#4a5fc1"/>
+    <text x="145" y="60" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" fill="#ffffff">128</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="455" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="76" font-weight="700" fill="#1b2545" letter-spacing="-2">Minimalist Games</text>
+  <text x="600" y="510" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="400" fill="#8891aa">Free puzzles. No clutter. No accounts.</text>
+
+  <!-- URL -->
+  <text x="600" y="575" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="500" fill="#4a5fc1">minimalist-games.com</text>
+</svg>

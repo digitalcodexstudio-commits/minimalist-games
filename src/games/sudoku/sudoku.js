@@ -424,6 +424,7 @@
       this.updateCounter();
       this.startTimer();
       this.modalEl.hidden = true;
+      if (window.mgTrack) window.mgTrack('game_start', { game: 'sudoku', difficulty: this.difficulty });
     }
 
     startTimer() {
@@ -469,6 +470,13 @@
       this.modalMsgEl.textContent = 'Nice work.';
       this.modalTimeEl.textContent = this.elapsedLabel();
       this.modalEl.hidden = false;
+      if (window.mgTrack) window.mgTrack('game_win', {
+        game: 'sudoku',
+        difficulty: this.difficulty,
+        duration_s: Math.floor((this.elapsed + (this.startTime ? Date.now() - this.startTime : 0)) / 1000),
+        mistakes: this.mistakes,
+        hints_used: 3 - this.hintsLeft
+      });
     }
 
     loseGame() {
@@ -478,6 +486,11 @@
       this.modalMsgEl.textContent = `You reached ${MISTAKES_LIMIT} mistakes.`;
       this.modalTimeEl.textContent = this.elapsedLabel();
       this.modalEl.hidden = false;
+      if (window.mgTrack) window.mgTrack('game_lose', {
+        game: 'sudoku',
+        difficulty: this.difficulty,
+        duration_s: Math.floor((this.elapsed + (this.startTime ? Date.now() - this.startTime : 0)) / 1000)
+      });
     }
   }
 

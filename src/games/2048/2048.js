@@ -222,8 +222,10 @@
         if (this.engine.won && !this.wonShown) {
           this.wonShown = true;
           this.showModal('You made 2048!', 'Keep going for a higher score.', false);
+          if (window.mgTrack) window.mgTrack('game_win', { game: '2048', score: this.engine.score });
         } else if (this.engine.gameOver) {
           this.showModal('Game over', 'No moves left.', true);
+          if (window.mgTrack) window.mgTrack('game_lose', { game: '2048', score: this.engine.score });
         }
       }
     }
@@ -252,6 +254,7 @@
       this.modalEl.hidden = true;
       this.renderTiles();
       this.updateScore();
+      if (window.mgTrack) window.mgTrack('game_start', { game: '2048' });
     }
 
     showModal(title, msg, gameOver) {

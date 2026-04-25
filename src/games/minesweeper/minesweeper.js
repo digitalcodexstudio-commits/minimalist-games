@@ -297,6 +297,7 @@
       this.renderTimer();
       this.renderGrid();
       this.updateMinesLeft();
+      if (window.mgTrack) window.mgTrack('game_start', { game: 'minesweeper', difficulty: this.difficulty });
     }
 
     startTimer() {
@@ -347,6 +348,11 @@
       this.modalMsgEl.textContent = 'You hit a mine.';
       this.modalTimeEl.textContent = this.timerEl.textContent;
       this.modalEl.hidden = false;
+      if (window.mgTrack) window.mgTrack('game_lose', {
+        game: 'minesweeper',
+        difficulty: this.difficulty,
+        duration_s: Math.floor((this.elapsed + (this.startTime ? Date.now() - this.startTime : 0)) / 1000)
+      });
     }
 
     winGame() {
@@ -355,6 +361,11 @@
       this.modalMsgEl.textContent = 'All safe cells revealed.';
       this.modalTimeEl.textContent = this.timerEl.textContent;
       this.modalEl.hidden = false;
+      if (window.mgTrack) window.mgTrack('game_win', {
+        game: 'minesweeper',
+        difficulty: this.difficulty,
+        duration_s: Math.floor((this.elapsed + (this.startTime ? Date.now() - this.startTime : 0)) / 1000)
+      });
     }
   }
 
