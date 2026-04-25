@@ -2,16 +2,18 @@
 
 Minimalist games platform — Sudoku, Minesweeper, 2048. Built with vanilla HTML5 + CSS3 + JavaScript. No frameworks, no build step.
 
+Live at https://minimalist-games.com
+
 ## Stack
 
 - HTML5, CSS3, vanilla JavaScript
 - Hosting: Firebase Hosting
-- Analytics: Google Analytics 4 (added in week 3)
-- Monetization: Google AdSense (added in week 3)
+- Analytics: Google Analytics 4
+- Monetization: Google AdSense (placeholders pending approval)
 
 ## Status
 
-**Week 1 — Foundation.** Project scaffolding complete. Design tokens seeded in `src/css/global.css`. Games not yet implemented (tasks 1.4–1.6).
+Week 1 foundation complete. Three games playable, custom domain live, analytics wired, full SEO metadata. AdSense approval pending.
 
 ## Run locally
 
