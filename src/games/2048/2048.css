@@ -314,21 +314,14 @@ body { background: var(--g48-bg); color: var(--g48-text-dark); }
 .ad-slot { margin: var(--space-2xl) auto 0; padding: 0; max-width: 728px; }
 .side-ad { display: none; }
 
-@media (min-width: 1280px) {
+@media (min-width: 1500px) {
   .side-ad {
     display: block;
-    width: 240px;
+    width: 300px;
     z-index: 5;
-    top: 96px;
+    top: 120px;
     position: fixed;
   }
-  .side-ad .ad-300x600 { width: 240px; height: 480px; }
-  .side-ad-left { left: var(--space-md); }
-  .side-ad-right { right: var(--space-md); }
-}
-
-@media (min-width: 1500px) {
-  .side-ad { width: 300px; top: 120px; }
   .side-ad .ad-300x600 { width: 300px; height: 600px; }
   .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
   .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
