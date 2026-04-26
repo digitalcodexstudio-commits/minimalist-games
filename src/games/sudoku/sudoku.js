@@ -135,6 +135,7 @@
       this.pauseOverlay = root.querySelector('[data-pause-overlay]');
       this.notesBtn = root.querySelector('[data-action="notes"]');
       this.notesIndicator = root.querySelector('[data-notes-state]');
+      this.hintBtn = root.querySelector('[data-action="hint"]');
       this.pauseBtn = root.querySelector('[data-action="pause"]');
 
       this.bindControls();
@@ -200,6 +201,7 @@
           cell.className = 'cell';
           cell.dataset.row = String(r);
           cell.dataset.col = String(c);
+          cell.setAttribute('aria-label', `Row ${r + 1}, column ${c + 1}, empty`);
           const boxIdx = Math.floor(r / 3) * 3 + Math.floor(c / 3);
           if (boxIdx % 2 === 1) cell.classList.add('box-alt');
           if (c % 3 === 0 && c !== 0) cell.classList.add('bx-left');
@@ -328,6 +330,7 @@
       this.notesMode = !this.notesMode;
       this.notesBtn.classList.toggle('is-active', this.notesMode);
       if (this.notesIndicator) this.notesIndicator.textContent = this.notesMode ? 'ON' : 'OFF';
+      this.notesBtn.setAttribute('aria-label', `Notes mode: ${this.notesMode ? 'on' : 'off'}`);
     }
 
     useHint() {
@@ -342,6 +345,7 @@
       this.history.push({ type: 'value', r: row, c: col, prev, prevNotes });
       this.hintsLeft--;
       this.hintsEl.textContent = String(this.hintsLeft);
+      if (this.hintBtn) this.hintBtn.setAttribute('aria-label', `Hint, ${this.hintsLeft} left`);
       this.refreshCell(row, col);
       this.updateCounter();
       if (this.engine.isFilled() && this.engine.isSolved()) this.win();
@@ -380,6 +384,13 @@
       el.classList.toggle('clue', this.engine.clues[r][c]);
       const wrong = v !== 0 && !this.engine.clues[r][c] && v !== this.engine.solution[r][c];
       el.classList.toggle('wrong', wrong);
+      const pos = `Row ${r + 1}, column ${c + 1}`;
+      let label;
+      if (v === 0) label = `${pos}, empty`;
+      else if (this.engine.clues[r][c]) label = `${pos}, clue ${v}`;
+      else if (wrong) label = `${pos}, ${v}, wrong`;
+      else label = `${pos}, ${v}`;
+      el.setAttribute('aria-label', label);
     }
 
     refreshAll() {
@@ -415,11 +426,13 @@
       this.gameOver = false;
       this.history = [];
       this.notesBtn.classList.remove('is-active');
+      this.notesBtn.setAttribute('aria-label', 'Notes mode: off');
       this.pauseBtn.classList.remove('is-active');
       if (this.notesIndicator) this.notesIndicator.textContent = 'OFF';
       this.pauseOverlay.hidden = true;
       this.updateMistakes();
       this.hintsEl.textContent = '3';
+      if (this.hintBtn) this.hintBtn.setAttribute('aria-label', 'Hint, 3 left');
       this.refreshAll();
       this.updateCounter();
       this.startTimer();

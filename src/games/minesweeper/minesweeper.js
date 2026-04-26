@@ -182,6 +182,7 @@
           cell.className = 'ms-cell hidden';
           cell.dataset.row = String(r);
           cell.dataset.col = String(c);
+          cell.setAttribute('aria-label', `Row ${r + 1}, column ${c + 1}, hidden`);
           cell.addEventListener('click', (e) => this.handleClick(r, c, e));
           cell.addEventListener('contextmenu', (e) => { e.preventDefault(); this.handleFlag(r, c); });
           cell.addEventListener('touchstart', (e) => this.startLongPress(r, c, e), { passive: true });
@@ -240,9 +241,12 @@
       const val = this.engine.board[r][c];
       el.className = 'ms-cell';
       el.textContent = '';
+      const pos = `Row ${r + 1}, column ${c + 1}`;
+      let label;
       if (state === 'flagged') {
         el.classList.add('flagged');
         el.innerHTML = '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h10l-2-4 2-4H7V3H5z"/></svg>';
+        label = `${pos}, flagged`;
       } else if (state === 'revealed') {
         el.classList.add('revealed');
         if (val === -1) {
@@ -251,13 +255,19 @@
             el.classList.add('exploded');
           }
           el.innerHTML = '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" fill="none"/></svg>';
+          label = `${pos}, mine`;
         } else if (val > 0) {
           el.textContent = String(val);
           el.classList.add('n' + val);
+          label = `${pos}, ${val}`;
+        } else {
+          label = `${pos}, empty`;
         }
       } else {
         el.classList.add('hidden');
+        label = `${pos}, hidden`;
       }
+      el.setAttribute('aria-label', label);
     }
 
     updateMinesLeft() {
