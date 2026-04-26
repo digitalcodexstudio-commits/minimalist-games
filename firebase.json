@@ -75,6 +75,10 @@
         "destination": "/src/robots.txt"
       },
       {
+        "source": "/ads.txt",
+        "destination": "/src/ads.txt"
+      },
+      {
         "source": "/manifest.webmanifest",
         "destination": "/src/manifest.webmanifest"
       },
