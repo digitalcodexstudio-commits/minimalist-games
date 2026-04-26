@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why minimalist game design wins on the web — fewer accounts, faster loads, no notifications. The case for stripped-down puzzle games and how we built ours.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="canonical" href="https://minimalist-games.com/blog/minimalist-game-design">
+  <title>Why Minimalist Game Design Wins — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="Why Minimalist Game Design Wins">
+  <meta property="og:description" content="Fewer accounts, faster loads, no notifications. The case for stripped-down puzzle games.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/minimalist-game-design">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Minimalist Game Design Wins",
+    "description": "Fewer accounts, faster loads, no notifications. The case for stripped-down puzzle games.",
+    "author": { "@type": "Organization", "name": "Minimalist Games" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-04-26",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/minimalist-game-design",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>Blog</h1>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">April 26, 2026 · 5 min read</p>
+      <h1 class="post-title">Why Minimalist Game Design Wins</h1>
+      <p class="lede">Most modern web games are built like apps. They want you to log in, hit a daily streak, accept notifications, and watch a 30-second ad to get an extra life. Then they show you a tutorial. Then they ask you to rate them. Somewhere in there, you may actually play a game. There's a different way to build games for the web — and it works better.</p>
+
+      <h2>The case for less</h2>
+      <p>A puzzle game has a single job: to occupy your attention with an interesting problem. Everything that doesn't serve that job — accounts, notifications, ads-between-levels, social sharing buttons, "achievements," loading screens — actively harms it. Each one is friction between you and the puzzle.</p>
+
+      <p>Minimalist design isn't about being fashionable. It's about removing the things you didn't ask for so the thing you came for can breathe. A Sudoku board you can play in three seconds is better than a Sudoku board behind a tutorial, a settings screen, and a paywall.</p>
+
+      <h2>What minimalism actually buys you</h2>
+      <h3>Speed</h3>
+      <p>A vanilla HTML/CSS/JS game loads in under a second on a modern phone. A React app with a routing library, a state manager, an analytics suite, an A/B testing harness, and three font weights takes ten times longer. Players don't read your changelog explaining the bundle size; they just leave.</p>
+
+      <p>Our entire site is a few hundred kilobytes. The biggest individual game (Sudoku) is roughly 30KB of JavaScript. That's the size of one image on most websites. It loads instantly because there's nothing to load.</p>
+
+      <h3>Privacy by default</h3>
+      <p>If you don't have accounts, you can't leak account data. If you don't store user records, you can't be hacked into giving them up. If you don't track location, IP, or device fingerprint, you don't have to negotiate with cookie banners. Minimalism makes the privacy policy short because there's barely anything to disclose.</p>
+
+      <p>Our <a href="/privacy">privacy policy</a> fits on one screen. That's not a copywriting trick. There genuinely isn't more to say.</p>
+
+      <h3>Replayability</h3>
+      <p>This one's less obvious. Games with deep onboarding (tutorials, character creation, story missions) often gate the actual gameplay behind hours of setup. The first session feels rich; sessions five through fifty feel like a slog. Minimalist games invert this: the first session might feel sparse, but every session after is just the game. You open it, you play, you close it. The loop is short, so you come back.</p>
+
+      <p>This is why classic puzzle games — Tetris, Sudoku, Solitaire — have outlived dozens of "next-gen" alternatives. The loop is too tight to get tired of.</p>
+
+      <h3>Accessibility</h3>
+      <p>Every UI element you don't add is one less thing for a screen reader to navigate, one less keyboard trap, one less surface to test for colour contrast. Minimal design dovetails with accessible design because the cognitive load is lower for everyone, not just users with disabilities. A clean board is easier for everyone to read.</p>
+
+      <h2>What minimalism is not</h2>
+      <p>Minimalism is not the same as <em>spartan</em> or <em>ugly</em>. A minimalist game still cares about typography, spacing, colour, and feedback. It just doesn't add features for the sake of looking feature-rich. The difference between minimal and bare is craftsmanship — the empty space is intentional, not lazy.</p>
+
+      <p>It also isn't the same as "small." Some minimalist games (Spelunky, Dwarf Fortress in some readings) have enormous mechanical depth. The minimalism is in the interface and onboarding, not the gameplay. Sudoku is mechanically simple but the same principle applies: the rule is one sentence, the depth is everything else.</p>
+
+      <h2>The web is the right platform for this</h2>
+      <p>App stores reward bloat. Every feature is a screenshot, every screenshot is a chance to win the impulse install. The browser doesn't care. A web game lives or dies by whether the URL is good and the page loads. There are no install steps. No store reviews. No update friction. If a player wants to bookmark and come back, they can. If they don't, they don't.</p>
+
+      <p>This is also why minimalist web games are uniquely well-suited to <em>not</em> being an app. The friction of installing an app filters out casual interest; web access matches the casual nature of a five-minute Sudoku perfectly.</p>
+
+      <h2>How we apply this to <a href="/">Minimalist Games</a></h2>
+      <p>Our rules:</p>
+      <ul>
+        <li><strong>No accounts, ever.</strong> Best scores live in your browser's localStorage. If you clear your cache, they're gone — and that's fine. Nobody plays Sudoku for the leaderboard.</li>
+        <li><strong>No notifications.</strong> The site can't ping you. We don't even ask permission.</li>
+        <li><strong>No tutorials.</strong> If a game needs an explanation, we put it in the URL or a one-line description on the homepage. The interface itself should be the tutorial.</li>
+        <li><strong>Vanilla HTML, CSS, and JavaScript.</strong> No frameworks, no build step. Anyone can read the source. Pages load in under a second on 3G.</li>
+        <li><strong>Ads exist.</strong> But they're banners, not interstitials. They never block gameplay. They never play sound. They never request your location.</li>
+      </ul>
+
+      <p>The result is a site that does one thing — three games, actually — and does them quickly. No friction, no decisions, no commitment. Open, play, close.</p>
+
+      <h2>The bigger principle</h2>
+      <p>Minimalism in software, like minimalism in design generally, is the discipline of doing less than you could. The temptation to add a feature is constant. The right answer, more often than people think, is no. A small game with one good idea is more durable than a big game with twenty mediocre ones.</p>
+
+      <p>This isn't a new idea. It's the same idea behind <em>The Elements of Typographic Style</em>, behind Unix's "do one thing well," behind the original iPod. It works in software because attention is finite and the marginal feature is almost always net-negative.</p>
+
+      <p>If you've read this far, you probably already agree. The interesting question is what to remove from the thing you're building, not what to add.</p>
+
+      <a class="cta" href="/">Try our minimalist puzzles</a>
+
+      <section class="related">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/blog/free-puzzle-games">Best free puzzle games online</a></li>
+          <li><a href="/blog/how-to-solve-sudoku">How to solve Sudoku for beginners</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

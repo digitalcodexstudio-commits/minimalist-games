@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2048 strategy guide — corner anchor, snake pattern, why never to swipe up, and how to chain merges from 1024 to 2048 and beyond.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="canonical" href="https://minimalist-games.com/blog/2048-tips">
+  <title>2048 Tips and Tricks — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="2048 Tips and Tricks">
+  <meta property="og:description" content="The corner strategy, why you should never go up, and how to chain merges into 2048.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/2048-tips">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "2048 Tips and Tricks",
+    "description": "The corner strategy, why you should never go up, and how to chain merges into 2048.",
+    "author": { "@type": "Organization", "name": "Minimalist Games" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-04-25",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/2048-tips",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>Blog</h1>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">April 25, 2026 · 5 min read</p>
+      <h1 class="post-title">2048 Tips and Tricks</h1>
+      <p class="lede">2048 is deceptively simple. Slide tiles, merge equal values, try to reach 2048. But once you've played a few games and watched the board fill up at 256, you realise this game has structure — and most players never learn it. Here's what changes once you do.</p>
+
+      <p>The good news: there's a single strategy that takes most players from never reaching 1024 to consistently hitting 2048. The bad news: it requires resisting an impulse you've had since the first time you swiped. We'll get there.</p>
+
+      <p>Open <a href="/games/2048">2048</a> in another tab if you want to test these ideas as you read.</p>
+
+      <h2>The corner strategy</h2>
+      <p>Pick a corner — bottom-right is the convention — and commit to keeping your largest tile there. Every move should preserve that corner. Once you have a 256 in the corner, you do not move it. You build merges around it.</p>
+
+      <p>This is the entire game in one rule. Players who do this reach 2048 routinely. Players who don't get clever and "rebuild" mid-game lose to a board fragmented into 64s and 32s with no room to breathe.</p>
+
+      <p>Why the corner? Because a tile in the corner has only two neighbours instead of four, which means there are only two directions in which it can be unintentionally merged or displaced. As long as you only swipe in two of the four directions, that corner tile is permanent.</p>
+
+      <h2>Never swipe up</h2>
+      <p>If your anchor is bottom-right, you swipe down and right. Sometimes left, very carefully. <strong>You never swipe up.</strong></p>
+
+      <p>Up is what kills runs. The moment you swipe up, your anchor tile lifts off the corner. The structure you've spent fifty moves building gets reshuffled. New 2s and 4s spawn in places you didn't plan for. Two minutes later, the board is full and you can't merge anything.</p>
+
+      <p>Reserve "up" for genuine emergencies — a board so locked that no other direction has any move. Even then, ask yourself: did I plan badly, or is this really stuck?</p>
+
+      <h2>The snake</h2>
+      <p>Once your anchor is solid, build a snake. The bottom row, ordered largest to smallest, then the row above ordered smallest to largest, then the row above largest to smallest. Like reading a snake left and right.</p>
+
+      <p>The snake works because each tile has its potential merge partner directly above or beside it, and when you swipe down or right, the chain collapses naturally. A perfect snake from 2048 down to 2 fits a 4×4 board with one cell to spare for the new spawn.</p>
+
+      <p>You won't always achieve a perfect snake. Aim for it. The closer you get, the smoother the late game.</p>
+
+      <h2>Don't merge prematurely</h2>
+      <p>A common mistake: you have a 4 next to a 4, you merge them into 8. Felt good. But that 8 is now stuck in the middle of your board and there's no other 8 to merge it with for ten moves. You've reduced your tile count by one — board space is your most precious resource — for no structural gain.</p>
+
+      <p>Only merge when the result either (a) joins the corner chain, or (b) directly enables another merge in the next move or two. Random merges are how boards fill up.</p>
+
+      <h2>The endgame: 1024 → 2048</h2>
+      <p>Once you have a 1024 in the corner, the rest of the board needs to deliver another 1024 to merge against it. That's expensive. You need a 512 next to it, with a 256 next to the 512, and so on. The chain has to be intact.</p>
+
+      <p>This is where most "almost-2048" runs collapse. You have a 1024, but the 512 isn't adjacent and you have to manoeuvre it there without disturbing anything. Plan three to five moves ahead. Hover-think before you swipe.</p>
+
+      <p>If you hit 2048 — congratulations. You can keep playing. Reaching 4096 is roughly twice as hard as 2048, not just "one more level." 8192 is genuinely difficult and demands near-perfect play. There's no upper bound; the developer's original board can theoretically reach 131072 with a perfect game.</p>
+
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Swiping up "just once."</strong> It's never just once. Recommit to your two-direction strategy.</li>
+        <li><strong>Building two anchors.</strong> Some players try to keep large tiles in two corners. The board isn't big enough. Pick one.</li>
+        <li><strong>Merging the wrong direction.</strong> If you have two 8s side by side and swipe up to merge them, the 16 lands in the top row and is now far from your corner. Merge in the direction of the anchor.</li>
+        <li><strong>Playing too fast.</strong> 2048 has no time pressure. Look at the board for two seconds before each swipe — especially in late game. The difference between 1024 and 2048 is mostly patience.</li>
+      </ul>
+
+      <h2>Mobile tips</h2>
+      <p>On mobile, swipe gestures are easier than they look but the board can blur if you swipe too fast. Short, deliberate swipes work better than long ones. On <a href="/games/2048">2048</a> we save your best score and let you undo, which helps when you accidentally swipe up.</p>
+
+      <a class="cta" href="/games/2048">Play 2048</a>
+
+      <section class="related">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/blog/free-puzzle-games">Best free puzzle games online</a></li>
+          <li><a href="/blog/minimalist-game-design">Why minimalist game design wins</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

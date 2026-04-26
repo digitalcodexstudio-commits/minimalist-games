@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to solve Sudoku puzzles for beginners — scanning, single candidates, naked pairs, and the mistakes to avoid. Practical guide with examples.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="canonical" href="https://minimalist-games.com/blog/how-to-solve-sudoku">
+  <title>How to Solve Sudoku for Beginners — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="How to Solve Sudoku for Beginners">
+  <meta property="og:description" content="The two techniques that unlock 90% of easy and medium Sudoku boards, plus common beginner mistakes.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/how-to-solve-sudoku">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Solve Sudoku for Beginners",
+    "description": "The two techniques that unlock 90% of easy and medium Sudoku boards, plus common beginner mistakes.",
+    "author": { "@type": "Organization", "name": "Minimalist Games" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-04-25",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/how-to-solve-sudoku",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>Blog</h1>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">April 25, 2026 · 6 min read</p>
+      <h1 class="post-title">How to Solve Sudoku for Beginners</h1>
+      <p class="lede">If you keep getting stuck halfway through a Sudoku, the problem is almost never that the puzzle is too hard. It's that you're using the wrong technique. Two simple methods will unlock the vast majority of easy and medium boards. This guide walks through both — with the mistakes to avoid in between.</p>
+
+      <p>Sudoku has exactly one rule: each row, column, and 3×3 box must contain the digits 1 through 9 with no repeats. Everything else — the strategies, the notation, the grid scanning — is just a way of using that rule efficiently. You don't need to memorise patterns. You need to learn how to look.</p>
+
+      <p>If you want to follow along with a live board while reading, open <a href="/games/sudoku">Sudoku Zen</a> in another tab and pick the Easy difficulty. The techniques below will get you through it.</p>
+
+      <h2>Technique 1: Scanning</h2>
+      <p>Scanning is the workhorse of beginner Sudoku. Pick a digit — say, 1 — and look for every place it already appears. For each row, column, and box that already has a 1, you can rule that digit out everywhere in those regions. Often you'll find a row or box with only one cell left where 1 can possibly go. Place it there.</p>
+
+      <p>Then move on to the next digit. Then the next. By the time you've cycled through 1–9 once, you'll have placed somewhere between three and ten new numbers without ever guessing. On easy boards, scanning alone often finishes the puzzle.</p>
+
+      <p>The trick is to be systematic. Most beginners scan one digit, get bored, and start randomly trying cells. Force yourself to do the full sweep — 1, 2, 3, all the way to 9 — before switching strategies.</p>
+
+      <h2>Technique 2: Single candidates</h2>
+      <p>Sometimes scanning by digit doesn't help, but scanning by cell does. Pick an empty cell. Look at its row, column, and 3×3 box. Mentally cross off every digit that appears in any of those three regions. If only one digit is left, that's the answer for that cell.</p>
+
+      <p>This is called the <strong>naked single</strong>. It's the second technique you need to learn, and it pairs naturally with scanning: scanning eliminates from regions, single candidates eliminate to a single cell. Together they account for most of what an easy Sudoku asks.</p>
+
+      <p>On <a href="/games/sudoku">Sudoku Zen</a>, the notes feature lets you pencil-mark the candidates for a cell — useful when you want to keep track without doing the elimination in your head every time.</p>
+
+      <h2>When you get stuck</h2>
+      <p>Medium and harder boards eventually run out of naked singles. The next technique to learn is the <strong>hidden single</strong>: instead of asking "what can go in this cell," ask "where in this row (or column, or box) can the digit 5 go?" If only one cell in that region accepts a 5, place it — even if that cell has other candidates too. Hidden singles look invisible because the cell still has multiple candidates from a per-cell perspective. You only see them when you scan by digit within a single region.</p>
+
+      <p>Beyond that, naked pairs and pointing pairs unlock most "hard" puzzles. A naked pair is two cells in the same row, column, or box that both have the same two candidates and nothing else. Those two digits are locked into those two cells, so you can eliminate them as candidates everywhere else in the shared region. It's a small move, but it often cascades.</p>
+
+      <h2>Mistakes that slow beginners down</h2>
+      <ul>
+        <li><strong>Guessing.</strong> Real Sudoku has a unique solution and is fully deducible. If you guess and it works, you got lucky. If it doesn't, you've contaminated your board with bad pencil marks and don't know which ones are wrong. Never guess. If you can't see a move, scan again.</li>
+        <li><strong>Pencil-marking everything before scanning.</strong> Filling every empty cell with all its candidates is exhausting and you'll miss easy moves under the noise. Scan first. Pencil-mark only when scanning runs out.</li>
+        <li><strong>Ignoring the boxes.</strong> Beginners over-rely on rows and columns and forget that the 3×3 box is the third constraint. Many naked singles are obvious only when you check all three regions.</li>
+        <li><strong>Quitting on hard puzzles.</strong> If you're stuck for more than five minutes, you've usually missed a hidden single or a naked pair. Walk through the board region by region. The move is there.</li>
+      </ul>
+
+      <h2>How long should a Sudoku take?</h2>
+      <p>An average Easy board takes 4–7 minutes once you're comfortable with scanning. Medium runs 8–15 minutes. Hard usually means 15–30 minutes and at least one technique beyond singles. Expert and above can go past an hour. Don't measure yourself against speedsolvers — they've memorised dozens of patterns. The goal of casual Sudoku is to give your brain a quiet hour, not to hit a leaderboard.</p>
+
+      <h2>Practice plan</h2>
+      <p>If you're starting from zero, here's the shortest path to confidence:</p>
+      <ol>
+        <li>Solve five Easy boards using only scanning. Time them, and don't pencil-mark.</li>
+        <li>Solve five Medium boards using scanning + naked singles. Pencil-mark cells you can't decide instantly.</li>
+        <li>Move to Hard and learn hidden singles in context. Look up naked pairs when the technique you have isn't enough.</li>
+      </ol>
+
+      <p>Most players plateau because they jump from Easy to Hard and try to brute-force it. Take the gradient slowly. By the time you've finished a dozen Mediums, the techniques will be reflexive.</p>
+
+      <a class="cta" href="/games/sudoku">Play Sudoku Zen — six difficulties</a>
+
+      <section class="related">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/blog/minimalist-game-design">Why minimalist game design wins</a></li>
+          <li><a href="/blog/free-puzzle-games">Best free puzzle games online</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Minesweeper strategy guide — counting, the 1-2-1 pattern, edge tactics, and when to think in probabilities. Practical tips for Beginner, Intermediate and Expert.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="canonical" href="https://minimalist-games.com/blog/minesweeper-strategy">
+  <title>Best Minesweeper Strategies — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="Best Minesweeper Strategies">
+  <meta property="og:description" content="Counting, the 1-2-1 pattern, and how to think in probabilities when logic runs out.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/minesweeper-strategy">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Minesweeper Strategies",
+    "description": "Counting, the 1-2-1 pattern, and how to think in probabilities when logic runs out.",
+    "author": { "@type": "Organization", "name": "Minimalist Games" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-04-25",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/minesweeper-strategy",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>Blog</h1>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">April 25, 2026 · 6 min read</p>
+      <h1 class="post-title">Best Minesweeper Strategies</h1>
+      <p class="lede">Most people lose Minesweeper by reflex. Click somewhere safe, click somewhere safe, click somewhere they assume is safe — boom. The game is almost entirely about not making that last move. Here's how good players think.</p>
+
+      <p>Minesweeper looks like a luck game. It isn't, mostly. The first click is luck (which is why our <a href="/games/minesweeper">Minesweeper</a> board, like every modern Minesweeper, guarantees the first click is safe). Everything after is deduction, with a thin layer of probability for the rare cases where logic runs out.</p>
+
+      <h2>The only rule that matters</h2>
+      <p>A revealed number tells you exactly how many mines are in its eight neighbouring cells. That's the entire game. Every strategy below is just a way of using that number efficiently.</p>
+
+      <p>The first thing to internalise: numbers also tell you where mines <em>aren't</em>. A 1 next to seven hidden cells means six of those cells are safe. Beginners stare at the 1 and try to find the mine. Better players clear the six safe ones first, because every reveal gives you more information.</p>
+
+      <h2>Counting</h2>
+      <p>The bedrock technique is counting flagged versus unflagged neighbours. Look at any number. Count the mines you've already flagged around it. If the flag count equals the number, every remaining hidden neighbour is safe — click them all (or chord on them, if your version supports chording).</p>
+
+      <p>Conversely, if the number of unflagged hidden neighbours equals the number minus the flags already placed, all those hidden cells are mines. Flag them.</p>
+
+      <p>That's not a rule of thumb — it's a complete logical statement. About 70% of any Intermediate or Expert board can be solved by counting alone, applied repeatedly to every revealed number on the frontier.</p>
+
+      <h2>The 1-2-1 pattern</h2>
+      <p>The most useful pattern in Minesweeper is the 1-2-1 along an edge. If you see three consecutive numbers reading 1-2-1 in a row, with hidden cells in a single line directly adjacent, the mines are under the two 1s. The 2 in the middle is being counted by both of them.</p>
+
+      <p>Variants include 1-2-2-1, where the mines flank both ends, and 1-1 in a corner, where you can often deduce the single mine's position from the box constraint. Once you start spotting these patterns, mid-game opens up dramatically.</p>
+
+      <h2>Open the centre, work the edges</h2>
+      <p>On an empty board, click the centre, not a corner. Centre cells have eight neighbours; corners have three. A centre click that opens into a large empty area gives you eight times the perimeter of information. Speedsolvers always start centre.</p>
+
+      <p>Once you have an open region, work outward along the frontier — the boundary between revealed numbers and hidden cells. Don't jump to the opposite side of the board to "try a fresh area." Information is local. Squeeze every deduction out of one frontier before opening another.</p>
+
+      <h2>Edges and corners are easier than they look</h2>
+      <p>Edge cells have five neighbours, corners have three. A 1 in a corner with two hidden neighbours means one is the mine — usually you need the adjacent number to disambiguate, but the search space is tiny. Save edge work for when you're stuck mid-board; it's often the cleanest path forward.</p>
+
+      <h2>When logic runs out</h2>
+      <p>Sometimes you'll deplete every counting and pattern move and the only remaining cells are uncertain. This is where probability comes in. For each hidden cell on the frontier, estimate the probability it's a mine based on the constraints of nearby numbers. Click the cell with the lowest probability.</p>
+
+      <p>A useful shortcut: if the global mine density is higher than any local frontier estimate, click an unconstrained interior cell instead of guessing on the frontier. On Expert (99 mines in 480 cells, ~20%), an unconstrained cell is 20% likely to be a mine. A frontier cell with neighbouring 3s might be 33%. Counter-intuitively, the "wild" click is safer.</p>
+
+      <h2>Flagging, or not</h2>
+      <p>There are two schools. Flaggers mark every mine; non-flaggers ("NF" players) only flag when chording forces them to. NF play is faster at the top level — flags cost mouse movements that don't add deductive value if you can hold the layout in your head. For casual play, flag. It reduces cognitive load and lets you chord without risk.</p>
+
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Clicking before counting.</strong> Every click should follow a deduction. If you don't know why a cell is safe, don't click it.</li>
+        <li><strong>Flagging speculatively.</strong> A wrong flag hides a real mine and propagates errors through every chord that touches it. Only flag when you're certain.</li>
+        <li><strong>Ignoring the mine counter.</strong> The total mines remaining is global information. Late game, if six mines are unaccounted for and only seven cells are hidden, the puzzle solves itself.</li>
+        <li><strong>Playing too fast on Expert.</strong> Expert rewards patience, not reflexes. World-record holders are fast because their pattern recognition is automatic, not because they're rushing.</li>
+      </ul>
+
+      <h2>Difficulty progression</h2>
+      <p>If you're starting out, play <strong>Beginner</strong> (9×9, 10 mines) until you can finish three in a row without losing. Move to <strong>Intermediate</strong> (16×16, 40 mines) — this is where counting becomes necessary, not optional. <strong>Expert</strong> (16×30, 99 mines) is the real game; expect a long ramp before you finish your first one.</p>
+
+      <p>On <a href="/games/minesweeper">our Minesweeper</a>, all three difficulties are available with first-click safety and long-press flagging on mobile. Start with Beginner, work up.</p>
+
+      <a class="cta" href="/games/minesweeper">Play Minesweeper</a>
+
+      <section class="related">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/blog/how-to-solve-sudoku">How to solve Sudoku for beginners</a></li>
+          <li><a href="/blog/free-puzzle-games">Best free puzzle games online</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

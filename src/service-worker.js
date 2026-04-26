@@ -2,7 +2,7 @@
 // HTML: network-first (so updates ship without a hard refresh).
 // Static assets: cache-first.
 
-const VERSION = 'v1';
+const VERSION = 'v2';
 const STATIC_CACHE = 'mg-static-' + VERSION;
 const RUNTIME_CACHE = 'mg-runtime-' + VERSION;
 
@@ -11,9 +11,11 @@ const PRECACHE_URLS = [
   '/games/sudoku',
   '/games/minesweeper',
   '/games/2048',
+  '/blog',
   '/src/css/global.css',
   '/src/css/responsive.css',
   '/src/css/games.css',
+  '/src/css/blog.css',
   '/src/js/app.js',
   '/public/favicon.svg',
   '/manifest.webmanifest'
