@@ -309,9 +309,15 @@ body { background: var(--g48-bg); color: var(--g48-text-dark); }
   font-weight: 500;
   border: 1px dashed var(--g48-border);
 }
-.ad-300x600 { width: 300px; height: 600px; }
+.ad-160x600 { width: 160px; height: 600px; }
 .ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
 .ad-slot { margin: var(--space-2xl) auto 0; padding: 0; max-width: 728px; }
+
+/* Top banner — visible on tablet and up. Hidden on small mobile to keep board above the fold. */
+.ad-slot-top { display: none; margin: 0 auto var(--space-lg); padding: 0; }
+@media (min-width: 768px) {
+  .ad-slot-top { display: block; }
+}
 
 .game-footer {
   margin: var(--space-lg) auto 0;
@@ -331,15 +337,15 @@ body { background: var(--g48-bg); color: var(--g48-text-dark); }
 .game-footer a:hover { color: var(--g48-text-dark); text-decoration: underline; }
 .side-ad { display: none; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1380px) {
   .side-ad {
     display: block;
-    width: 300px;
+    width: 160px;
     z-index: 5;
     top: 120px;
     position: fixed;
   }
-  .side-ad .ad-300x600 { width: 300px; height: 600px; }
-  .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
-  .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
+  .side-ad .ad-160x600 { width: 160px; height: 600px; }
+  .side-ad-left { left: calc((100vw - 1100px) / 2 - 180px); }
+  .side-ad-right { right: calc((100vw - 1100px) / 2 - 180px); }
 }

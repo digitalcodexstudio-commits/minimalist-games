@@ -95,7 +95,8 @@ body { background: #ffffff; color: var(--ms-text); }
 .board-frame { position: relative; display: inline-block; max-width: 100%; }
 
 .ms-grid {
-  --cell: clamp(22px, 4.8vw, 36px);
+  /* Mobile: split available width across cols, capped at 36px so Beginner doesn't get oversized. */
+  --cell: min(36px, calc((100vw - 2rem) / var(--cols, 9)));
   display: grid;
   grid-template-columns: repeat(var(--cols, 9), var(--cell));
   grid-template-rows: repeat(var(--rows, 9), var(--cell));
@@ -143,9 +144,12 @@ body { background: #ffffff; color: var(--ms-text); }
 .ms-cell.n7 { color: var(--n7); }
 .ms-cell.n8 { color: var(--n8); }
 
-/* Bigger cells on desktop when the board is smaller */
+/* Desktop: layout reserves 320px sidebar + 48px gap = 368px on the right.
+   Container caps at 1100px. Cap cells at 40px so Beginner 9×9 doesn't balloon. */
 @media (min-width: 900px) {
-  .ms-grid { --cell: clamp(24px, 2.8vw, 40px); }
+  .ms-grid {
+    --cell: min(40px, calc((min(100vw, 1100px) - 32px - 368px) / var(--cols, 9)));
+  }
 }
 
 @media (max-width: 899px) {
@@ -301,8 +305,14 @@ body { background: #ffffff; color: var(--ms-text); }
   font-weight: 500;
   border: 1px dashed var(--ms-border);
 }
-.ad-300x600 { width: 300px; height: 600px; }
+.ad-160x600 { width: 160px; height: 600px; }
 .ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
+
+/* Top banner — visible on tablet and up. Hidden on small mobile to keep board above the fold. */
+.ad-slot-top { display: none; margin: 0 auto var(--space-lg); padding: 0; }
+@media (min-width: 768px) {
+  .ad-slot-top { display: block; }
+}
 
 .ad-slot {
   margin: var(--space-2xl) auto 0;
@@ -329,15 +339,15 @@ body { background: #ffffff; color: var(--ms-text); }
 
 .side-ad { display: none; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1380px) {
   .side-ad {
     display: block;
-    width: 300px;
+    width: 160px;
     z-index: 5;
     top: 120px;
     position: fixed;
   }
-  .side-ad .ad-300x600 { width: 300px; height: 600px; }
-  .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
-  .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
+  .side-ad .ad-160x600 { width: 160px; height: 600px; }
+  .side-ad-left { left: calc((100vw - 1100px) / 2 - 180px); }
+  .side-ad-right { right: calc((100vw - 1100px) / 2 - 180px); }
 }

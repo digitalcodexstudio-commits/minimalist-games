@@ -242,6 +242,7 @@
         el.classList.toggle('peer', peer && !same);
         const v = this.engine.board[er][ec];
         el.classList.toggle('same-value', selVal !== 0 && v === selVal && !same);
+        this.markNoteMatches(el, er, ec, selVal);
       });
     }
 
@@ -253,6 +254,16 @@
         const v = this.engine.board[er][ec];
         el.classList.remove('selected', 'peer');
         el.classList.toggle('same-value', v === n && n !== 0);
+        this.markNoteMatches(el, er, ec, n);
+      });
+    }
+
+    markNoteMatches(el, er, ec, n) {
+      const cellEmpty = this.engine.board[er][ec] === 0;
+      el.querySelectorAll('.cell-note').forEach(dot => {
+        const matches = cellEmpty && n !== 0 && Number(dot.dataset.note) === n
+          && this.engine.notes[er][ec].has(n);
+        dot.classList.toggle('is-match', matches);
       });
     }
 
@@ -271,6 +282,7 @@
         if (set.has(n)) set.delete(n); else set.add(n);
         this.history.push(snapshot);
         this.refreshCell(r, c);
+        this.select(r, c);
         return;
       }
 
@@ -324,6 +336,7 @@
       }
       this.refreshCell(m.r, m.c);
       this.updateCounter();
+      if (this.selected) this.select(this.selected[0], this.selected[1]);
     }
 
     toggleNotes() {
@@ -348,6 +361,7 @@
       if (this.hintBtn) this.hintBtn.setAttribute('aria-label', `Hint, ${this.hintsLeft} left`);
       this.refreshCell(row, col);
       this.updateCounter();
+      if (this.selected) this.select(this.selected[0], this.selected[1]);
       if (this.engine.isFilled() && this.engine.isSolved()) this.win();
     }
 

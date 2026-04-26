@@ -99,7 +99,8 @@ body { background: #ffffff; color: var(--sudoku-text); }
   width: 100%;
 }
 .grid {
-  --cell: min(11vw, 60px);
+  /* Cap at 50px so portables (1280-1500px) don't show an oversized board next to the 360px panel. */
+  --cell: min(50px, calc((100vw - 2rem) / 9));
   display: grid;
   grid-template-columns: repeat(9, var(--cell));
   grid-template-rows: repeat(9, var(--cell));
@@ -168,6 +169,10 @@ body { background: #ffffff; color: var(--sudoku-text); }
   justify-content: center;
   min-width: 0;
   min-height: 0;
+}
+.cell-note.is-match {
+  font-weight: 700;
+  color: var(--sudoku-blue-dark);
 }
 
 .pause-overlay {
@@ -336,8 +341,14 @@ body { background: #ffffff; color: var(--sudoku-text); }
   font-weight: 500;
   border: 1px dashed var(--sudoku-border);
 }
-.ad-300x600 { width: 300px; height: 600px; }
+.ad-160x600 { width: 160px; height: 600px; }
 .ad-728x90 { width: 100%; max-width: 728px; height: 90px; margin: 0 auto; }
+
+/* Top banner — visible on tablet and up. Hidden on small mobile to keep board above the fold. */
+.ad-slot-top { display: none; margin: 0 auto var(--space-lg); padding: 0; }
+@media (min-width: 768px) {
+  .ad-slot-top { display: block; }
+}
 
 /* Bottom ad slot (leaderboard) */
 .ad-slot {
@@ -364,20 +375,21 @@ body { background: #ffffff; color: var(--sudoku-text); }
 .game-footer a { color: var(--sudoku-muted); text-decoration: none; }
 .game-footer a:hover { color: var(--sudoku-text); text-decoration: underline; }
 
-/* Side rails — only on viewports ≥1500px where 300×600 ads can sit outside the 1100px content column without overlap. */
+/* Side rails — 160×600 fixed in the free margins outside the 1100px container.
+   Threshold 1380px = container 1100 + 2×(160 ad + 30 gap). Covers MacBook Air 13" and larger. */
 .side-ad { display: none; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1380px) {
   .side-ad {
     display: block;
-    width: 300px;
+    width: 160px;
     z-index: 5;
     top: 120px;
     position: fixed;
   }
-  .side-ad .ad-300x600 { width: 300px; height: 600px; }
-  .side-ad-left { left: calc((100vw - 1100px) / 2 - 340px); }
-  .side-ad-right { right: calc((100vw - 1100px) / 2 - 340px); }
+  .side-ad .ad-160x600 { width: 160px; height: 600px; }
+  .side-ad-left { left: calc((100vw - 1100px) / 2 - 180px); }
+  .side-ad-right { right: calc((100vw - 1100px) / 2 - 180px); }
 }
 
 /* Modal */
