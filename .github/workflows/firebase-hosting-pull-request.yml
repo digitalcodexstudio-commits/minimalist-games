@@ -1,0 +1,22 @@
+name: Deploy preview channel on PR
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MINIMALIST_GAMES }}
+          projectId: minimalist-games
