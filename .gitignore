@@ -10,3 +10,10 @@ dist/
 firebase-debug.log
 ui-debug.log
 firestore-debug.log
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# fuse/mount artefacts
+.fuse_hidden*
