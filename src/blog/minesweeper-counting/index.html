@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Each number counts the mines touching that square, diagonals included. How to read them, and how subtracting overlapping numbers finds forced mines and safe squares.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/minesweeper-counting">
+  <title>What Do the Numbers Mean in Minesweeper?</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="What Do the Numbers Mean in Minesweeper?">
+  <meta property="og:description" content="Overlap two numbers, subtract, and the difference reveals a forced mine or a guaranteed safe cell.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/minesweeper-counting">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Do the Numbers Mean in Minesweeper?",
+    "description": "Overlap two numbers, subtract, and the difference reveals a forced mine or a guaranteed safe cell.",
+    "author": { "@type": "Person", "name": "Arnaldo Lima", "url": "https://minimalist-games.com/about#author" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-08-30",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/minesweeper-counting",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">June 8, 2026 · 6 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">What Do the Numbers Mean in Minesweeper?</h1>
+      <p class="lede">A number on a Minesweeper board tells you exactly one thing: how many mines are hidden in the eight squares touching it, diagonals included. A square on an edge touches five neighbours, a corner square only three — the number counts whichever of those are mined. Read alone, each number is a tiny equation. The single most powerful habit in the game is comparing two numbers whose neighbours <em>overlap</em> — because subtracting one from the other often pins down a cell that neither could solve alone.</p>
+
+      <p>This is the engine behind most "how did they know that?" moments. It needs no guessing and no memorised shapes — just careful counting.</p>
+
+      <h2>What each number means</h2>
+      <p>Start with the rule that does the most work: if a number equals the count of its <em>still-covered</em> neighbours, every one of them is a mine — flag them all. And the mirror: if a number already touches enough flagged mines to meet its value, all its other covered neighbours are safe — click them freely. Clear those two situations first on every move; they cost nothing.</p>
+
+      <h2>Subtraction: the 1-2 reduction</h2>
+      <p>The interesting cases appear when two numbers share some covered cells but not all. Look at a <strong>1</strong> sitting beside a <strong>2</strong>, both touching the same two covered cells, with the <strong>2</strong> reaching one extra cell the <strong>1</strong> can't see.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" aria-label="A revealed 1 next to a revealed 2 sharing two covered cells; subtracting the constraints forces the extra cell to be a mine"><title>A revealed 1 next to a revealed 2 sharing two covered cells; subtracting the constraints forces the extra cell to be a mine</title><rect x="0" y="0" width="190" height="190" fill="#ffffff"/><rect x="8" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M8 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M66 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><rect x="66" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M66 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M124 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><rect x="124" y="8" width="58" height="58" fill="#f3c6c1"/><path d="M124 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M182 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><line x1="162" y1="16" x2="174" y2="28" stroke="#d6453d" stroke-width="3.5" stroke-linecap="round"/><line x1="174" y1="16" x2="162" y2="28" stroke="#d6453d" stroke-width="3.5" stroke-linecap="round"/><rect x="8" y="66" width="58" height="58" fill="#eef1f7"/><text x="37.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="66" y="66" width="58" height="58" fill="#eef1f7"/><text x="95.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f9d57">2</text><rect x="124" y="66" width="58" height="58" fill="#eef1f7"/><rect x="8" y="124" width="58" height="58" fill="#eef1f7"/><rect x="66" y="124" width="58" height="58" fill="#eef1f7"/><rect x="124" y="124" width="58" height="58" fill="#eef1f7"/><line x1="8" y1="8" x2="8" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="66" y1="8" x2="66" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="124" y1="8" x2="124" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="182" y1="8" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="8" x2="182" y2="8" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="66" x2="182" y2="66" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="124" x2="182" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="182" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/></svg><figcaption>The 1 and the 2 share the left two covered cells. The 1 says those two hold exactly one mine. The 2 needs two mines in total — so the extra cell only it touches must be the second mine.</figcaption></figure>
+      <ul class="diagram-legend"><li><i style="background:#cdd4e3"></i>covered cell</li><li><i style="background:#eef1f7;border:1px solid #c7cede"></i>revealed number</li><li><i style="background:#1f9d57"></i>safe</li><li><i style="background:#d6453d"></i>mine</li></ul>
+      <p>The shared cells hold exactly one mine (the <strong>1</strong> says so). The <strong>2</strong> needs two mines among the shared cells <em>plus</em> its extra cell. One is already accounted for in the shared pair, so the leftover mine has nowhere to go but the extra cell. <strong>That cell is a mine</strong> — guaranteed, even though you still don't know which of the shared two is dangerous.</p>
+
+      <h2>Subtraction: the 1-1 reduction</h2>
+      <p>The same overlap trick finds safe cells too. Put a <strong>1</strong> next to another <strong>1</strong>, where the second one reaches an extra covered cell.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" aria-label="A revealed 1 next to another revealed 1 sharing two covered cells; the extra cell of the second 1 must be safe"><title>A revealed 1 next to another revealed 1 sharing two covered cells; the extra cell of the second 1 must be safe</title><rect x="0" y="0" width="190" height="190" fill="#ffffff"/><rect x="8" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M8 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M66 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><rect x="66" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M66 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M124 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><rect x="124" y="8" width="58" height="58" fill="#bfe6cd"/><path d="M124 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M182 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><path d="M162 20 l5 6 l10 -12" fill="none" stroke="#1f9d57" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="66" width="58" height="58" fill="#eef1f7"/><text x="37.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="66" y="66" width="58" height="58" fill="#eef1f7"/><text x="95.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="124" y="66" width="58" height="58" fill="#eef1f7"/><rect x="8" y="124" width="58" height="58" fill="#eef1f7"/><rect x="66" y="124" width="58" height="58" fill="#eef1f7"/><rect x="124" y="124" width="58" height="58" fill="#eef1f7"/><line x1="8" y1="8" x2="8" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="66" y1="8" x2="66" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="124" y1="8" x2="124" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="182" y1="8" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="8" x2="182" y2="8" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="66" x2="182" y2="66" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="124" x2="182" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="182" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/></svg><figcaption>Both 1s allow only a single mine. They already share two covered cells that must contain that one mine — so the extra cell the right 1 touches has to be empty. It's safe to click.</figcaption></figure>
+      <p>Both numbers permit exactly one mine. They share two covered cells, and those two already have to contain the single mine the left <strong>1</strong> allows. The right <strong>1</strong> is therefore satisfied by the shared pair alone, so its extra cell must be <strong>safe</strong>. Click it without fear.</p>
+
+      <h2>How to practise it</h2>
+      <p>When you stall, don't stare at one number — find a <em>pair</em> of adjacent numbers and ask what cells they share and what cells they don't. The shared part cancels; the leftover almost always resolves to a mine or a safe square. Once subtraction stops producing certainties, you've reached the point where <a href="/blog/minesweeper-probability">probability</a> takes over. Until then, you should never be guessing.</p>
+      <a class="cta" href="/games/minesweeper">Play Minesweeper — three board sizes</a>
+      <section class="related"><h3>Related</h3><ul><li><a href="/blog/minesweeper-1-2-1-pattern">The 1-2-1 Pattern</a></li><li><a href="/blog/minesweeper-strategy">Best Minesweeper Strategies</a></li><li><a href="/blog/minesweeper-probability">Minesweeper Probability: Guessing Smart</a></li></ul></section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

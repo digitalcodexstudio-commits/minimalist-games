@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reaching 1024 is the easy part. Here's how to build the second 1024 and chain your merges into the winning 2048 tile.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/2048-endgame">
+  <title>2048 Endgame: Chaining Merges to the 2048 Tile</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="2048 Endgame: Chaining to the 2048 Tile">
+  <meta property="og:description" content="Build a second 1024, line it up with the first, and trigger the cascade that wins the game.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/2048-endgame">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "2048 Endgame: Chaining to the 2048 Tile",
+    "description": "Build a second 1024, line it up with the first, and trigger the cascade that wins the game.",
+    "author": { "@type": "Person", "name": "Arnaldo Lima", "url": "https://minimalist-games.com/about#author" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-08-30",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/2048-endgame",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">June 8, 2026 · 5 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">2048 Endgame: Chaining Merges to the 2048 Tile</h1>
+      <p class="lede">Getting your first 1024 tile feels like the hard part — but the endgame is its own puzzle. To win you need a <em>second</em> 1024 sitting right next to the first, and the board space to bring them together. This is where the <a href="/blog/2048-snake-pattern">snake pattern</a> pays off.</p>
+
+      <h2>The winning position</h2>
+      <p>The whole endgame aims at one simple picture: two 1024 tiles, adjacent, ready to merge along your anchored direction.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 346 346" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram diagram-2048" aria-label="A 2048 endgame board with two 1024 tiles side by side in the bottom row; a swipe right merges them into the 2048 tile"><title>A 2048 endgame board with two 1024 tiles side by side in the bottom row; a swipe right merges them into the 2048 tile</title><rect x="0" y="0" width="346" height="346" rx="10" fill="#bbada0"/><rect x="10" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="94" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="178" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="262" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="10" y="94" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="94" y="94" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="178" y="94" width="74" height="74" rx="6" fill="#eee4da"/><text x="215.0" y="131.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">2</text><rect x="262" y="94" width="74" height="74" rx="6" fill="#ede0c8"/><text x="299.0" y="131.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">4</text><rect x="10" y="178" width="74" height="74" rx="6" fill="#ede0c8"/><text x="47.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">4</text><rect x="94" y="178" width="74" height="74" rx="6" fill="#f2b179"/><text x="131.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">8</text><rect x="178" y="178" width="74" height="74" rx="6" fill="#f59563"/><text x="215.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">16</text><rect x="262" y="178" width="74" height="74" rx="6" fill="#f67c5f"/><text x="299.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">32</text><rect x="10" y="262" width="74" height="74" rx="6" fill="#f65e3b"/><text x="47.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">64</text><rect x="94" y="262" width="74" height="74" rx="6" fill="#edcf72"/><text x="131.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#f9f6f2">128</text><rect x="178" y="262" width="74" height="74" rx="6" fill="#edc53f"/><text x="215.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21" fill="#f9f6f2">1024</text><rect x="180" y="264" width="70" height="70" rx="5" fill="none" stroke="#d6453d" stroke-width="3.5"/><rect x="262" y="262" width="74" height="74" rx="6" fill="#edc53f"/><text x="299.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21" fill="#f9f6f2">1024</text><rect x="264" y="264" width="70" height="70" rx="5" fill="none" stroke="#d6453d" stroke-width="3.5"/><circle cx="173.0" cy="173.0" r="34" fill="#1b2545" opacity="0.82"/><line x1="147.0" y1="173.0" x2="199.0" y2="173.0" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M199.0 173.0 l-12 -9 v18 z" fill="#fff"/></svg><figcaption>Two 1024 tiles are lined up in the bottom-right corner. One swipe to the right merges them into 2048 — and the smaller tiles behind them are already ordered to refill the gap.</figcaption></figure>
+      <p>Notice that everything else on the board is still ordered in a descending gradient behind the two 1024s. That ordering is what lets you keep playing if the merge doesn't immediately end the game — and it's what stopped the board filling up while you built the second 1024.</p>
+
+      <h2>Building the second 1024</h2>
+      <p>Your first 1024 stays parked in its corner and does not move. You build the second one in the <em>same row</em>, immediately beside it, by merging your way up the ladder: two 256s make a 512, two 512s make a 1024. Keep feeding small tiles into the tail of your snake and rolling them up the chain. The corner tile waits patiently the entire time — never swipe in the direction that would pull it loose.</p>
+
+      <h2>Protect your space</h2>
+      <p>The endgame is lost far more often to a full board than to a bad merge. Every move, ask whether you're keeping empty cells available. If the board is getting tight, stop pushing for the big merge and spend a few moves clearing small tiles — a 2 and a 2 you've been ignoring in the corner of the board can be the move that keeps you alive. Don't make a desperate swipe in your forbidden direction just to buy one merge; it almost always scatters the gradient and ends the run.</p>
+
+      <h2>After 2048</h2>
+      <p>Merging into the 2048 tile wins the game — but the same machine keeps going. The snake and corner discipline that got you here will take you to 4096 and beyond if you want to keep playing; nothing about the method changes, the numbers just get bigger. Most players stop to savour the win first. You've earned it.</p>
+      <a class="cta" href="/games/2048">Play 2048 — slide, merge, win</a>
+      <section class="related"><h3>Related</h3><ul><li><a href="/blog/2048-snake-pattern">The Snake Pattern</a></li><li><a href="/blog/2048-corner-strategy">The Corner Strategy</a></li><li><a href="/blog/2048-tips">2048 Tips and Tricks</a></li></ul></section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

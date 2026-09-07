@@ -45,6 +45,10 @@
       <h1>Blog</h1>
     </header>
 
+    <p class="game-intro">Strategy guides for the games we host — written and illustrated by the people who built them. No filler, no recycled listicles: each guide teaches one technique properly, with hand-built diagrams you can check against a real board. Start with the overview guide for your game, then go deeper technique by technique.</p>
+
+    <h2 class="blog-section-title">Sudoku</h2>
+    <p class="blog-section-intro">From your first Easy board to Extreme puzzles that need chained deductions. The overview guide covers eight techniques; the individual guides work through each one with diagrams.</p>
     <ul class="blog-list">
       <li>
         <a class="post-link" href="/blog/how-to-solve-sudoku">
@@ -53,17 +57,140 @@
         </a>
       </li>
       <li>
+        <a class="post-link" href="/blog/sudoku-strategies">
+          <h2>Sudoku Strategies, Explained with Diagrams</h2>
+          <p>A visual guide to eight techniques — from last remaining cell to box/line reduction — each with a worked diagram. Solve hard puzzles without guessing.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/how-sudoku-puzzles-are-generated">
+          <h2>How Sudoku Puzzles Are Generated</h2>
+          <p>Backtracking, clue removal, uniqueness checks and technique-based difficulty — how every board on this site is built, seconds before you play it.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-last-remaining-cell">
+          <h2>Last Remaining Cell</h2>
+          <p>The first technique every solver learns: when a row, column or box has one empty cell left, the digit is forced.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-cross-hatching">
+          <h2>Cross-Hatching</h2>
+          <p>Scan a digit across intersecting rows and columns to corner the only cell it can occupy in a box.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-hidden-singles">
+          <h2>Hidden Singles</h2>
+          <p>A digit with only one legal home in a unit — hidden among other candidates, but forced once you look.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-naked-pairs">
+          <h2>Naked Pairs</h2>
+          <p>Two cells locked to the same two candidates eliminate those digits from the rest of the unit.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-hidden-pairs">
+          <h2>Hidden Pairs</h2>
+          <p>Two digits confined to the same two cells — everything else in those cells can be erased.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-naked-triples">
+          <h2>Naked Triples</h2>
+          <p>Three cells sharing three candidates between them, and the eliminations they force across the unit.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-pointing-pairs">
+          <h2>Pointing Pairs</h2>
+          <p>When a digit in a box lines up on one row or column, it sweeps that digit out of the rest of the line.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/sudoku-box-line-reduction">
+          <h2>Box/Line Reduction</h2>
+          <p>The mirror of pointing pairs: a digit confined to one box within a line clears the rest of the box.</p>
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="blog-section-title">Minesweeper</h2>
+    <p class="blog-section-intro">Minesweeper is deduction, not luck. These guides teach you to read numbers together instead of one at a time — and what to do on the rare boards where a guess is forced.</p>
+    <ul class="blog-list">
+      <li>
         <a class="post-link" href="/blog/minesweeper-strategy">
           <h2>Best Minesweeper Strategies</h2>
           <p>Counting, the 1-2-1 pattern, and how to think in probabilities when logic runs out.</p>
         </a>
       </li>
       <li>
+        <a class="post-link" href="/blog/minesweeper-openings">
+          <h2>Minesweeper Openings: Where to Click First</h2>
+          <p>Corners open more often, centers open bigger — where to put the first click, and how to squeeze the frontier the flood hands you.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/minesweeper-1-2-1-pattern">
+          <h2>The 1-2-1 Pattern in Minesweeper</h2>
+          <p>Mines under the 1s, safe under the 2 — read the 1-2-1 and 1-2-2-1 at a glance, with diagrams.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/minesweeper-counting">
+          <h2>Counting and Subtraction in Minesweeper</h2>
+          <p>Overlap two numbers, subtract, and the difference reveals a forced mine or a guaranteed safe cell.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/minesweeper-probability">
+          <h2>Minesweeper Probability: Guessing Smart</h2>
+          <p>When logic runs out, compare the odds. How to read a 50/50, a 1-in-3, and the global mine count.</p>
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="blog-section-title">2048</h2>
+    <p class="blog-section-intro">The gap between "reached 512 once" and "reach 2048 on demand" is three ideas: the corner, the snake, and the endgame cascade. One guide each.</p>
+    <ul class="blog-list">
+      <li>
         <a class="post-link" href="/blog/2048-tips">
           <h2>2048 Tips and Tricks</h2>
           <p>The corner strategy, why you should never go up, and how to chain merges into the 2048 tile.</p>
         </a>
       </li>
+      <li>
+        <a class="post-link" href="/blog/2048-corner-strategy">
+          <h2>The Corner Strategy in 2048</h2>
+          <p>Pin your biggest tile in a corner and never let it move — the one habit that turns luck into skill.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/2048-snake-pattern">
+          <h2>The Snake Pattern in 2048</h2>
+          <p>Order your tiles in a back-and-forth gradient so the whole board collapses with a single swipe.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/2048-endgame">
+          <h2>2048 Endgame: Chaining to the 2048 Tile</h2>
+          <p>Build a second 1024, line it up with the first, and trigger the cascade that wins the game.</p>
+        </a>
+      </li>
+      <li>
+        <a class="post-link" href="/blog/2048-breaking-the-snake">
+          <h2>2048: When to Break the Snake</h2>
+          <p>When the forbidden direction is free, how to survive a forced break, and how to dissolve a tile wedged in your anchor row.</p>
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="blog-section-title">Puzzles &amp; design</h2>
+    <p class="blog-section-intro">Notes on the craft: what makes a puzzle game worth your time, and why we build ours the way we do.</p>
+    <ul class="blog-list">
       <li>
         <a class="post-link" href="/blog/free-puzzle-games">
           <h2>Best Free Puzzle Games Online</h2>
@@ -80,6 +207,10 @@
 
     <footer class="blog-footer">
       <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
       <span aria-hidden="true">·</span>
       <a href="/privacy">Privacy</a>
       <span aria-hidden="true">·</span>

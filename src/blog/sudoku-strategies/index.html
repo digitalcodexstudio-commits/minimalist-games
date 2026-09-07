@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eight Sudoku strategies, from last remaining cell to box/line reduction, each explained with a worked diagram. Solve hard puzzles by logic, not guesswork.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/sudoku-strategies">
+  <title>Sudoku Strategies: A Visual Guide — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="Sudoku Strategies, Explained with Diagrams">
+  <meta property="og:description" content="Eight Sudoku techniques from beginner to intermediate, each with a worked diagram. Solve hard puzzles by logic, not guesswork.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/sudoku-strategies">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Sudoku Strategies, Explained with Diagrams",
+    "description": "Eight Sudoku techniques from beginner to intermediate, each with a worked diagram. Solve hard puzzles by logic, not guesswork.",
+    "author": { "@type": "Person", "name": "Arnaldo Lima", "url": "https://minimalist-games.com/about#author" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-06-03",
+    "dateModified": "2026-08-30",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/sudoku-strategies",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">June 3, 2026 · 7 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">Sudoku Strategies, Explained with Diagrams</h1>
+      <p class="lede">Most people learn Sudoku by scanning for obvious numbers, then hit a wall on harder boards and assume they need to guess. They don't. Every standard Sudoku is solvable by pure logic — you just need a bigger toolbox. This guide walks through the eight techniques that carry you from beginner to confident solver, each one explained with a worked diagram you can read at a glance.</p>
+
+      <p>The strategies build on each other. The first three place digits directly and need no notes. The next five work on <strong>pencil marks</strong> — the small candidate numbers you jot into empty cells — and clear those candidates away until placements appear. Learn them in order and each new technique will feel like a natural extension of the last.</p>
+
+      <p>If you want a board to practise on while you read, open <a href="/games/sudoku">Sudoku Zen</a> in another tab. Its notes mode lets you pencil-mark candidates exactly as the diagrams below show. Brand new to the game? Start with <a href="/blog/how-to-solve-sudoku">how to solve Sudoku for beginners</a> first, then come back here.</p>
+
+      <h2>The eight techniques</h2>
+      <ul class="strategy-grid">
+        <li><a href="/blog/sudoku-last-remaining-cell"><span class="level-tag">Beginner</span><h3>Last Remaining Cell</h3><p>The single missing digit in an almost-full row, column, or box.</p></a></li>
+        <li><a href="/blog/sudoku-hidden-singles"><span class="level-tag">Beginner</span><h3>Hidden Singles</h3><p>A digit with only one legal home in a unit — even when the cell looks busy.</p></a></li>
+        <li><a href="/blog/sudoku-cross-hatching"><span class="level-tag">Beginner</span><h3>Cross-Hatching</h3><p>Scan rows and columns to place a digit inside a box.</p></a></li>
+        <li><a href="/blog/sudoku-naked-pairs"><span class="level-tag">Intermediate</span><h3>Naked Pairs</h3><p>Two cells sharing the same two candidates lock those digits in.</p></a></li>
+        <li><a href="/blog/sudoku-hidden-pairs"><span class="level-tag">Intermediate</span><h3>Hidden Pairs</h3><p>Two digits confined to two cells clear everything else out of them.</p></a></li>
+        <li><a href="/blog/sudoku-naked-triples"><span class="level-tag">Intermediate</span><h3>Naked Triples</h3><p>Three cells, three candidates — and the quads that follow.</p></a></li>
+        <li><a href="/blog/sudoku-pointing-pairs"><span class="level-tag">Intermediate</span><h3>Pointing Pairs</h3><p>A digit trapped on one line of a box points down that line.</p></a></li>
+        <li><a href="/blog/sudoku-box-line-reduction"><span class="level-tag">Intermediate</span><h3>Box/Line Reduction</h3><p>The reverse: a line confines a digit to a single box.</p></a></li>
+      </ul>
+
+      <h2>How the techniques fit together</h2>
+      <p>Beginner techniques — last remaining cell, hidden singles, and cross-hatching — are about <em>placing</em> digits. They finish easy boards on their own and get you most of the way through a medium one. None of them require notes; you do them by looking.</p>
+
+      <p>Intermediate techniques are about <em>eliminating</em> candidates so that a placement becomes possible. Naked and hidden pairs, naked triples, pointing pairs, and box/line reduction never put a number on the board by themselves. Instead they shave possibilities off other cells until a hidden single or last remaining cell appears. That two-step rhythm — eliminate, then place — is the whole game at the intermediate level.</p>
+
+      <p>Once these are reflexive, the advanced patterns (X-Wing, Swordfish, XY-Wing) are just the same idea stretched across several rows and columns at once. We'll cover those in a follow-up guide. For now, master the eight below and you'll solve the vast majority of "hard"-rated puzzles without ever guessing.</p>
+
+      <h2>A note on guessing</h2>
+      <p>You may have seen "guess and check" listed as a Sudoku method. It works, but it isn't solving — it's brute force, and on a contaminated board it's hard to undo. Every technique in this guide is deductive: each move is forced by the rules, so you can always explain <em>why</em> a digit goes where it does. That's the difference between finishing a puzzle and actually getting better at them.</p>
+      <a class="cta" href="/games/sudoku">Play Sudoku Zen — six difficulties</a>
+
+      <section class="related">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="/blog/how-to-solve-sudoku">How to Solve Sudoku for Beginners</a></li>
+          <li><a href="/blog/sudoku-naked-pairs">Naked Pairs in Sudoku</a></li>
+          <li><a href="/blog/sudoku-hidden-singles">Hidden Singles in Sudoku</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

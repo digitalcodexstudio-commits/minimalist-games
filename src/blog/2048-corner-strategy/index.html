@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The single habit that turns 2048 from luck into skill: pin your biggest tile in a corner and never let it move. A visual guide.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/2048-corner-strategy">
+  <title>The Corner Strategy in 2048 — Minimalist Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="The Corner Strategy in 2048">
+  <meta property="og:description" content="Pin your largest tile in one corner, build a gradient toward it, and stop swiping the wrong way.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/2048-corner-strategy">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Corner Strategy in 2048",
+    "description": "Pin your largest tile in one corner, build a gradient toward it, and stop swiping the wrong way.",
+    "author": { "@type": "Person", "name": "Arnaldo Lima", "url": "https://minimalist-games.com/about#author" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-08-30",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/2048-corner-strategy",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">June 8, 2026 · 5 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">The Corner Strategy in 2048</h1>
+      <p class="lede">If you take exactly one idea away from any 2048 guide, make it this: <strong>choose a corner, anchor your biggest tile there, and never let it leave.</strong> Almost every winning game is built on this single discipline, and almost every loss comes from breaking it.</p>
+
+      <h2>Why a corner at all</h2>
+      <p>In 2048 a tile only merges with an identical neighbour. Your largest tile has no equal on the board, so it can't merge with anything for a long time — it just needs somewhere stable to wait. A corner is the only spot that's touched by just two directions instead of four, so it's the easiest place to keep a tile parked while everything else churns around it.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 346 346" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram diagram-2048" aria-label="A 2048 board with the largest tile, 256, pinned in the bottom-right corner and values descending away from it"><title>A 2048 board with the largest tile, 256, pinned in the bottom-right corner and values descending away from it</title><rect x="0" y="0" width="346" height="346" rx="10" fill="#bbada0"/><rect x="10" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="94" y="10" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="178" y="10" width="74" height="74" rx="6" fill="#eee4da"/><text x="215.0" y="47.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">2</text><rect x="262" y="10" width="74" height="74" rx="6" fill="#ede0c8"/><text x="299.0" y="47.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">4</text><rect x="10" y="94" width="74" height="74" rx="6" fill="#cdc1b4"/><rect x="94" y="94" width="74" height="74" rx="6" fill="#eee4da"/><text x="131.0" y="131.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">2</text><rect x="178" y="94" width="74" height="74" rx="6" fill="#ede0c8"/><text x="215.0" y="131.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">4</text><rect x="262" y="94" width="74" height="74" rx="6" fill="#f2b179"/><text x="299.0" y="131.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">8</text><rect x="10" y="178" width="74" height="74" rx="6" fill="#eee4da"/><text x="47.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#776e65">2</text><rect x="94" y="178" width="74" height="74" rx="6" fill="#f2b179"/><text x="131.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">8</text><rect x="178" y="178" width="74" height="74" rx="6" fill="#f59563"/><text x="215.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">16</text><rect x="262" y="178" width="74" height="74" rx="6" fill="#f67c5f"/><text x="299.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">32</text><rect x="10" y="262" width="74" height="74" rx="6" fill="#f59563"/><text x="47.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">16</text><rect x="94" y="262" width="74" height="74" rx="6" fill="#f67c5f"/><text x="131.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#f9f6f2">32</text><rect x="178" y="262" width="74" height="74" rx="6" fill="#edcf72"/><text x="215.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#f9f6f2">128</text><rect x="262" y="262" width="74" height="74" rx="6" fill="#edcc61"/><text x="299.0" y="299.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#f9f6f2">256</text><rect x="264" y="264" width="70" height="70" rx="5" fill="none" stroke="#d6453d" stroke-width="3.5"/></svg><figcaption>The 256 is locked into the bottom-right corner, with tiles decreasing as they move away from it. The big tile never moves; smaller tiles flow toward it to merge.</figcaption></figure>
+      <p>Pick one corner and commit for the whole game. Bottom-right is a common choice, which means you'll mostly use <strong>right</strong> and <strong>down</strong>, and treat the other two directions as emergencies.</p>
+
+      <h2>Build a gradient toward the corner</h2>
+      <p>The corner tile shouldn't sit alone — line up your next-largest tiles beside it in decreasing order, so the board forms a slope running down into the corner. When tiles are ordered like this, a single swipe slides each one into a same-valued partner and the whole row collapses cleanly. The <a href="/blog/2048-snake-pattern">snake pattern</a> is the full version of this idea.</p>
+
+      <h2>The one rule: don't break the corner</h2>
+      <p>The fastest way to lose is to swipe in the direction that pulls your biggest tile out of its corner. With a bottom-right anchor, that fatal move is usually <strong>up</strong> — it can drag the corner tile off the bottom edge and scatter your careful gradient. Guard against it: keep the bottom row full so that swiping down does nothing and your corner can't slip. There's a whole habit to build here, covered in <a href="/blog/2048-tips">why you should never swipe up</a>.</p>
+
+      <h2>When the corner fills up</h2>
+      <p>Eventually the corner row fills with tiles you can't yet merge. Don't panic-swipe. Work the opposite side of the board to generate small tiles and feed them in gradually, always swiping back toward the corner afterwards so nothing drifts. Patience here is what carries you from 512 to 1024 and into the <a href="/blog/2048-endgame">endgame</a>.</p>
+      <a class="cta" href="/games/2048">Play 2048 — slide, merge, win</a>
+      <section class="related"><h3>Related</h3><ul><li><a href="/blog/2048-snake-pattern">The Snake Pattern in 2048</a></li><li><a href="/blog/2048-endgame">2048 Endgame: Chaining to the 2048 Tile</a></li><li><a href="/blog/2048-tips">2048 Tips and Tricks</a></li></ul></section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

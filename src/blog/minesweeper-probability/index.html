@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="When deduction stalls in Minesweeper you sometimes have to guess. Here's how to use probability and the global mine count to pick the safest square.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/minesweeper-probability">
+  <title>Minesweeper Probability: When Logic Runs Out</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="Minesweeper Probability: Guessing Smart">
+  <meta property="og:description" content="Not every board can be solved by logic. Learn to compare odds and guess the safest cell.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/minesweeper-probability">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Minesweeper Probability: Guessing Smart",
+    "description": "Not every board can be solved by logic. Learn to compare odds and guess the safest cell.",
+    "author": { "@type": "Person", "name": "Arnaldo Lima", "url": "https://minimalist-games.com/about#author" },
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-08-30",
+    "mainEntityOfPage": "https://minimalist-games.com/blog/minesweeper-probability",
+    "image": "https://minimalist-games.com/public/og-image.svg"
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">June 8, 2026 · 6 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">Minesweeper Probability: Guessing Smart When Logic Runs Out</h1>
+      <p class="lede">Good Minesweeper is mostly pure logic — but not always. Some boards reach a point where no amount of <a href="/blog/minesweeper-counting">counting</a> resolves the next cell, and you genuinely have to guess. The difference between a strong player and a lucky one is that the strong player guesses at the <em>best odds available</em>, and saves those guesses for last.</p>
+
+      <h2>First, exhaust the certainties</h2>
+      <p>Before any guess, make sure you've taken every free move: trivial completions, flags, and <a href="/blog/minesweeper-counting">subtraction</a> reductions. Most "forced guesses" are really missed deductions. Only when the whole frontier is genuinely ambiguous should you reach for probability.</p>
+
+      <h2>Compare the odds, don't guess blind</h2>
+      <p>Different unknown cells carry different risk. Two situations that look equally scary can have very different mine probabilities — and you should always click into the lower one.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 132 132" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" aria-label="A forced fifty-fifty: two covered cells, exactly one of which is a mine, with no information to separate them"><title>A forced fifty-fifty: two covered cells, exactly one of which is a mine, with no information to separate them</title><rect x="0" y="0" width="132" height="132" fill="#ffffff"/><rect x="8" y="8" width="58" height="58" fill="#eef1f7"/><text x="37.0" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="66" y="8" width="58" height="58" fill="#eef1f7"/><text x="95.0" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="8" y="66" width="58" height="58" fill="#cdd4e3"/><path d="M8 66 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M66 124 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><text x="37.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#4a5fc1">?</text><rect x="66" y="66" width="58" height="58" fill="#cdd4e3"/><path d="M66 66 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M124 124 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><text x="95.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#4a5fc1">?</text><line x1="8" y1="8" x2="8" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="66" y1="8" x2="66" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="124" y1="8" x2="124" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="8" x2="124" y2="8" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="66" x2="124" y2="66" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="124" x2="124" y2="124" stroke="#c7cede" stroke-width="1.5"/></svg><figcaption>A true 50/50. Both 1s see exactly these two covered cells and one of them is a mine. Nothing distinguishes them — clicking either is a coin flip.</figcaption></figure>
+      <ul class="diagram-legend"><li><i style="background:#cdd4e3"></i>covered cell</li><li><i style="background:#eef1f7;border:1px solid #c7cede"></i>revealed number</li><li><i style="background:#1f9d57"></i>safe</li><li><i style="background:#d6453d"></i>mine</li></ul>
+      <p>The pair above is a genuine <strong>50/50</strong>: each cell is a mine half the time. There's no clever read that breaks it. Now compare that with a number whose mine is spread across more cells:</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" aria-label="A single 1 touching three covered cells with no other clues; each has a one-in-three chance of being a mine"><title>A single 1 touching three covered cells with no other clues; each has a one-in-three chance of being a mine</title><rect x="0" y="0" width="190" height="190" fill="#ffffff"/><rect x="8" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M8 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M66 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><text x="37.0" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#4a5fc1">?</text><rect x="66" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M66 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M124 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><text x="95.0" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#4a5fc1">?</text><rect x="124" y="8" width="58" height="58" fill="#cdd4e3"/><path d="M124 8 h58 l-4 4 h-50 v50 l-4 4 z" fill="#e4e8f4"/><path d="M182 66 h-58 l4 -4 h50 v-50 l4 -4 z" fill="#aab2c8"/><text x="153.0" y="37.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#4a5fc1">?</text><rect x="8" y="66" width="58" height="58" fill="#eef1f7"/><rect x="66" y="66" width="58" height="58" fill="#eef1f7"/><text x="95.0" y="95.0" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1f5fd0">1</text><rect x="124" y="66" width="58" height="58" fill="#eef1f7"/><rect x="8" y="124" width="58" height="58" fill="#eef1f7"/><rect x="66" y="124" width="58" height="58" fill="#eef1f7"/><rect x="124" y="124" width="58" height="58" fill="#eef1f7"/><line x1="8" y1="8" x2="8" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="66" y1="8" x2="66" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="124" y1="8" x2="124" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="182" y1="8" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="8" x2="182" y2="8" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="66" x2="182" y2="66" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="124" x2="182" y2="124" stroke="#c7cede" stroke-width="1.5"/><line x1="8" y1="182" x2="182" y2="182" stroke="#c7cede" stroke-width="1.5"/></svg><figcaption>One mine shared among three covered cells. Each is only a 1-in-3 risk — a 33% chance — which is a markedly better square to click than either half of a 50/50.</figcaption></figure>
+      <p>Here a single mine is shared among three cells, so each is only a <strong>1-in-3 (33%)</strong> risk. If you must guess and both regions are open to you, the 33% cell is clearly the better click than the 50% one. Reading these ratios off the board — mines allowed ÷ covered cells touched — is the core skill.</p>
+
+      <h2>Use the global mine count</h2>
+      <p>The number in the corner — total mines minus flags — is a clue most players ignore. When only a sparse open area and a tight cluster remain, divide the remaining mines by the remaining covered cells to get the <em>background</em> probability of a random cell. Sometimes a far-off, totally unconstrained square is safer than anything on your contested frontier; other times the frontier is safer. Compare both before committing.</p>
+
+      <h2>Guess early when it's cheap</h2>
+      <p>One counter-intuitive habit of expert players: when a guess is unavoidable, take it <em>early</em>, while the board is still open. A wrong guess early costs you little progress; a forced 50/50 on the very last two cells loses a nearly finished game. If you can see a 50/50 brewing, try to open territory elsewhere first so the odds resolve before you're cornered.</p>
+
+      <h2>Accept the variance</h2>
+      <p>Even perfect play loses some boards to unavoidable guesses — that's the nature of the game, not a mistake on your part. Your job isn't to win every board; it's to make sure that when you lose, it was to a real 50/50 and not to a square you could have read. Win rate follows good odds over many games.</p>
+      <a class="cta" href="/games/minesweeper">Play Minesweeper — three board sizes</a>
+      <section class="related"><h3>Related</h3><ul><li><a href="/blog/minesweeper-counting">Counting and Subtraction</a></li><li><a href="/blog/minesweeper-1-2-1-pattern">The 1-2-1 Pattern</a></li><li><a href="/blog/minesweeper-strategy">Best Minesweeper Strategies</a></li></ul></section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>
