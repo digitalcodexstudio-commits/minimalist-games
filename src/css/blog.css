@@ -36,11 +36,32 @@ body.blog {
   transition: background 120ms;
 }
 .blog-header .back-btn:hover { background: var(--blog-blue-tint); }
-.blog-header h1 {
+.blog-header h1,
+.blog-header .blog-nav-label {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+}
+
+/* Index intro + section headers */
+.blog-page > .game-intro {
+  margin: 0 0 var(--space-xl);
+  color: var(--blog-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.blog-section-title {
+  margin: var(--space-xl) 0 var(--space-xs);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.blog-section-intro {
+  margin: 0 0 var(--space-lg);
+  color: var(--blog-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
 }
 
 /* Index list */
@@ -174,4 +195,155 @@ body.blog {
 .blog-footer a:hover {
   color: var(--blog-text);
   text-decoration: underline;
+}
+
+/* Sudoku strategy diagrams */
+.post figure.sudoku-figure {
+  margin: var(--space-lg) 0;
+}
+.post .sudoku-diagram {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--blog-border);
+  border-radius: 10px;
+}
+.post .sudoku-figure figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--blog-muted);
+  margin-top: var(--space-sm);
+  line-height: 1.5;
+}
+.post .sudoku-pair {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin: var(--space-lg) 0;
+}
+.post .sudoku-pair figure {
+  flex: 1 1 240px;
+  margin: 0;
+}
+.post .sudoku-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  justify-content: center;
+  font-size: 0.8125rem;
+  color: var(--blog-text);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.post .sudoku-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+.post .sudoku-legend i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  flex: none;
+}
+/* Generic strategy diagrams (Minesweeper / 2048) */
+.post figure.diagram-figure {
+  margin: var(--space-lg) 0;
+}
+.post .diagram {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--blog-border);
+  border-radius: 10px;
+  background: #fff;
+}
+.post .diagram.diagram-2048 {
+  max-width: 320px;
+  border: none;
+}
+.post .diagram-figure figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--blog-muted);
+  margin-top: var(--space-sm);
+  line-height: 1.5;
+}
+.post .diagram-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  justify-content: center;
+  font-size: 0.8125rem;
+  color: var(--blog-text);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.post .diagram-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+.post .diagram-legend i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  flex: none;
+}
+
+/* Strategy index cards on the pillar page */
+.post .strategy-grid {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-lg) 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+.post .strategy-grid li { margin: 0; }
+.post .strategy-grid a {
+  display: block;
+  height: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--blog-border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 120ms, background 120ms;
+}
+.post .strategy-grid a:hover {
+  border-color: var(--blog-blue);
+  background: var(--blog-blue-tint);
+}
+.post .strategy-grid h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--blog-blue);
+}
+.post .strategy-grid p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--blog-muted);
+}
+.post .level-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blog-blue);
+  background: var(--blog-blue-tint);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: var(--space-xs);
 }

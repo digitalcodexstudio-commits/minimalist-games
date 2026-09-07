@@ -51,6 +51,12 @@ body { background: #ffffff; color: var(--ms-text); }
 }
 .back-btn:hover { background: var(--ms-blue-tint); }
 .page-header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; }
+.game-intro {
+  font-size: 0.9rem;
+  color: var(--ms-muted, #8891aa);
+  margin: 0 0 var(--space-lg);
+  line-height: 1.5;
+}
 
 .ms-layout {
   display: grid;

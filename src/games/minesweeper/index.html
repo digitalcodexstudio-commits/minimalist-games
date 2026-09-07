@@ -53,22 +53,10 @@
       <a href="/" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
       </a>
-      <h1>Minesweeper</h1>
+      <h1>Minesweeper — Play Free Online</h1>
     </header>
 
-    <div class="ad-slot ad-slot-top" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
-    <aside class="side-ad side-ad-left" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
-    <aside class="side-ad side-ad-right" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
+    <p class="game-intro">Classic Minesweeper online — Beginner (9×9), Intermediate (16×16) and Expert (16×30). First click is always safe. No registration required.</p>
 
     <div class="ms-layout">
       <section class="board-column">
@@ -116,20 +104,53 @@
       </aside>
     </div>
 
-    <div class="ad-slot" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
     <footer class="game-footer">
       <a href="/">Home</a>
       <span aria-hidden="true">·</span>
       <a href="/blog">Blog</a>
       <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
       <a href="/privacy">Privacy</a>
       <span aria-hidden="true">·</span>
       <a href="/terms">Terms</a>
     </footer>
+
+    <section class="game-info" aria-label="About Minesweeper">
+      <h2>What is Minesweeper?</h2>
+      <p>Minesweeper is a single-player puzzle game where you uncover cells on a grid while avoiding hidden mines. Each revealed cell shows a number indicating how many of its eight neighbours contain mines — and from those numbers alone, you can deduce exactly where every mine is. It is a game of deduction, not luck, and clearing a board without hitting a single mine is deeply satisfying.</p>
+
+      <h2>How to play</h2>
+      <ol>
+        <li><strong>Click any cell</strong> to reveal it. Your first click is always safe.</li>
+        <li><strong>Read the numbers</strong> — a "2" means exactly 2 mines are among that cell's neighbours.</li>
+        <li><strong>Right-click (or long-press)</strong> to place a flag on a cell you are sure contains a mine.</li>
+        <li><strong>Chord-click</strong> a numbered cell once all its neighbouring mines are flagged to reveal all remaining safe neighbours at once.</li>
+        <li><strong>Clear the board</strong> by revealing every safe cell without triggering a mine.</li>
+      </ol>
+      <p>Choose Beginner (9×9, 10 mines) to practice, or push yourself with Expert (16×30, 99 mines). <a href="/blog/minesweeper-strategy">Read our Minesweeper strategy guide</a> to learn patterns like 1-2-1 and corner openings.</p>
+
+      <h2>It looks like luck. It isn't.</h2>
+      <p>The reputation Minesweeper has — "you just guess at the end" — belongs to careless play, not to the game. Strong players solve the vast majority of boards with zero guesses, because every number on the board is a hard constraint, and constraints combine. A lone "1" tells you little; a "1" overlapping a "2" tells you exactly where a mine is. Learning to read two or three numbers together, instead of one at a time, is the whole skill. Our guides break this down with diagrams: the <a href="/blog/minesweeper-1-2-1-pattern">1-2-1 and 1-2-2-1 patterns</a> you can resolve on sight, <a href="/blog/minesweeper-counting">counting and subtraction</a> for everything else, and <a href="/blog/minesweeper-probability">how to pick the least-bad cell</a> on the rare boards where a guess is truly forced.</p>
+
+      <h2>Choosing a board size</h2>
+      <p><strong>Beginner (9×9, 10 mines)</strong> is where you learn to read numbers without pressure — most boards resolve in under a minute. <strong>Intermediate (16×16, 40 mines)</strong> is the sweet spot for practising patterns: dense enough that 1-2-1s and subtraction situations appear constantly, forgiving enough that one deduction rarely decides the game. <strong>Expert (16×30, 99 mines)</strong> is the classic benchmark — a fifth of the board is mines, long chains of deductions are mandatory, and finishing it cleanly is a real achievement. If you can clear Expert in under five minutes, you're better than almost everyone you know.</p>
+
+      <h2>A very short history</h2>
+      <p>Grid-and-mine games date to the 1960s mainframe era, but Minesweeper became universal when Microsoft shipped it with Windows 3.1 in 1992 — officially, legend has it, to teach a generation of office workers precise mouse clicks. It quietly became one of the most played computer games in history. Our version keeps everything that made it great — the numbers, the flags, the chord-click — and removes everything that has since accumulated around free versions of it: no ads over the board, no lives, no login.</p>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Can I lose on the first click?</h3>
+      <p>No. The board is generated after your first click, which is guaranteed to be safe — on most boards it opens a useful area to start deducing from.</p>
+      <h3>Do I have to use flags?</h3>
+      <p>No — flags are for you, not for the game. You win by revealing every safe cell, flagged or not. Many fast players flag only when it enables a chord-click; others flag every mine they find. Both styles work.</p>
+      <h3>What is chord-clicking?</h3>
+      <p>Clicking a revealed number whose mines are all flagged opens every remaining neighbour at once. It's faster than clicking cells one by one — and if your flags are wrong, it's also how you lose spectacularly. Trust it only when your logic does.</p>
+      <h3>Does it work offline?</h3>
+      <p>Yes. Like every game on this site, Minesweeper is cached as a Progressive Web App after your first visit and plays without a connection. Progress and stats stay in your browser; no account exists to sync.</p>
+    </section>
 
     <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card">

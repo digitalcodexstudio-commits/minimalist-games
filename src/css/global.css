@@ -97,3 +97,33 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
 }
+
+/* Game info section — editorial content for SEO */
+.game-info {
+  max-width: 728px;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  padding: 0 var(--space-md);
+  color: #1b2545;
+}
+.game-info h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #1b2545;
+}
+.game-info p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+  color: #4a5568;
+}
+.game-info ol {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+  padding-left: 1.5rem;
+  color: #4a5568;
+}
+.game-info ol li { margin-bottom: 0.35rem; }
+.game-info a { color: #4a5fc1; text-decoration: none; }
+.game-info a:hover { text-decoration: underline; }

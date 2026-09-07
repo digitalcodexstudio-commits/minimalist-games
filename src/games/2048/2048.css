@@ -52,6 +52,12 @@ body { background: var(--g48-bg); color: var(--g48-text-dark); }
 }
 .back-btn:hover { background: var(--g48-blue-tint); }
 .page-header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; color: var(--g48-text-dark); }
+.game-intro {
+  font-size: 0.9rem;
+  color: var(--g48-text-muted, #8891aa);
+  margin: 0 0 var(--space-lg);
+  line-height: 1.5;
+}
 
 .g48-layout {
   display: grid;

@@ -53,22 +53,10 @@
       <a href="/" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
       </a>
-      <h1>Sudoku Zen</h1>
+      <h1>Sudoku Zen — Free Online Sudoku</h1>
     </header>
 
-    <div class="ad-slot ad-slot-top" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
-    <aside class="side-ad side-ad-left" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
-    <aside class="side-ad side-ad-right" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
+    <p class="game-intro">Play free online Sudoku with six difficulty levels — Easy to Extreme. No login, no download. Pick your difficulty and start solving.</p>
 
     <div class="sudoku-layout">
       <section class="board-column">
@@ -142,20 +130,53 @@
       </aside>
     </div>
 
-    <div class="ad-slot" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
     <footer class="game-footer">
       <a href="/">Home</a>
       <span aria-hidden="true">·</span>
       <a href="/blog">Blog</a>
       <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
       <a href="/privacy">Privacy</a>
       <span aria-hidden="true">·</span>
       <a href="/terms">Terms</a>
     </footer>
+
+    <section class="game-info" aria-label="About Sudoku">
+      <h2>What is Sudoku?</h2>
+      <p>Sudoku is a logic-based number puzzle played on a 9×9 grid divided into nine 3×3 boxes. The goal is simple: fill every row, column, and box with the digits 1 through 9, with no digit repeating in any row, column, or box. Despite relying purely on logic — no maths required — Sudoku offers a satisfying challenge at every skill level.</p>
+
+      <h2>How to play</h2>
+      <ol>
+        <li><strong>Choose a difficulty</strong> — start with Easy to learn the patterns, then progress to Expert or Extreme for a real challenge.</li>
+        <li><strong>Select a cell</strong> and tap a number on the pad to fill it in.</li>
+        <li><strong>Use Notes</strong> to pencil in candidate digits when a cell has more than one possibility.</li>
+        <li><strong>Use Hint</strong> (up to 3 per game) if you get stuck — it reveals one correct digit.</li>
+        <li><strong>Avoid 3 mistakes</strong> — the game ends if you place three wrong numbers.</li>
+      </ol>
+      <p>Every puzzle has exactly one solution, reachable by logic alone. <a href="/blog/how-to-solve-sudoku">Read our Sudoku strategy guide</a> to learn techniques like naked singles, hidden pairs, and X-wings.</p>
+
+      <h2>What makes Sudoku Zen different</h2>
+      <p>Most online Sudoku sites wrap a decent puzzle in a terrible experience: sign-up walls, streak reminders, video ads between games. Sudoku Zen is built around the opposite idea — the board loads in under a second, works offline, and remembers your game locally in your browser, so you can close the tab mid-puzzle and pick it up later. Every board is generated with a solver that verifies a unique solution and rates its true difficulty by which techniques it requires, not just by how many clues are removed. That means a Hard board here actually needs Hard techniques — pairs, pointing pairs, box/line reduction — and an Extreme board will make you work for every cell.</p>
+
+      <h2>What the difficulty levels mean</h2>
+      <p><strong>Easy</strong> and <strong>Medium</strong> boards can be solved with singles alone — scanning rows, columns and boxes for the only cell a digit can go. <strong>Hard</strong> introduces candidate work: you'll want Notes on, and techniques like <a href="/blog/sudoku-naked-pairs">naked pairs</a> and <a href="/blog/sudoku-hidden-pairs">hidden pairs</a> start to matter. <strong>Expert</strong> and <strong>Master</strong> demand chained deductions — <a href="/blog/sudoku-pointing-pairs">pointing pairs</a>, <a href="/blog/sudoku-box-line-reduction">box/line reduction</a>, <a href="/blog/sudoku-naked-triples">triples</a>. <strong>Extreme</strong> is for solvers who enjoy staring at a board for a long minute before the single available move reveals itself. If you're not sure where you stand, start on Medium: it's the level where the game starts teaching you to see patterns instead of testing digits.</p>
+
+      <h2>A very short history</h2>
+      <p>Modern Sudoku descends from Leonhard Euler's 18th-century Latin squares, but the puzzle as we know it was published as "Number Place" in a 1979 American puzzle magazine, refined in Japan in the 1980s (where it got the name <em>sūdoku</em>, "single number"), and exploded worldwide in 2004–2005 when newspapers began printing it daily. It's now the most played logic puzzle on Earth — a fifty-year-old design that has never needed a redesign, which is exactly the kind of game we like.</p>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Can every puzzle really be solved without guessing?</h3>
+      <p>Yes. Every board is checked by our generator to have exactly one solution reachable through logical deduction. If you're stuck, it's a technique you haven't spotted yet — not a coin flip. The <a href="/blog/sudoku-strategies">strategy guide</a> covers eight techniques with diagrams.</p>
+      <h3>Does it work offline?</h3>
+      <p>Yes. The game is a Progressive Web App: after your first visit it's cached in your browser, so it loads and plays with no connection — on a plane, on the metro, anywhere.</p>
+      <h3>Is my progress saved?</h3>
+      <p>Your current game, statistics and settings are stored locally in your browser. Nothing is sent to a server and no account is needed — which also means clearing your browser data clears your progress.</p>
+      <h3>Why only three hints?</h3>
+      <p>Hints are a ladder, not an elevator. Three per game is enough to get unstuck without turning solving into watching. If you're using all three every game, drop one difficulty level — you'll improve faster.</p>
+    </section>
 
     <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card">

@@ -160,3 +160,33 @@ body.home {
   text-decoration: underline;
 }
 .site-footer .copyright { color: var(--home-muted); }
+
+/* Homepage editorial content */
+.home-content {
+  max-width: 720px;
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  color: var(--home-text);
+  line-height: 1.7;
+}
+.home-content h2 {
+  font-size: clamp(1.4rem, 3.4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-md);
+}
+.home-content h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  margin: var(--space-xl) 0 var(--space-xs);
+}
+.home-content p {
+  font-size: 1rem;
+  color: #44506b;
+  margin: 0 0 var(--space-md);
+}
+.home-content a {
+  color: var(--home-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+.home-content a:hover { text-decoration: underline; }

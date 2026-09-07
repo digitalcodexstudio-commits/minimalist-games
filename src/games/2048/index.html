@@ -53,22 +53,10 @@
       <a href="/" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
       </a>
-      <h1>2048</h1>
+      <h1>2048 — Free Online Game</h1>
     </header>
 
-    <div class="ad-slot ad-slot-top" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
-    <aside class="side-ad side-ad-left" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
-    <aside class="side-ad side-ad-right" aria-label="Advertisement" role="complementary">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-160x600">Ad space · 160×600</div>
-    </aside>
+    <p class="game-intro">Play the free online 2048 puzzle — slide and merge tiles to reach the 2048 tile. Unlimited undo, best score saved. Works on mobile and desktop.</p>
 
     <div class="g48-layout">
       <section class="board-column">
@@ -116,20 +104,53 @@
       </aside>
     </div>
 
-    <div class="ad-slot" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-unit ad-728x90">Ad space · 728×90</div>
-    </div>
-
     <footer class="game-footer">
       <a href="/">Home</a>
       <span aria-hidden="true">·</span>
       <a href="/blog">Blog</a>
       <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
       <a href="/privacy">Privacy</a>
       <span aria-hidden="true">·</span>
       <a href="/terms">Terms</a>
     </footer>
+
+    <section class="game-info" aria-label="About 2048">
+      <h2>What is 2048?</h2>
+      <p>2048 is a sliding tile puzzle played on a 4×4 grid. You combine matching numbered tiles by sliding them in one of four directions — up, down, left, or right. When two tiles with the same number collide, they merge into one tile with their sum. The aim is to reach the 2048 tile, but the real challenge is managing the board so it never fills up entirely before you get there.</p>
+
+      <h2>How to play</h2>
+      <ol>
+        <li><strong>Swipe or use arrow keys</strong> to slide all tiles on the board in one direction.</li>
+        <li><strong>Matching tiles merge</strong> — two 64s become a 128, two 512s become a 1024, and so on.</li>
+        <li><strong>A new tile (2 or 4)</strong> appears after every move.</li>
+        <li><strong>Plan your moves</strong> — avoid scattering high-value tiles across the board.</li>
+        <li><strong>The game ends</strong> when no moves are possible (board full, no adjacent matches).</li>
+      </ol>
+      <p>The classic strategy is to keep your highest tile in a corner and build a chain of descending values along one edge. <a href="/blog/2048-tips">Read our 2048 tips guide</a> to learn the corner strategy and how to recover from a messy board.</p>
+
+      <h2>Why 2048 is harder than it looks</h2>
+      <p>Anyone can reach 512 by swiping on instinct. The wall comes after that, and it comes for a mathematical reason: to build the 2048 tile you must, at some point, hold a 1024, a 512, a 256 and a full ladder of smaller tiles on a board with only sixteen cells — while a new tile lands somewhere random after every single move. Instinct doesn't survive that. Structure does. The players who consistently finish the game aren't luckier; they commit to a corner, restrict themselves to two or three directions, and treat every swipe as a question: <em>does this move keep my board ordered, or scatter it?</em> Our guides cover the whole arc: the <a href="/blog/2048-corner-strategy">corner strategy</a> that keeps your anchor tile pinned, the <a href="/blog/2048-snake-pattern">snake pattern</a> that turns your board into a collapsible gradient, and the <a href="/blog/2048-endgame">endgame</a> — engineering the second 1024 and the final cascade.</p>
+
+      <h2>Three habits that fix most games</h2>
+      <p>First: pick a corner and never press the direction that pulls your biggest tile out of it — for most players that means <em>never swipe up</em>. Second: keep your bottom row full at all times; a full row is a wall, and walls stop random tiles from sneaking behind your anchor. Third: when the board gets messy, slow down. 2048 has no timer, and almost every lost game dies on a reflex swipe that a two-second pause would have prevented — and while our version gives you unlimited undo, the best habit is playing as if you didn't have it.</p>
+
+      <h2>A very short history</h2>
+      <p>2048 was built in a weekend in March 2014 by Gabriele Cirulli, a 19-year-old Italian developer, as a free web tribute to the sliding-tile games Threes and 1024. It went viral within days — millions of players in its first weekend — and became one of the most cloned games ever made. Cirulli kept his version free and open-source, a spirit we try to honour: no lives, no boosters, no "watch an ad to continue". Just the board.</p>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Does the game end at 2048?</h3>
+      <p>No — reaching 2048 is the win condition, but you can tap "Keep going" and push on. The board supports 4096, 8192 and beyond; each doubling roughly doubles the difficulty. A 4096 is a rare achievement. An 8192 is bragging rights for life.</p>
+      <h3>How does undo work?</h3>
+      <p>The undo button steps back through your moves, as many as you need. Use it to study <em>why</em> a position went wrong — rewinding four moves and replaying them differently teaches more than ten fresh games. Use it to un-lose every game and you'll never get better.</p>
+      <h3>Is it luck or skill?</h3>
+      <p>Both — like poker. Tile spawns are random, but a disciplined player reaches 2048 many times more often than an instinctive one. Skill doesn't remove the randomness; it makes the randomness stop mattering.</p>
+      <h3>Does it work offline?</h3>
+      <p>Yes. The game caches as a Progressive Web App on first visit and plays with no connection. Your best score and current board are stored locally in your browser — no account, no sync, no server.</p>
+    </section>
 
     <div class="modal" data-modal hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card">
