@@ -3,6 +3,163 @@
     "public": ".",
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/games/sudoku/",
+        "destination": "/games/sudoku",
+        "type": 301
+      },
+      {
+        "source": "/games/minesweeper/",
+        "destination": "/games/minesweeper",
+        "type": 301
+      },
+      {
+        "source": "/games/2048/",
+        "destination": "/games/2048",
+        "type": 301
+      },
+      {
+        "source": "/privacy/",
+        "destination": "/privacy",
+        "type": 301
+      },
+      {
+        "source": "/terms/",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/blog/",
+        "destination": "/blog",
+        "type": 301
+      },
+      {
+        "source": "/blog/how-to-solve-sudoku/",
+        "destination": "/blog/how-to-solve-sudoku",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-strategies/",
+        "destination": "/blog/sudoku-strategies",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-last-remaining-cell/",
+        "destination": "/blog/sudoku-last-remaining-cell",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-hidden-singles/",
+        "destination": "/blog/sudoku-hidden-singles",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-cross-hatching/",
+        "destination": "/blog/sudoku-cross-hatching",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-naked-pairs/",
+        "destination": "/blog/sudoku-naked-pairs",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-hidden-pairs/",
+        "destination": "/blog/sudoku-hidden-pairs",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-naked-triples/",
+        "destination": "/blog/sudoku-naked-triples",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-pointing-pairs/",
+        "destination": "/blog/sudoku-pointing-pairs",
+        "type": 301
+      },
+      {
+        "source": "/blog/sudoku-box-line-reduction/",
+        "destination": "/blog/sudoku-box-line-reduction",
+        "type": 301
+      },
+      {
+        "source": "/blog/minesweeper-strategy/",
+        "destination": "/blog/minesweeper-strategy",
+        "type": 301
+      },
+      {
+        "source": "/blog/2048-tips/",
+        "destination": "/blog/2048-tips",
+        "type": 301
+      },
+      {
+        "source": "/blog/free-puzzle-games/",
+        "destination": "/blog/free-puzzle-games",
+        "type": 301
+      },
+      {
+        "source": "/blog/minimalist-game-design/",
+        "destination": "/blog/minimalist-game-design",
+        "type": 301
+      },
+      {
+        "source": "/about/",
+        "destination": "/about",
+        "type": 301
+      },
+      {
+        "source": "/contact/",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/blog/minesweeper-1-2-1-pattern/",
+        "destination": "/blog/minesweeper-1-2-1-pattern",
+        "type": 301
+      },
+      {
+        "source": "/blog/minesweeper-counting/",
+        "destination": "/blog/minesweeper-counting",
+        "type": 301
+      },
+      {
+        "source": "/blog/minesweeper-probability/",
+        "destination": "/blog/minesweeper-probability",
+        "type": 301
+      },
+      {
+        "source": "/blog/2048-corner-strategy/",
+        "destination": "/blog/2048-corner-strategy",
+        "type": 301
+      },
+      {
+        "source": "/blog/2048-snake-pattern/",
+        "destination": "/blog/2048-snake-pattern",
+        "type": 301
+      },
+      {
+        "source": "/blog/2048-endgame/",
+        "destination": "/blog/2048-endgame",
+        "type": 301
+      },
+      {
+        "source": "/blog/how-sudoku-puzzles-are-generated/",
+        "destination": "/blog/how-sudoku-puzzles-are-generated",
+        "type": 301
+      },
+      {
+        "source": "/blog/minesweeper-openings/",
+        "destination": "/blog/minesweeper-openings",
+        "type": 301
+      },
+      {
+        "source": "/blog/2048-breaking-the-snake/",
+        "destination": "/blog/2048-breaking-the-snake",
+        "type": 301
+      }
+    ],
     "ignore": [
       "firebase.json",
       ".firebaserc",
@@ -15,7 +172,11 @@
       ".firebase/**",
       "node_modules/**",
       ".idea/**",
-      ".vscode/**"
+      ".vscode/**",
+      "drafts/**",
+      "*.md",
+      "*.docx",
+      "tools/**"
     ],
     "rewrites": [
       {
@@ -49,6 +210,42 @@
       {
         "source": "/blog/how-to-solve-sudoku",
         "destination": "/src/blog/how-to-solve-sudoku/index.html"
+      },
+      {
+        "source": "/blog/sudoku-strategies",
+        "destination": "/src/blog/sudoku-strategies/index.html"
+      },
+      {
+        "source": "/blog/sudoku-last-remaining-cell",
+        "destination": "/src/blog/sudoku-last-remaining-cell/index.html"
+      },
+      {
+        "source": "/blog/sudoku-hidden-singles",
+        "destination": "/src/blog/sudoku-hidden-singles/index.html"
+      },
+      {
+        "source": "/blog/sudoku-cross-hatching",
+        "destination": "/src/blog/sudoku-cross-hatching/index.html"
+      },
+      {
+        "source": "/blog/sudoku-naked-pairs",
+        "destination": "/src/blog/sudoku-naked-pairs/index.html"
+      },
+      {
+        "source": "/blog/sudoku-hidden-pairs",
+        "destination": "/src/blog/sudoku-hidden-pairs/index.html"
+      },
+      {
+        "source": "/blog/sudoku-naked-triples",
+        "destination": "/src/blog/sudoku-naked-triples/index.html"
+      },
+      {
+        "source": "/blog/sudoku-pointing-pairs",
+        "destination": "/src/blog/sudoku-pointing-pairs/index.html"
+      },
+      {
+        "source": "/blog/sudoku-box-line-reduction",
+        "destination": "/src/blog/sudoku-box-line-reduction/index.html"
       },
       {
         "source": "/blog/minesweeper-strategy",
@@ -85,6 +282,50 @@
       {
         "source": "/service-worker.js",
         "destination": "/src/service-worker.js"
+      },
+      {
+        "source": "/about",
+        "destination": "/src/about/index.html"
+      },
+      {
+        "source": "/contact",
+        "destination": "/src/contact/index.html"
+      },
+      {
+        "source": "/blog/minesweeper-1-2-1-pattern",
+        "destination": "/src/blog/minesweeper-1-2-1-pattern/index.html"
+      },
+      {
+        "source": "/blog/minesweeper-counting",
+        "destination": "/src/blog/minesweeper-counting/index.html"
+      },
+      {
+        "source": "/blog/minesweeper-probability",
+        "destination": "/src/blog/minesweeper-probability/index.html"
+      },
+      {
+        "source": "/blog/2048-corner-strategy",
+        "destination": "/src/blog/2048-corner-strategy/index.html"
+      },
+      {
+        "source": "/blog/2048-snake-pattern",
+        "destination": "/src/blog/2048-snake-pattern/index.html"
+      },
+      {
+        "source": "/blog/2048-endgame",
+        "destination": "/src/blog/2048-endgame/index.html"
+      },
+      {
+        "source": "/blog/how-sudoku-puzzles-are-generated",
+        "destination": "/src/blog/how-sudoku-puzzles-are-generated/index.html"
+      },
+      {
+        "source": "/blog/minesweeper-openings",
+        "destination": "/src/blog/minesweeper-openings/index.html"
+      },
+      {
+        "source": "/blog/2048-breaking-the-snake",
+        "destination": "/src/blog/2048-breaking-the-snake/index.html"
       }
     ],
     "headers": [
