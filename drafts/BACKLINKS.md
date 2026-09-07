@@ -20,9 +20,13 @@ A ordem abaixo é por retorno esperado.
 
 ---
 
-## 1. GitHub — 10 minutos, permanente
+## 1. GitHub — FEITO a 2026-09-07
 
-O repositório já é público. Falta usá-lo.
+Campo **Website** (`https://minimalist-games.com`) e sete **topics** (`sudoku`, `minesweeper`, `2048`, `puzzle-game`, `browser-game`, `vanilla-javascript`, `pwa`) configurados no repo. Primeiro domínio externo feito.
+
+Nota: a edição destes campos exige sessão iniciada como **`digitalcodexstudio-commits`** (dono do repo). A conta `limaaa` é só contribuidora e não vê nem o separador Settings nem a engrenagem do About.
+
+O que estava por fazer e fica registado:
 
 - Define o **campo "Website"** do repo para `https://minimalist-games.com` (Settings → General, ou o ícone de engrenagem ao lado de "About" na página do repo).
 - Adiciona **topics**: `sudoku`, `minesweeper`, `2048`, `puzzle-game`, `browser-game`, `vanilla-javascript`, `pwa`.
