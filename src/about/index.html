@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Who builds Minimalist Games: Arnaldo Lima, an independent developer in Portugal who writes the code, the puzzle engine, and every strategy guide on the site.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/about">
+  <title>About — Minimalist Games</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="About Minimalist Games">
+  <meta property="og:description" content="Clean, free, browser-based puzzle games — no accounts, no downloads, no clutter. Here's who makes them and why.">
+  <meta property="og:url" content="https://minimalist-games.com/about">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/legal.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Minimalist Games",
+    "url": "https://minimalist-games.com/about",
+    "description": "About Minimalist Games — clean, free, browser-based puzzle games with no accounts and no clutter.",
+    "publisher": { "@type": "Organization", "name": "Minimalist Games" },
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://minimalist-games.com/about#author",
+      "name": "Arnaldo Lima",
+      "url": "https://minimalist-games.com/about#author",
+      "email": "digitalcodexstudio@gmail.com",
+      "jobTitle": "Independent developer",
+      "nationality": "PT",
+      "worksFor": { "@type": "Organization", "name": "Digital Codex Studio" },
+      "knowsAbout": ["Sudoku", "Minesweeper", "2048", "Puzzle game design", "Web development"]
+    }
+  }
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="legal">
+  <main class="legal-page">
+    <header class="legal-header">
+      <a href="/" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <h1>About Minimalist Games</h1>
+    </header>
+
+    <article class="legal-content">
+      <p>Minimalist Games is an independent project with one goal: make the classic puzzle games genuinely pleasant to play on the web again. No accounts. No downloads. No clutter. You open a page and the game is already there, ready to play in under a second.</p>
+
+      <h2>Why we built it</h2>
+      <p>Most "free game" sites bury a thirty-second game under a minute of pop-ups, cookie walls, autoplay video, and forced sign-ups. We wanted the opposite: games that load instantly, run offline, remember your progress locally, and never get in your way. The design philosophy is right there in the name — strip away everything that isn't the puzzle, and polish what's left until it feels effortless.</p>
+      <p>We think a few minutes of Sudoku or Minesweeper should be a clean, calm break — not an obstacle course of interruptions. That principle shapes every decision we make, from the layout of a board to how rarely we show an ad.</p>
+
+      <h2>What we make</h2>
+      <p>We currently offer three games, each rebuilt from scratch in plain HTML, CSS, and JavaScript — no heavy frameworks, no tracking-laden third-party widgets:</p>
+      <ul>
+        <li><a href="/games/sudoku">Sudoku Zen</a> — six difficulty levels from Easy to Extreme, pencil-mark notes, hints, and a single-solution guarantee on every board.</li>
+        <li><a href="/games/minesweeper">Minesweeper</a> — three board sizes, the clean version of the Windows classic.</li>
+        <li><a href="/games/2048">2048</a> — the addictive sliding-tile game, with smooth, responsive controls.</li>
+      </ul>
+      <p>Alongside the games we publish a small <a href="/blog">blog</a> of genuinely useful strategy guides — how to read a Sudoku board, the 1-2-1 pattern and probability in Minesweeper, the corner and snake methods in 2048 — written and illustrated for players who want to actually improve, not just rank for keywords. Every guide is original and most include hand-built diagrams.</p>
+
+      <h2>How it's built</h2>
+      <p>The whole site is static and hosted on Firebase Hosting. It works offline as a Progressive Web App, loads almost instantly, and stores your game progress only in your own browser — nothing about how you play is sent to us. We use Google Analytics (with IP anonymisation) purely to understand which games people enjoy, and Google AdSense to keep the site completely free to play. Full details are in our <a href="/privacy">Privacy Policy</a>.</p>
+
+      <h2 id="author">Who's behind it</h2>
+      <p>Minimalist Games is built and written by <strong>Arnaldo Lima</strong>, an independent developer based in Portugal, working under the name Digital Codex Studio. One person writes the code, generates the diagrams, and writes every guide on the blog. Nothing here is outsourced and there is no content team.</p>
+      <p>The strategy guides come out of building the games. Writing a Sudoku generator that guarantees exactly one solution means implementing the human solving techniques first — cross-hatching, hidden singles, naked and hidden pairs, pointing pairs, box/line reduction — and then rating each puzzle by which of them it actually needs. The diagrams in those articles are rendered directly from that engine, from positions the solver has verified, rather than drawn by hand to fit the text: every board you see in a guide is a real, solvable position. The Minesweeper and 2048 articles come from the same place — the counting, probability and merge logic they explain is the logic behind the games' own hint and difficulty code.</p>
+      <p>It's a labour of love, maintained and updated as the games change. Found a bug, have a feature idea, or want to suggest a game to add next? Write to <a href="mailto:digitalcodexstudio@gmail.com">digitalcodexstudio@gmail.com</a> — a real person reads every message. More on the <a href="/contact">Contact</a> page.</p>
+    </article>
+
+    <footer class="legal-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>
