@@ -99,7 +99,10 @@ Everything runs client-side and your progress never leaves your browser.
 https://minimalist-games.com
 ```
 
-### r/sudoku
+### r/sudoku — NÃO PUBLICAR
+
+> **Verificado a 2026-09-20: a regra 2 do subreddit proíbe auto-promoção** ("Do not promote your channel/app/website… Self promotion will be removed and may result in a ban"). Não há dia nem thread de excepção. O texto abaixo fica só como registo. Participar a ajudar outros (regra 1) é bem-vindo, mas sem links para o site.
+
 
 Esta é a comunidade mais exigente das três e a que mais valor te dá se correr bem. Não entres a vender o jogo — entra pelos guias, que é onde tens algo genuíno.
 
@@ -143,7 +146,10 @@ https://minimalist-games.com/blog/minesweeper-1-2-1-pattern
 
 ---
 
-## 4. Listas curadas de sites de Sudoku — o link mais valioso e o mais lento
+## 4. Listas curadas de sites de Sudoku — DESCARTADO
+
+> **Verificado a 2026-09-07: as três listas são marketing de concorrentes, não curadoria.** freepuzzles.net não tem contacto e faz parte de uma rede de sites que se linkam entre si; sudoku100.com põe-se em 1.º lugar; qoki.app nem nomeia concorrentes. Substituído pelo PR ao [awesome-jsgames](https://github.com/proyecto26/awesome-jsgames) (953★, mantido, aceita jogos open source — o repo já tem LICENSE MIT). Secção mantida só como registo.
+
 
 Existem páginas do tipo "Best Sudoku Websites 2026" que são actualizadas e rankeiam para pesquisas com intenção. Ser incluído numa vale mais do que vinte directórios, porque é um link editorial num contexto tematicamente idêntico ao teu.
 
@@ -198,17 +204,18 @@ Encaixam no teu perfil, mas não consegui confirmar as condições de submissão
 
 ---
 
-## Ordem e calendário sugeridos
+## Ordem e calendário sugeridos (revisto a 2026-09-20)
 
 | Quando | O quê | Esforço |
 |---|---|---|
-| Hoje, depois do deploy | GitHub: website, topics, README | 10 min |
-| Esta semana | 3 emails às listas curadas | 45 min |
-| Semana seguinte | r/sudoku (o de maior valor, faz este primeiro) | 20 min |
-| +1 semana | Show HN, a meio da semana, de manhã | 30 min + estar disponível |
-| +1 semana | r/WebGames | 15 min |
-| +1 semana | r/Minesweeper | 15 min |
-| Quando houver tempo | itch.io e FreeGameDirectory | 30 min |
+| Feito | GitHub: website, topics, README, LICENSE | — |
+| 28 set – 2 out | Show HN, ter–qui, 13h–15h Lisboa | 30 min + estar disponível |
+| Semana de 5 out | awesome-jsgames: issue primeiro (o CONTRIBUTING.md pede), depois PR | 30 min |
+| Semana de 12 out | r/WebGames — confirmar regras antes | 15 min |
+| Semana de 19 out | r/Minesweeper — confirmar regras antes | 15 min |
+| Quando houver tempo | itch.io (link externo, não upload) e FreeGameDirectory | 30 min |
+| ~~—~~ | ~~r/sudoku~~ — proíbe auto-promoção | — |
+| ~~—~~ | ~~emails às listas curadas~~ — são concorrentes | — |
 
 Espaçar não é timidez: uma rajada de menções no mesmo dia parece uma campanha, e várias delas seriam removidas. Espalhado por seis semanas parece um site a ganhar tracção — que é exactamente o que queres que o revisor do AdSense veja em Novembro.
 
