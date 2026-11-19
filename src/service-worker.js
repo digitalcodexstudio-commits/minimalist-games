@@ -2,7 +2,7 @@
 // HTML: network-first (so updates ship without a hard refresh).
 // Static assets: cache-first.
 
-const VERSION = 'v7';
+const VERSION = 'v8';
 const STATIC_CACHE = 'mg-static-' + VERSION;
 const RUNTIME_CACHE = 'mg-runtime-' + VERSION;
 

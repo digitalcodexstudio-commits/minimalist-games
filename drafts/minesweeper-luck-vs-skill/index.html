@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A flawless Minesweeper bot played 750,000 games: how many boards need a guess, where to click first, and the real win-rate ceiling at each difficulty.">
+  <meta name="theme-color" content="#4a5fc1">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1735197115961712" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://minimalist-games.com/blog/minesweeper-luck-vs-skill">
+  <title>How Much of Minesweeper Is Luck? 750,000 Games</title>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Minimalist Games">
+  <meta property="og:title" content="How Much of Minesweeper Is Luck? 750,000 Games">
+  <meta property="og:description" content="A flawless bot played 750,000 games: how many boards need a guess, where to click first, and the real win-rate ceiling.">
+  <meta property="og:url" content="https://minimalist-games.com/blog/minesweeper-luck-vs-skill">
+  <meta property="og:image" content="https://minimalist-games.com/public/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/public/icon-192.svg">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/blog.css">
+  <style>
+    .post .data-table-wrap{overflow-x:auto;margin:var(--space-lg) 0}
+    .post .data-table{width:100%;border-collapse:collapse;font-size:.9375rem;font-variant-numeric:tabular-nums}
+    .post .data-table caption{caption-side:bottom;text-align:left;font-size:.8125rem;color:var(--blog-muted);padding-top:var(--space-xs)}
+    .post .data-table th{text-align:left;font-weight:600;border-bottom:2px solid var(--blog-border);padding:8px 10px 8px 0;white-space:nowrap}
+    .post .data-table td{border-bottom:1px solid var(--blog-border);padding:8px 10px 8px 0}
+    .post .data-table .num{text-align:right}
+    .post .key-number{display:flex;flex-wrap:wrap;gap:var(--space-md);margin:var(--space-lg) 0}
+    .post .key-number div{flex:1 1 150px;background:var(--blog-blue-tint);border-radius:10px;padding:14px 16px}
+    .post .key-number strong{display:block;font-size:1.75rem;line-height:1.1;color:var(--blog-blue);font-weight:700}
+    .post .key-number span{font-size:.875rem;color:var(--blog-text)}
+    .post .method{background:#f7f8fc;border:1px solid var(--blog-border);border-radius:10px;padding:14px 18px;margin:var(--space-lg) 0;font-size:.9375rem}
+    .post .method p:last-child{margin-bottom:0}
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Much of Minesweeper Is Luck? 750,000 Games",
+  "description": "A flawless bot played 750,000 games: how many boards need a guess, where to click first, and the real win-rate ceiling.",
+  "author": {
+    "@type": "Person",
+    "name": "Arnaldo Lima",
+    "url": "https://minimalist-games.com/about#author"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Minimalist Games"
+  },
+  "datePublished": "2026-11-25",
+  "dateModified": "2026-11-25",
+  "mainEntityOfPage": "https://minimalist-games.com/blog/minesweeper-luck-vs-skill",
+  "image": "https://minimalist-games.com/public/og-image.svg"
+}
+  </script>
+  <script src="/src/js/analytics.js" defer></script>
+  <script src="/src/js/sw-register.js" defer></script>
+</head>
+<body class="blog">
+  <main class="blog-page">
+    <header class="blog-header">
+      <a href="/blog" class="back-btn" aria-label="Back to blog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </a>
+      <span class="blog-nav-label">Blog</span>
+    </header>
+
+    <article class="post">
+      <p class="post-meta">November 25, 2026 · 9 min read · By <a href="/about#author" rel="author">Arnaldo Lima</a></p>
+      <h1 class="post-title">How Much of Minesweeper Is Luck? We Played 750,000 Games to Find Out</h1>
+      <p class="lede">Every Minesweeper player has lost a game they didn't deserve to lose: two covered squares, one mine, nothing on the board to tell them apart. So how much of Minesweeper is skill, and how much is the coin you're forced to flip? Rather than argue about it, we built a bot that never makes a logical mistake and had it play <strong>750,000 games</strong> under the exact rules of <a href="/games/minesweeper">our Minesweeper</a>, logging every guess it was forced to make.</p>
+      <div class="key-number"><div><strong>90%</strong><span>of Beginner boards need no guess at all</span></div><div><strong>50%</strong><span>of Expert games are lost even by flawless play</span></div><div><strong>4.4 pts</strong><span>Expert win rate gained by starting in the centre, not the corner</span></div></div>
+
+      <h2 id="the-bot">The bot: what "flawless" means here</h2>
+      <p>The bot plays the way a perfect human would if they had infinite patience. After every reveal it does three things, in order:</p>
+      <ol>
+        <li><strong>Takes every certain move.</strong> If a number's mines are all flagged, its other neighbours are safe; if its covered neighbours exactly match its missing mines, they're all mines. This is the <a href="/blog/minesweeper-counting">counting</a> every player learns first.</li>
+        <li><strong>Considers every arrangement.</strong> When simple counting stalls, it lists every way the mines could be laid out along the frontier that agrees with every visible number — and with the mine counter in the corner. A cell that is safe in <em>every</em> possible arrangement is safe, full stop. This catches everything: <a href="/blog/minesweeper-1-2-1-pattern">the 1-2-1</a>, subtraction chains, end-game mine-count tricks, and deductions no human would ever spot.</li>
+        <li><strong>Guesses only when nothing is certain</strong> — and then picks the covered cell with the lowest exact probability of being a mine, weighting every arrangement by how many ways the rest of the board could hide the remaining mines.</li>
+      </ol>
+      <p>So when the bot loses, it never loses to a missed deduction. Every one of its losses is a guess that went wrong — a loss the board forced on it. That makes it a clean measuring stick: whatever it can't win, nobody can reliably win.</p>
+      <div class="method"><p><strong>Rules simulated.</strong> Beginner 9×9 with 10 mines, Intermediate 16×16 with 40, Expert 16×30 with 99. As on our site, mines are placed only after the first click, and the clicked cell <em>and its eight neighbours</em> are always mine-free. 100,000 games per first-click position on Beginner and Intermediate, 50,000 on Expert, for three positions: a corner, the middle of an edge and the centre. On under 0.3% of Expert games the frontier was too large to enumerate within the time budget and the bot fell back to a plain guess, which slightly understates its Expert results.</p></div>
+
+      <h2 id="how-much-is-luck">How much is luck? It depends enormously on the board</h2>
+      <figure class="diagram-figure"><svg viewBox="0 0 560 262" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" style="max-width:560px" aria-label="Share of boards solvable by pure logic and share won by perfect play, per difficulty, first click in the centre"><title>Share of boards solvable by pure logic and share won by perfect play, per difficulty, first click in the centre</title><rect width="560" height="262" fill="#ffffff"/><rect x="124" y="14" width="12" height="12" rx="2" fill="#d3d9f4"/><text x="142" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">No guess needed</text><rect x="266.0" y="14" width="12" height="12" rx="2" fill="#4a5fc1"/><text x="284.0" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Won by flawless play</text><line x1="124.0" y1="38" x2="124.0" y2="252" stroke="#e4e8f0" stroke-width="1"/><line x1="217.0" y1="38" x2="217.0" y2="252" stroke="#e4e8f0" stroke-width="1"/><line x1="310.0" y1="38" x2="310.0" y2="252" stroke="#e4e8f0" stroke-width="1"/><line x1="403.0" y1="38" x2="403.0" y2="252" stroke="#e4e8f0" stroke-width="1"/><line x1="496.0" y1="38" x2="496.0" y2="252" stroke="#e4e8f0" stroke-width="1"/><text x="114" y="71.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Beginner</text><rect x="124" y="44" width="336.5" height="20" rx="3" fill="#d3d9f4"/><text x="466.53724" y="61" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">90.5%</text><rect x="124" y="68" width="357.5" height="20" rx="3" fill="#4a5fc1"/><text x="487.53292" y="85" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">96.1%</text><text x="114" y="141.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Intermediate</text><rect x="124" y="114" width="262.9" height="20" rx="3" fill="#d3d9f4"/><text x="392.9482" y="131" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">70.7%</text><rect x="124" y="138" width="323.9" height="20" rx="3" fill="#4a5fc1"/><text x="453.8818" y="155" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">87.1%</text><text x="114" y="211.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Expert</text><rect x="124" y="184" width="58.4" height="20" rx="3" fill="#d3d9f4"/><text x="188.38168000000002" y="201" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">15.7%</text><rect x="124" y="208" width="186.1" height="20" rx="3" fill="#4a5fc1"/><text x="316.06696" y="225" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">50.0%</text></svg><figcaption>Light bars: boards the bot finished without a single guess. Dark bars: games it won, including those where its guesses came good. First click in the centre.</figcaption></figure>
+
+      <p>On <strong>Beginner</strong>, Minesweeper is almost a pure logic puzzle: 90.5% of boards can be cleared without ever guessing, and flawless play wins 96.1% of games. If you lose a Beginner game, the odds are better than nine in ten that the board was readable and something slipped.</p>
+      <p><strong>Intermediate</strong> is where luck starts to bite. Seven boards in ten (70.7%) are still pure logic, but nearly a third ask for at least one guess, and the ceiling for perfect play drops to 87.1%.</p>
+      <p><strong>Expert</strong> is a different game. Only 15.7% of Expert boards can be solved without guessing, the bot made 2.7 forced guesses per game on average, and flawless play won exactly half its games: <strong>50.0%</strong>. That's close to the honest ceiling — cleverer guessing can add a few points, since the lowest-risk square isn't always the one that reveals the most, but not many more. A player who wins 40% of Expert games is already playing very well; anyone claiming 80% over a large sample is playing a different variant.</p>
+      <p>The takeaway cuts both ways. On Beginner and Intermediate, most losses are skill — usually a counting step skipped in a hurry. On Expert, roughly half of all losses would have happened to a perfect player, so the right measure of your Expert game is not whether you won but whether you only ever lost on a guess.</p>
+
+      <h2 id="first-click">Where to click first: the centre, on this site</h2>
+      <p>Classic advice says to start in a corner, because a corner cell has only three neighbours and is the most likely place to turn up a zero and cascade open. That advice is correct for older versions of the game, where only the clicked cell was guaranteed safe. It's wrong for the rules most modern versions use, including ours.</p>
+      <p>When your first click <em>and its eight neighbours</em> are guaranteed mine-free, every first click is already a zero — the cascade is guaranteed wherever you click. What changes is how much of that guaranteed-safe 3×3 square actually lies on the board. In the centre you get all nine cells; on an edge, six; in a corner, the square is clipped to four. A smaller safe seed means a smaller opening:</p>
+      <div class="data-table-wrap"><table class="data-table"><caption>Cells revealed by the first click, averaged over every simulated game.</caption><thead><tr><th>Average first opening (cells)</th><th class="num">Corner</th><th class="num">Edge</th><th class="num">Centre</th></tr></thead><tbody><tr><td>Beginner</td><td class="num">28</td><td class="num">36</td><td class="num">46</td></tr><tr><td>Intermediate</td><td class="num">27</td><td class="num">42</td><td class="num">64</td></tr><tr><td>Expert</td><td class="num">16</td><td class="num">25</td><td class="num">40</td></tr></tbody></table></div>
+
+      <p>And a smaller opening means a thinner frontier, which means more guessing later:</p>
+      <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Boards solvable with no guess</th><th class="num">Corner</th><th class="num">Edge</th><th class="num">Centre</th></tr></thead><tbody><tr><td>Beginner</td><td class="num">81.7%</td><td class="num">89.8%</td><td class="num">90.5%</td></tr><tr><td>Intermediate</td><td class="num">57.5%</td><td class="num">68.2%</td><td class="num">70.7%</td></tr><tr><td>Expert</td><td class="num">10.2%</td><td class="num">13.8%</td><td class="num">15.7%</td></tr></tbody></table></div>
+
+      <figure class="diagram-figure"><svg viewBox="0 0 560 334" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" style="max-width:560px" aria-label="Win rate of flawless play by where the first click lands"><title>Win rate of flawless play by where the first click lands</title><rect width="560" height="334" fill="#ffffff"/><rect x="124" y="14" width="12" height="12" rx="2" fill="#d3d9f4"/><text x="142" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Corner</text><rect x="197.6" y="14" width="12" height="12" rx="2" fill="#9aa8e3"/><text x="215.6" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Edge</text><rect x="256.0" y="14" width="12" height="12" rx="2" fill="#4a5fc1"/><text x="274.0" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Centre</text><line x1="124.0" y1="38" x2="124.0" y2="324" stroke="#e4e8f0" stroke-width="1"/><line x1="217.0" y1="38" x2="217.0" y2="324" stroke="#e4e8f0" stroke-width="1"/><line x1="310.0" y1="38" x2="310.0" y2="324" stroke="#e4e8f0" stroke-width="1"/><line x1="403.0" y1="38" x2="403.0" y2="324" stroke="#e4e8f0" stroke-width="1"/><line x1="496.0" y1="38" x2="496.0" y2="324" stroke="#e4e8f0" stroke-width="1"/><text x="114" y="83.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Beginner</text><rect x="124" y="44" width="357.4" height="20" rx="3" fill="#d3d9f4"/><text x="487.3618" y="61" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">96.1%</text><rect x="124" y="68" width="359.0" height="20" rx="3" fill="#9aa8e3"/><text x="488.95024000000006" y="85" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">96.5%</text><rect x="124" y="92" width="357.5" height="20" rx="3" fill="#4a5fc1"/><text x="487.53292" y="109" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">96.1%</text><text x="114" y="177.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Intermediate</text><rect x="124" y="138" width="315.7" height="20" rx="3" fill="#d3d9f4"/><text x="445.6978" y="155" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">84.9%</text><rect x="124" y="162" width="324.1" height="20" rx="3" fill="#9aa8e3"/><text x="454.13475999999997" y="179" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">87.1%</text><rect x="124" y="186" width="323.9" height="20" rx="3" fill="#4a5fc1"/><text x="453.8818" y="203" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">87.1%</text><text x="114" y="271.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Expert</text><rect x="124" y="232" width="169.6" height="20" rx="3" fill="#d3d9f4"/><text x="299.63944000000004" y="249" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">45.6%</text><rect x="124" y="256" width="181.2" height="20" rx="3" fill="#9aa8e3"/><text x="311.164" y="273" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">48.7%</text><rect x="124" y="280" width="186.1" height="20" rx="3" fill="#4a5fc1"/><text x="316.06696" y="297" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="start" font-weight="400">50.0%</text></svg><figcaption>Win rate of flawless play by first-click position. On Beginner the three are within half a point; from Intermediate up, the corner falls behind.</figcaption></figure>
+
+      <p>On Beginner it barely matters for your win rate — a corner start forces more guesses, but they tend to be cheap ones near the start of the game. On Intermediate a corner start costs about two points of win rate, and on Expert it costs 4.4 points: you lose roughly one extra game in every 23 just by starting in the corner. <strong>Start in the centre.</strong> We've updated our <a href="/blog/minesweeper-openings">openings guide</a> to say so.</p>
+
+      <h2 id="what-guesses-look-like">What forced guesses actually look like</h2>
+      <p>"Forced guess" makes people picture the classic 50/50 — two cells, one mine, no way to tell. The data says that picture is accurate on small boards and misleading on big ones.</p>
+      <figure class="diagram-figure"><svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" role="img" class="diagram" style="max-width:560px" aria-label="What the forced guesses looked like, by risk of the cell the bot chose"><title>What the forced guesses looked like, by risk of the cell the bot chose</title><rect width="560" height="200" fill="#ffffff"/><rect x="124" y="14" width="12" height="12" rx="2" fill="#d3d9f4"/><text x="142" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Low risk (under 15%)</text><rect x="304.0" y="14" width="12" height="12" rx="2" fill="#9aa8e3"/><text x="322.0" y="25" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Real risk (15–49%)</text><rect x="124" y="34" width="12" height="12" rx="2" fill="#d6453d"/><text x="142" y="45" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#8891aa" text-anchor="start" font-weight="400">Coin flip (50%)</text><text x="114" y="89.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Beginner</text><rect x="124.0" y="70" width="137.7" height="28" fill="#d3d9f4"/><text x="192.84218337730871" y="89.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">33%</text><rect x="261.7" y="70" width="54.6" height="28" fill="#9aa8e3"/><text x="288.9800461741425" y="89.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">13%</text><rect x="316.3" y="70" width="219.7" height="28" fill="#d6453d"/><text x="426.1378627968338" y="89.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600">53%</text><text x="114" y="131.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Intermediate</text><rect x="124.0" y="112" width="170.7" height="28" fill="#d3d9f4"/><text x="209.3271726983581" y="131.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">41%</text><rect x="294.7" y="112" width="77.5" height="28" fill="#9aa8e3"/><text x="333.4265451732141" y="131.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">19%</text><rect x="372.2" y="112" width="163.8" height="28" fill="#d6453d"/><text x="454.099372474856" y="131.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600">40%</text><text x="114" y="173.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="#1b2545" text-anchor="end" font-weight="600">Expert</text><rect x="124.0" y="154" width="248.3" height="28" fill="#d3d9f4"/><text x="248.14973380166566" y="173.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">60%</text><rect x="372.3" y="154" width="100.7" height="28" fill="#9aa8e3"/><text x="422.62650495946275" y="173.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#1b2545" text-anchor="middle" font-weight="600">24%</text><rect x="473.0" y="154" width="63.0" height="28" fill="#d6453d"/><text x="504.47677115779703" y="173.0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600">15%</text></svg><figcaption>Every guess the bot was forced to make, grouped by the mine probability of the cell it chose. First click in the centre.</figcaption></figure>
+
+      <p>On Beginner, 53% of forced guesses really are coin flips. The board is small, the frontier closes in on itself, and when it jams it usually jams on a true 50/50. There is no technique to learn for these; <a href="/blog/minesweeper-probability">the best you can do is take them early</a>, before you've invested a whole game in them.</p>
+      <p>On Expert, only 15% of guesses are coin flips, and 60% carry less than a 15% risk. The board is big and the frontier long, so when it jams there is usually <em>somewhere</em> along it with good odds — often a cell next to a low number that touches many covered squares. A 1 with seven covered neighbours and nothing else to go on spreads its single mine seven ways, roughly a 14% risk per cell. Expert players lose so often not because each guess is terrible, but because they have to make several: three guesses at 15% risk lose nearly two games in five.</p>
+      <p>Only about one guess in ten went to a cell out in unexplored territory, away from every number. That option is worth checking — its risk is roughly the mines left divided by the covered cells, which starts near 21% on Expert and falls as the board clears — but on our boards it was rarely the best one. So the habit for Expert is: when you're stuck, don't grab the first plausible square. Scan the whole frontier for the number whose mines are spread most thinly, compare it with the open-field odds, and click the lowest.</p>
+
+      <h2 id="takeaways">What to take from 750,000 games</h2>
+      <ul>
+        <li><strong>Benchmarks for flawless play on our boards:</strong> about 96% on Beginner, 87% on Intermediate, 50% on Expert. If you're near those numbers, the remaining losses aren't yours.</li>
+        <li><strong>Click the centre first.</strong> With a safe 3×3 start, the corner's old advantage is gone and its smaller opening only costs you.</li>
+        <li><strong>On Beginner, every loss is worth a second look.</strong> Nine boards in ten were pure logic; the deduction was probably there.</li>
+        <li><strong>On Expert, judge yourself by the guesses, not the result.</strong> Half of all games are lost even by perfect play. Did you exhaust every deduction first, and did you guess at the lowest odds you could find?</li>
+      </ul>
+      <p>The simulator is a few hundred lines of C, and its source is in our <a href="https://github.com/digitalcodexstudio-commits/minimalist-games/tree/main/tools/research">public repository</a> if you want to check the method or run your own numbers.</p>
+
+      <a class="cta" href="/games/minesweeper">Play Minesweeper — start in the centre</a>
+      <section class="related"><h3>Related</h3><ul><li><a href="/blog/minesweeper-probability">Minesweeper Probability: Guessing Smart</a></li><li><a href="/blog/minesweeper-openings">Minesweeper Openings: Where to Click First</a></li><li><a href="/blog/minesweeper-counting">Counting and Subtraction in Minesweeper</a></li></ul></section>
+    </article>
+
+    <footer class="blog-footer">
+      <a href="/">Home</a>
+      <span aria-hidden="true">·</span>
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about">About</a>
+      <span aria-hidden="true">·</span>
+      <a href="/contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

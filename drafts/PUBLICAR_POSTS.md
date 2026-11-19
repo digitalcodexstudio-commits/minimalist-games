@@ -1,76 +1,38 @@
 # Publicação faseada dos posts — guião
 
-O post 1 (**How Sudoku Puzzles Are Generated**) já está integrado em `src/blog/` — sai no próximo deploy.
-Os posts 2 e 3 estão prontos nesta pasta `drafts/`, com data de publicação já escrita no HTML. O `firebase.json` já tem os redirects/rewrites dos três; só falta, em cada data, mover a pasta e acrescentar as entradas no blog index e no sitemap.
+Três posts de investigação original, prontos nesta pasta `drafts/` (que o Firebase não serve).
+Cada um tem a data de publicação já escrita no HTML. Publicar = um comando + push.
 
-Em cada data, o mais simples é pedir ao Claude: *"publica o post minesweeper-openings"* — os passos abaixo são o equivalente manual.
+| Data | Slug | Post |
+|---|---|---|
+| **25 nov 2026** | `minesweeper-luck-vs-skill` | How Much of Minesweeper Is Luck? We Played 750,000 Games |
+| **10 dez 2026** | `2048-strategies-tested` | We Tested Every 2048 Strategy. Here's What Actually Wins |
+| **30 dez 2026** | `sudoku-difficulty-clue-count` | Fewer Clues Doesn't Mean a Harder Sudoku: What 4,000 Puzzles Show |
 
----
+## Em cada data
 
-## Post 2 — Minesweeper Openings · publicar a 11 de agosto de 2026
-
-**1. Mover:**
 ```bash
 cd /Users/alima/Documents/Claude/Projects/minimalist-games
-mv drafts/minesweeper-openings src/blog/
+python3 tools/publish_post.py <slug>
+git add -A && git commit -m "content: publish <slug>" && git push
 ```
 
-**2. `src/blog/index.html`** — na secção **Minesweeper**, a seguir ao item `minesweeper-strategy`, inserir:
-```html
-      <li>
-        <a class="post-link" href="/blog/minesweeper-openings">
-          <h2>Minesweeper Openings: Where to Click First</h2>
-          <p>Corners open more often, centers open bigger — where to put the first click, and how to squeeze the frontier the flood hands you.</p>
-        </a>
-      </li>
-```
+O script move o post para `src/blog/`, acrescenta o rewrite ao `firebase.json`, a entrada no blog index e no sitemap, aplica os ficheiros de `drafts/<slug>/also/` e corre o `verify_site.py`. Se o verificador der erros, pára antes de mudares alguma coisa no git. `--check` mostra o que faria sem mexer em nada.
 
-**3. `src/sitemap.xml`** — antes de `</urlset>`, inserir:
-```xml
-  <url>
-    <loc>https://minimalist-games.com/blog/minesweeper-openings</loc>
-    <lastmod>2026-08-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-```
+Depois do push: Search Console → URL inspection → `https://minimalist-games.com/blog/<slug>` → **Request indexing**.
 
-**4.** `npm run deploy` → Search Console: Request indexing de `/blog/minesweeper-openings`.
+## O que cada publicação também actualiza (pasta `also/`)
 
----
+- **minesweeper-luck-vs-skill** → corrige `minesweeper-openings`: deixa de recomendar o canto e passa a recomendar o centro (com as regras do nosso jogo, clique inicial + 8 vizinhos seguros, o centro ganha em todos os níveis — ver os dados no post).
+- **2048-strategies-tested** → acrescenta em `2048-tips` uma frase com link para o novo post, na secção "Never swipe up".
+- **sudoku-difficulty-clue-count** → acrescenta em `how-sudoku-puzzles-are-generated` o link para o novo post.
 
-## Post 3 — 2048: When to Break the Snake · publicar a 15 de agosto de 2026
+Estes ficheiros são cópias completas das páginas. **Se editares um desses três posts antes da data, edita também a cópia em `also/`**, senão a publicação substitui a tua edição.
 
-**1. Mover:**
-```bash
-cd /Users/alima/Documents/Claude/Projects/minimalist-games
-mv drafts/2048-breaking-the-snake src/blog/
-```
+## Não publicar antes da data
 
-**2. `src/blog/index.html`** — na secção **2048**, a seguir ao item `2048-endgame`, inserir:
-```html
-      <li>
-        <a class="post-link" href="/blog/2048-breaking-the-snake">
-          <h2>2048: When to Break the Snake</h2>
-          <p>When the forbidden direction is free, how to survive a forced break, and how to dissolve a tile wedged in your anchor row.</p>
-        </a>
-      </li>
-```
+O objectivo é mostrar ao AdSense publicação regular ("ongoing curation"). Os três de uma vez, ou fora de ordem, estragam isso.
 
-**3. `src/sitemap.xml`** — antes de `</urlset>`, inserir:
-```xml
-  <url>
-    <loc>https://minimalist-games.com/blog/2048-breaking-the-snake</loc>
-    <lastmod>2026-08-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-```
+## De onde vêm os números
 
-**4.** `npm run deploy` → Search Console: Request indexing de `/blog/2048-breaking-the-snake`.
-
----
-
-## Depois do post 3
-
-Resubmissão AdSense: janela **12–19 de agosto**, cumprindo a checklist do `AUDITORIA_ADSENSE_DELTA_2026-07-02.md` (crawl das páginas alteradas confirmado no Search Console com data posterior ao deploy → checkbox → Request review).
+Todos os dados foram gerados pelos programas em `tools/research/` (ver o README dessa pasta), com as regras exactas dos jogos do site. Os posts têm link para essa pasta no GitHub.

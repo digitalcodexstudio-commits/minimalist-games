@@ -40,6 +40,20 @@ Builds the routing map from `firebase.json` and checks it against what's on disk
 
 The routing check matters most: hosting serves this site through an explicit rewrite per page, so a new page without one is unreachable in production without any error appearing anywhere.
 
+## Research
+
+`tools/research/` holds the simulators behind the blog's data posts — a flawless Minesweeper bot, six 2048 players and the Sudoku difficulty analysis. Each one runs the exact rules of the games on the site; see its README to reproduce the numbers.
+
+## Publishing a drafted post
+
+Posts written ahead of time wait in `drafts/<slug>/` (not served). On the publication date:
+
+```bash
+python3 tools/publish_post.py <slug>
+```
+
+It moves the post into `src/blog/`, adds the rewrite, the blog-index entry and the sitemap entry, and runs `verify_site.py`.
+
 ## Local development
 
 ```bash

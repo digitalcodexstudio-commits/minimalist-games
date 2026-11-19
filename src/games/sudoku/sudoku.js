@@ -3,20 +3,7 @@
 
   const SIZE = 9;
   const BOX = 3;
-  const CLUES_BY_DIFFICULTY = {
-    easy: 45, medium: 38, hard: 32, expert: 28, master: 25, extreme: 22
-  };
   const MISTAKES_LIMIT = 3;
-
-  function cloneBoard(b) { return b.map(row => row.slice()); }
-  function shuffled(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
 
   class SudokuEngine {
     constructor() {
@@ -41,43 +28,29 @@
       return true;
     }
 
-    fill(b) {
-      for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-          if (b[r][c] === 0) {
-            for (const n of shuffled([1,2,3,4,5,6,7,8,9])) {
-              if (SudokuEngine.isValid(b, r, c, n)) {
-                b[r][c] = n;
-                if (this.fill(b)) return true;
-                b[r][c] = 0;
-              }
-            }
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
     generate(difficulty) {
-      const empty = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
-      this.fill(empty);
-      this.solution = cloneBoard(empty);
-
-      const puzzle = cloneBoard(empty);
-      const targetClues = CLUES_BY_DIFFICULTY[difficulty] ?? CLUES_BY_DIFFICULTY.medium;
-      const toRemove = SIZE * SIZE - targetClues;
-
-      const positions = shuffled(
-        Array.from({ length: SIZE * SIZE }, (_, i) => [Math.floor(i / SIZE), i % SIZE])
-      );
-      for (let i = 0; i < toRemove; i++) {
-        const [r, c] = positions[i];
-        puzzle[r][c] = 0;
+      // Easy to Expert are generated live by SudokuCore: clues are removed one
+      // at a time and a removal is kept only if the board stays solvable by
+      // logic with that level's techniques (which also guarantees a single
+      // solution). Master and Extreme boards are rare enough — roughly one
+      // attempt in a hundred needs triples or an X-Wing — that searching live
+      // would mean a wait, so they come from a bank built by the same
+      // generator and are relabelled and reshuffled before you see them.
+      const core = window.SudokuCore;
+      const bank = window.SUDOKU_BANK && window.SUDOKU_BANK[difficulty];
+      let puzzle, solution;
+      if (bank && bank.length) {
+        const [p, s] = bank[Math.floor(Math.random() * bank.length)];
+        const t = core.transform([...p].map(Number), [...s].map(Number));
+        puzzle = t.puzzle; solution = t.solution;
+      } else {
+        const r = core.generate(core.LEVELS[difficulty] ? difficulty : 'medium');
+        puzzle = r.puzzle; solution = r.solution;
       }
-
-      this.board = puzzle;
-      this.clues = puzzle.map(row => row.map(v => v !== 0));
+      const toGrid = (flat) => Array.from({ length: SIZE }, (_, r) => flat.slice(r * SIZE, r * SIZE + SIZE));
+      this.solution = toGrid(solution);
+      this.board = toGrid(puzzle);
+      this.clues = this.board.map(row => row.map(v => v !== 0));
       this.notes = Array.from({ length: SIZE }, () =>
         Array.from({ length: SIZE }, () => new Set())
       );
