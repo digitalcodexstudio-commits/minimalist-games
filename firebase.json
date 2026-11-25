@@ -332,6 +332,10 @@
       {
         "source": "/blog/2048-breaking-the-snake",
         "destination": "/src/blog/2048-breaking-the-snake/index.html"
+      },
+      {
+        "source": "/blog/minesweeper-luck-vs-skill",
+        "destination": "/src/blog/minesweeper-luck-vs-skill/index.html"
       }
     ],
     "headers": [
