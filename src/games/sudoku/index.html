@@ -159,21 +159,21 @@
       <p>Every puzzle has exactly one solution, reachable by logic alone. <a href="/blog/how-to-solve-sudoku">Read our Sudoku strategy guide</a> to learn techniques like naked singles, hidden pairs, and X-wings.</p>
 
       <h2>What makes Sudoku Zen different</h2>
-      <p>Most online Sudoku sites wrap a decent puzzle in a terrible experience: sign-up walls, streak reminders, video ads between games. Sudoku Zen is built around the opposite idea — the board loads in under a second, works offline, and remembers your game locally in your browser, so you can close the tab mid-puzzle and pick it up later. Every board is generated with a solver that verifies a unique solution and rates its true difficulty by which techniques it requires, not just by how many clues are removed. That means a Hard board here actually needs Hard techniques — pairs, pointing pairs, box/line reduction — and an Extreme board will make you work for every cell.</p>
+      <p>Most online Sudoku sites wrap a decent puzzle in a terrible experience: sign-up walls, streak reminders, video ads between games. Sudoku Zen is built around the opposite idea — the board loads in under a second and works offline. Every board is generated with a solver that verifies a unique solution and rates its true difficulty by which techniques it requires, not just by how many clues are removed. That means a Hard board here actually needs Hard techniques — pairs, pointing pairs, box/line reduction — and an Extreme board will make you work for every cell.</p>
 
       <h2>What the difficulty levels mean</h2>
-      <p><strong>Easy</strong> and <strong>Medium</strong> boards can be solved with singles alone — scanning rows, columns and boxes for the only cell a digit can go. <strong>Hard</strong> introduces candidate work: you'll want Notes on, and techniques like <a href="/blog/sudoku-naked-pairs">naked pairs</a> and <a href="/blog/sudoku-naked-pairs#hidden-pairs">hidden pairs</a> start to matter. <strong>Expert</strong> and <strong>Master</strong> demand chained deductions — <a href="/blog/sudoku-pointing-pairs">pointing pairs</a>, <a href="/blog/sudoku-pointing-pairs#box-line-reduction">box/line reduction</a>, <a href="/blog/sudoku-naked-pairs#naked-triples">triples</a>. <strong>Extreme</strong> boards cannot be finished without an X-Wing — they're for solvers who enjoy staring at a board for a long minute before the single available move reveals itself. If you're not sure where you stand, start on Medium: it's the level where the game starts teaching you to see patterns instead of testing digits.</p>
+      <p><strong>Easy</strong> and <strong>Medium</strong> boards can be solved with singles alone — scanning rows, columns and boxes for the only cell a digit can go. <strong>Hard</strong> introduces candidate work: you'll want Notes on, and techniques like <a href="/blog/sudoku-naked-pairs">naked pairs</a> and <a href="/blog/sudoku-naked-pairs#hidden-pairs">hidden pairs</a> start to matter. <strong>Expert</strong> and <strong>Master</strong> demand chained deductions — <a href="/blog/sudoku-pointing-pairs">pointing pairs</a>, <a href="/blog/sudoku-pointing-pairs#box-line-reduction">box/line reduction</a>, <a href="/blog/sudoku-naked-pairs#naked-triples">triples</a>. <strong>Extreme</strong> boards need an X-Wing (or an equivalent advanced pattern) — they're for solvers who enjoy staring at a board for a long minute before the single available move reveals itself. If you're not sure where you stand, start on Medium: it's the level where the game starts teaching you to see patterns instead of testing digits.</p>
 
       <h2>A very short history</h2>
       <p>Modern Sudoku descends from Leonhard Euler's 18th-century Latin squares, but the puzzle as we know it was published as "Number Place" in a 1979 American puzzle magazine, refined in Japan in the 1980s (where it got the name <em>sūdoku</em>, "single number"), and exploded worldwide in 2004–2005 when newspapers began printing it daily. It's now the most played logic puzzle on Earth — a fifty-year-old design that has never needed a redesign, which is exactly the kind of game we like.</p>
 
       <h2>Frequently asked questions</h2>
       <h3>Can every puzzle really be solved without guessing?</h3>
-      <p>Yes. Every board is checked by our generator to have exactly one solution reachable through logical deduction. If you're stuck, it's a technique you haven't spotted yet — not a coin flip. The <a href="/blog/sudoku-strategies">strategy guide</a> covers eight techniques with diagrams.</p>
+      <p>Yes. Every board is checked by our generator to have exactly one solution, and that solution can be reached through logical deduction. If you're stuck, it's a technique you haven't spotted yet — not a coin flip. The <a href="/blog/sudoku-strategies">strategy guide</a> covers eight techniques with diagrams.</p>
       <h3>Does it work offline?</h3>
       <p>Yes. The game is a Progressive Web App: after your first visit it's cached in your browser, so it loads and plays with no connection — on a plane, on the metro, anywhere.</p>
       <h3>Is my progress saved?</h3>
-      <p>Your current game, statistics and settings are stored locally in your browser. Nothing is sent to a server and no account is needed — which also means clearing your browser data clears your progress.</p>
+      <p>Not yet: a game in progress is kept only while the tab is open, so finish it before you close the page. There are no accounts and nothing to sign up for.</p>
       <h3>Why only three hints?</h3>
       <p>Hints are a ladder, not an elevator. Three per game is enough to get unstuck without turning solving into watching. If you're using all three every game, drop one difficulty level — you'll improve faster.</p>
     </section>
@@ -188,8 +188,8 @@
     </div>
   </main>
 
-  <script src="/src/games/sudoku/sudoku-core.js?v=2"></script>
+  <script src="/src/games/sudoku/sudoku-core.js?v=3"></script>
   <script src="/src/games/sudoku/sudoku-bank.js?v=2"></script>
-  <script src="/src/games/sudoku/sudoku.js?v=2"></script>
+  <script src="/src/games/sudoku/sudoku.js?v=3"></script>
 </body>
 </html>

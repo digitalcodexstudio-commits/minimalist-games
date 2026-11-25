@@ -1,13 +1,18 @@
 {
   "name": "minimalist-games",
   "version": "0.1.0",
-  "description": "Minimalist games platform — Sudoku, Minesweeper, 2048. Vanilla HTML/CSS/JS.",
+  "description": "Minimalist games platform \u2014 Sudoku, Minesweeper, 2048. Vanilla HTML/CSS/JS.",
   "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "firebase emulators:start --only hosting",
     "serve": "firebase emulators:start --only hosting",
     "deploy": "firebase deploy --only hosting",
-    "format": "npx --yes prettier --write ."
+    "format": "npx --yes prettier --write .",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }

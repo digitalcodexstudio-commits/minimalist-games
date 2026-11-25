@@ -148,9 +148,11 @@
 
     bindKeyboard() {
       document.addEventListener('keydown', (e) => {
-        if (this.paused || this.gameOver) return;
-        if (e.key === 'n' || e.key === 'N') { this.toggleNotes(); e.preventDefault(); return; }
+        if (this.gameOver) return;
+        // P must work while paused, otherwise the keyboard can pause but never resume.
         if (e.key === 'p' || e.key === 'P') { this.togglePause(); e.preventDefault(); return; }
+        if (this.paused) return;
+        if (e.key === 'n' || e.key === 'N') { this.toggleNotes(); e.preventDefault(); return; }
         if (e.key === 'z' && (e.metaKey || e.ctrlKey)) { this.undo(); e.preventDefault(); return; }
         if (!this.selected) return;
         if (e.key >= '1' && e.key <= '9') { this.inputNumber(Number(e.key)); e.preventDefault(); return; }
@@ -394,7 +396,7 @@
       for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
         const v = this.engine.board[r][c];
         if (v === 0) remaining++;
-        else counts[v]++;
+        else if (v === this.engine.solution[r][c]) counts[v]++; // only correct digits count
       }
       if (this.counterEl) this.counterEl.textContent = String(remaining);
       this.root.querySelectorAll('[data-num]').forEach(btn => {

@@ -69,8 +69,24 @@
     return g;
   }
 
+  // ---- input validation ------------------------------------------------------
+  // A grid is well-formed when it has 81 cells in 0..9 and no digit repeats in
+  // any row, column or box. Without this check the search below can run for
+  // minutes on contradictory givens instead of answering "0 solutions".
+  function isConsistent(grid) {
+    if (!Array.isArray(grid) || grid.length !== 81) return false;
+    for (let i = 0; i < 81; i++) {
+      const v = grid[i];
+      if (!Number.isInteger(v) || v < 0 || v > 9) return false;
+      if (v && PEERS[i].some(j => grid[j] === v)) return false;
+    }
+    return true;
+  }
+
   // ---- solution counting (stops at `limit`) --------------------------------
+  // Returns the number of solutions, capped at `limit` (0 for an inconsistent grid).
   function countSolutions(grid, limit = 2) {
+    if (!isConsistent(grid)) return 0;
     const g = grid.slice();
     let count = 0;
     const rec = () => {
@@ -98,6 +114,7 @@
   // Returns { solved, level, steps: {technique: count}, grid }.
   // `maxLevel` stops the solver from using techniques above that level.
   function rate(grid, maxLevel = TECHNIQUES.length) {
+    if (!isConsistent(grid)) return { solved: false, level: TECHNIQUES.length + 1, steps: {}, grid: grid.slice(), candidates: [] };
     const g = grid.slice();
     const cand = new Array(81).fill(0);
     for (let i = 0; i < 81; i++) {
@@ -263,11 +280,18 @@
         if (rate(puzzle, target).solved) clues--; else puzzle[i] = keep;
       }
       const r = rate(puzzle, target);
-      const result = { puzzle, solution, level: r.level, clues: puzzle.filter(Boolean).length, attempts: attempt, steps: r.steps };
-      if (r.level === target) return result;
+      // Safety net, independent of the human solver: the board MUST have one solution.
+      if (countSolutions(puzzle, 2) !== 1) continue;
+      const result = {
+        puzzle, solution, level: r.level, target, reachedTarget: r.level === target,
+        clues: puzzle.filter(Boolean).length, attempts: attempt, steps: r.steps
+      };
+      if (result.reachedTarget) return result;
       if (!best || r.level > best.level) best = result;
     }
-    return best; // closest found (never above the requested level)
+    // Closest found (never above the requested level). Callers must check
+    // `reachedTarget` before labelling the board with the requested difficulty.
+    return best;
   }
 
   // Relabels digits and shuffles rows, columns, bands and stacks (and maybe
@@ -293,7 +317,7 @@
     return { puzzle: map(puzzle), solution: map(solution) };
   }
 
-  const api = { generate, transform, MIN_CLUES, rate, countSolutions, solvedGrid, TECHNIQUES, LEVELS, makeRng };
+  const api = { generate, isConsistent, transform, MIN_CLUES, rate, countSolutions, solvedGrid, TECHNIQUES, LEVELS, makeRng };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.SudokuCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

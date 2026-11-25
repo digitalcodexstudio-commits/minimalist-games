@@ -10,11 +10,11 @@ Built and maintained by [Arnaldo Lima](https://minimalist-games.com/about#author
 
 Three games and a set of strategy guides that explain how to actually get better at them.
 
-- **Sudoku Zen** — six difficulties, pencil notes, undo, three hints. Every puzzle has a single solution reachable by logic alone; difficulty is rated by which human solving techniques a puzzle actually requires, not by counting clues.
+- **Sudoku Zen** — six difficulties, pencil notes, undo, three hints. Every puzzle is verified to have exactly one solution (`countSolutions`) and is solved by a logic-only rater (`rate`) that decides its difficulty from the hardest technique needed — hidden/naked singles, pairs, locked candidates (pointing pairs and box/line), triples, X-Wing — not from the clue count. Master and Extreme boards come from an offline bank built with the same code (`tools/research/sudoku/`).
 - **Minesweeper** — three board sizes, first-click safe, flag mode that works on touch.
 - **2048** — arrow keys or swipe, undo, best score kept locally.
 
-The site is a PWA, so it works offline, and game progress stays in the browser — nothing about how you play is sent anywhere.
+The site is a PWA, so it works offline. Game progress (such as the best 2048 score) stays in the browser. The site does use Google Analytics 4 for anonymous usage events (page views, game start/win/loss, difficulty and duration) and Google AdSense for ads — see the [privacy policy](https://minimalist-games.com/privacy).
 
 ## The Sudoku diagram generator
 
@@ -28,6 +28,13 @@ So they aren't drawn. `engine.py` solves and verifies positions, `finder.py` sea
 
 ```bash
 cd tools/sudoku-diagrams && python3 pages.py
+```
+
+## Tests
+
+```bash
+npm install
+npm test      # Jest: generator uniqueness, rule validity, difficulty/technique correlation, UI regressions
 ```
 
 ## Verifying the site
