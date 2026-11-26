@@ -2,7 +2,7 @@
 // HTML: network-first (so updates ship without a hard refresh).
 // Static assets: cache-first.
 
-const VERSION = 'v10';
+const VERSION = 'v11';
 const STATIC_CACHE = 'mg-static-' + VERSION;
 const RUNTIME_CACHE = 'mg-runtime-' + VERSION;
 
@@ -24,7 +24,11 @@ const PRECACHE_URLS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE)
-      .then((cache) => cache.addAll(PRECACHE_URLS).catch(() => {}))
+      // cache:'reload' skips the browser HTTP cache (30-day max-age), so a new
+      // service worker version never freezes stale copies of the assets.
+      .then((cache) => Promise.all(PRECACHE_URLS.map((u) =>
+        fetch(new Request(u, { cache: 'reload' })).then((r) => (r.ok ? cache.put(u, r) : null)).catch(() => {})
+      )))
       .then(() => self.skipWaiting())
   );
 });
@@ -67,7 +71,7 @@ function networkFirst(req) {
 function cacheFirst(req) {
   return caches.match(req).then((cached) => {
     if (cached) return cached;
-    return fetch(req).then((res) => {
+    return fetch(new Request(req, { cache: 'reload' })).then((res) => {
       if (res.ok) {
         const copy = res.clone();
         caches.open(RUNTIME_CACHE).then((c) => c.put(req, copy));
