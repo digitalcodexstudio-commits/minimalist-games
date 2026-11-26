@@ -105,6 +105,7 @@
       this.modalTitleEl = root.querySelector('[data-modal-title]');
       this.modalMsgEl = root.querySelector('[data-modal-msg]');
       this.modalTimeEl = root.querySelector('[data-modal-time]');
+      this.statusEl = root.querySelector('[data-status]');
       this.pauseOverlay = root.querySelector('[data-pause-overlay]');
       this.notesBtn = root.querySelector('[data-action="notes"]');
       this.notesIndicator = root.querySelector('[data-notes-state]');
@@ -270,6 +271,7 @@
       const wrong = this.engine.solution[r][c] !== n;
       if (wrong) {
         this.mistakes++;
+        this.announce(`Wrong digit. Mistakes ${this.mistakes} of ${MISTAKES_LIMIT}.`);
         this.updateMistakes();
         if (this.mistakes >= MISTAKES_LIMIT) {
           this.refreshCell(r, c);
@@ -461,6 +463,8 @@
       this.timerEl.textContent = `${mm}:${ss}`;
     }
 
+    announce(msg) { if (this.statusEl) this.statusEl.textContent = msg; }
+
     elapsedLabel() {
       return this.timerEl.textContent;
     }
@@ -468,6 +472,7 @@
     win() {
       this.gameOver = true;
       this.stopTimer();
+      this.announce('Solved! Nice work.');
       this.modalTitleEl.textContent = 'Solved!';
       this.modalMsgEl.textContent = 'Nice work.';
       this.modalTimeEl.textContent = this.elapsedLabel();
@@ -484,6 +489,7 @@
     loseGame() {
       this.gameOver = true;
       this.stopTimer();
+      this.announce('Game over. You reached 3 mistakes.');
       this.modalTitleEl.textContent = 'Game over';
       this.modalMsgEl.textContent = `You reached ${MISTAKES_LIMIT} mistakes.`;
       this.modalTimeEl.textContent = this.elapsedLabel();

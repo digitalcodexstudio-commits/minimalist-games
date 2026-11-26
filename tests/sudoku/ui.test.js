@@ -48,14 +48,13 @@ test('BUG L400-403: a WRONG digit counts towards hiding that pad button', () => 
   expect(btn.classList.contains('is-hidden')).toBe(false); // FAILS today: button vanishes though one 5 is still missing
 });
 
-test('Sudoku page does not persist anything although the copy says it does', () => {
+test('copy matches behaviour: the page makes no persistence claim and stores nothing', () => {
   boot();
   const spy = jest.spyOn(Storage.prototype, 'setItem');
   const ui = window.__ui;
   ui.select(0, 0); key('1'); key('2'); jest.advanceTimersByTime(5000);
-  const claims = /remembers your game locally|Your current game, statistics and settings are stored locally/.test(read('index.html'));
-  expect(claims).toBe(true);
-  expect(spy).not.toHaveBeenCalled(); // documents the mismatch copy <-> code
+  expect(/remembers your game|statistics and settings are stored/.test(read('index.html'))).toBe(false);
+  expect(spy).not.toHaveBeenCalled();
 });
 
 test('three wrong digits end the game and fire game_lose', () => {
@@ -78,4 +77,22 @@ test.each(['easy', 'medium', 'hard', 'expert', 'master', 'extreme'])('%s: newGam
   const ui = boot();
   document.querySelector(`[data-difficulty="${d}"]`).click();
   expect(window.SudokuCore.countSolutions(ui.engine.board.flat(), 2)).toBe(1);
+});
+
+test('screen-reader status region announces wrong digits and the end of the game', () => {
+  const ui = boot();
+  const st = document.querySelector('[data-status]');
+  expect(st).not.toBeNull();
+  expect(st.getAttribute('aria-live')).toBe('polite');
+  const cell = [];
+  for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) if (!ui.engine.clues[r][c]) cell.push([r, c]);
+  const [r, c] = cell[0]; ui.select(r, c); ui.inputNumber(ui.engine.solution[r][c] % 9 + 1);
+  expect(st.textContent).toMatch(/Wrong digit\. Mistakes 1 of 3/);
+});
+
+test('touch targets: stylesheet gives difficulty/pause/footer controls >= 44px', () => {
+  const css = read('sudoku.css');
+  expect(css).toMatch(/\.difficulty-btn \{[^}]*min-height: 44px/s);
+  expect(css).toMatch(/\.icon-btn\.small \{ width: 44px; height: 44px; \}/);
+  expect(css).toMatch(/\.game-footer a \{[^}]*min-height: 44px/);
 });
